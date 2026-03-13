@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Jee-Eun Lee — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Parallax orb backgrounds -->
+  <div class="parallax-bg" id="parallaxBg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <nav id="nav">
+    <div class="pill-nav-wrap">
+      <div class="pill-nav" id="pill-nav">
+        <button class="pill-btn active" id="nav-home" onclick="switchTab('home')">Home</button>
+        <button class="pill-btn" id="nav-work" onclick="switchTab('work')">Work</button>
+        <button class="pill-btn" id="nav-about" onclick="switchTab('about')">About</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HOME ══════════════ -->
+  <div class="page active" id="page-home">
+
+    <section class="landing">
+
+      <!-- Architectural rules -->
+      <div class="landing-rule"></div>
+      <span class="landing-footnote">Product · Service · AI Strategy</span>
+
+      <!-- Portrait -->
+      <div style="padding-left:calc(64px + 44px);margin-bottom:20px;">
+        <div class="profile-glow">
+          <img src="assets/images/profile.JPG" alt="Jee-Eun Lee" style="width:77px;height:77px;border-radius:50%;object-fit:cover;object-position:60% top;border:1.5px solid var(--border);display:block;" />
+        </div>
+      </div>
+
+      <!-- Eyebrow / time-based greeting -->
+      <p class="landing-eyebrow" id="greeting-text">Good morning — welcome</p>
+
+      <!-- Split headline with mask-reveal animation -->
+      <h1 class="landing-headline">
+        <span class="hl-line"><span class="hl-inner">A social thinker and strategic storyteller</span></span>
+        <span class="hl-line"><span class="hl-inner">to create value at a <em>system level.</em></span></span>
+      </h1>
+
+      <!-- Descriptor with horizontal rule -->
+      <div class="landing-descriptor">
+        <div class="descriptor-rule"></div>
+        <p class="landing-sub">Senior product &amp; service designer. Speculative thinker, commercial practitioner — designing at the edge of creativity and emerging technology.</p>
+      </div>
+
+      <!-- Chips — all dropdown logic unchanged -->
+      <div class="landing-chips">
+
+        <div class="chip-wrap">
+          <span class="chip chip-has-dropdown chip--accent" id="chip-creativity" onclick="toggleDropdown('creativity', event)">
+            ✦ Creativity &times; Tech
+          </span>
+          <div class="dropdown" id="dropdown-creativity">
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('unspace')">&lt;unspace&gt; — Audio-spatial platform for community memory</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('indust')">&lt;In Dust&gt; — Virtual memory-scape VR experience</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('msr')">Microsoft Research — Inclusive Avatars in Mixed Reality</a>
+          </div>
+        </div>
+
+        <div class="chip-wrap">
+          <span class="chip chip-has-dropdown chip--accent" id="chip-innovation" onclick="toggleDropdown('innovation', event)">
+            💡 Innovation
+          </span>
+          <div class="dropdown" id="dropdown-innovation">
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('df2030')">Future Experience Vision for Banking</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('ford')">Ford Future of Truck — Strategic archetype design</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('msr')">Microsoft Research — Inclusive Futures in AI &amp; Mixed Reality</a>
+          </div>
+        </div>
+
+        <div class="chip-wrap">
+          <span class="chip chip-has-dropdown chip--accent" id="chip-strategy" onclick="toggleDropdown('strategy', event)">
+            🎯 Strategy &amp; Discovery
+          </span>
+          <div class="dropdown" id="dropdown-strategy">
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('fx-platform')">Transforming accounting data into actionable insight</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('onboarding')">Redesigning conversation for card payment services onboarding</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('paypoint')">Designing an inclusive service for vulnerable customers</a>
+          </div>
+        </div>
+
+        <div class="chip-wrap">
+          <span class="chip chip-has-dropdown chip--accent" id="chip-ai" onclick="toggleDropdown('ai', event)">
+            🤖 AI-Enabled Design
+          </span>
+          <div class="dropdown" id="dropdown-ai">
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('df2030')">Future Experience Vision for Banking — AI scenario planning</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('msr')">Microsoft Research — Teachable AI tool helps blind and low-vision people find lost personal items </a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('lending')" style="opacity:0.45;pointer-events:none;cursor:default;">AI-Powered Commercial Lending Portal — broker to back office <span style="font-size:11px;background:#E4E3E0;color:#777;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">Work in progress</span></a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault();" style="opacity:0.45;pointer-events:none;cursor:default;">CRE Loan Review Automation — AI document ingestion <span style="font-size:11px;background:#E4E3E0;color:#777;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">Work in progress</span></a>
+          </div>
+        </div>
+
+        <div class="chip-wrap">
+          <span class="chip chip-has-dropdown chip--accent" id="chip-e2e" onclick="toggleDropdown('e2e', event)">
+            ⚡ End to End Ownership
+          </span>
+          <div class="dropdown" id="dropdown-e2e">
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('paypoint')">In App — Enabling customers to deposit cash at local shops</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('fx-platform')">New Platform — Smart FX risk management</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA row -->
+      <div class="landing-bottom">
+        <div class="cta-group">
+          <button class="landing-cta magnetic" onclick="switchTab('work')">
+            <span>View Selected Work</span>
+            <span class="cta-arrow">→</span>
+          </button>
+          <a href="/cdn-cgi/l/email-protection#a3cbc6cfcfcce3c9c6c68ec6d6cd8dc0ccce" class="cta-secondary">Get in touch</a>
+        </div>
+        <div class="landing-location">
+          <strong>London, UK</strong>
+          Open to senior &amp; lead roles
+        </div>
+      </div>
+
+
+    </section>
+
+  </div><!-- end home -->
+
+  <!-- ══════════════ WORK ══════════════ -->
+  <div class="page" id="page-work">
+
+    <section class="works-section" id="work-section" style="padding-top: 120px;">
+      <div class="wrap">
+        <div class="works-header">
+          <p class="works-label">Selected Work</p>
+          <h2 class="works-intro">A focused collection of projects where strategy <em>meets</em> craft.</h2>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-hint scroll-hint--page">
+          <div class="scroll-line"></div>
+          <span class="scroll-label">Scroll</span>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('msr')">
+          <div class="project-num">01</div>
+          <div class="project-info">
+            <p class="project-category">AI Research · Accessibility · Mixed Reality · Human-Computer Interaction</p>
+            <h2 class="project-name">Inclusive Futures in AI &amp; Mixed Reality</h2>
+            <p class="project-desc">Two research projects at Microsoft Research Cambridge: defining ethical foundations for inclusive avatars in spatial computing, and co-designing human-AI interaction for Blind and Low-Vision users — contributing to the Seeing AI ecosystem.</p>
+            <div class="project-tags">
+              <span class="project-tag">Accessibility Research</span>
+              <span class="project-tag">Co-Design</span>
+              <span class="project-tag">AI Interaction</span>
+              <span class="project-tag">Mixed Reality</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb" style="background:#F0EDE8;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;padding:24px;">
+              <div style="width:40px;height:40px;margin:0 auto 12px;display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                <div style="background:#F25022;border-radius:2px;"></div>
+                <div style="background:#7FBA00;border-radius:2px;"></div>
+                <div style="background:#00A4EF;border-radius:2px;"></div>
+                <div style="background:#FFB900;border-radius:2px;"></div>
+              </div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:0.02em;">Microsoft Research</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('df2030')">
+          <div class="project-num">02</div>
+          <div class="project-info">
+            <p class="project-category">Design Futures · Speculative Design · AI Strategy</p>
+            <h2 class="project-name">Future Experience Vision for Banking</h2>
+            <p class="project-desc">Designing AI-enabled future experience for 2030—speculative design and strategic storytelling to shape Commercial Banking's customer vision and guide executive strategy.</p>
+            <div class="project-tags">
+              <span class="project-tag">AI Product Design</span>
+              <span class="project-tag">Speculative Design</span>
+              <span class="project-tag">Narrative Strategy</span>
+              <span class="project-tag">Futures Thinking</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t2" style="padding:0;overflow:hidden;">
+            <img src="assets/images/DF_thumbnail.png" alt="Design Futures 2030" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('unspace')">
+          <div class="project-num">03</div>
+          <div class="project-info">
+            <p class="project-category">Speculative Design · Spatial Interaction · Community Resilience</p>
+            <h2 class="project-name">&lt;unspace&gt; — Audio-spatial platform for community memory</h2>
+            <p class="project-desc">A physical-digital platform preserving and sharing community stories through sensory, audio-spatial experiences — developed with Hackney Wick residents facing rapid gentrification.</p>
+            <div class="project-tags">
+              <span class="project-tag">Spatial Interaction</span>
+              <span class="project-tag">Participatory Design</span>
+              <span class="project-tag">Speculative Design</span>
+              <span class="project-tag">Community Research</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t6" style="padding:0;overflow:hidden;">
+            <img src="assets/images/unspace_hero.JPG" alt="unspace" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('indust')">
+          <div class="project-num">04</div>
+          <div class="project-info">
+            <p class="project-category">Speculative Design · VR · Memory · Interactive Architecture</p>
+            <h2 class="project-name">&lt;In Dust&gt; — Virtual memory-scape VR experience</h2>
+            <p class="project-desc">A virtual reality memory-scape using dust as a metaphor for our relationship with the planet and each other — collecting stories from 28 individuals to create an immersive, navigable world of audio memories. The seed project of &lt;unspace&gt;.</p>
+            <div class="project-tags">
+              <span class="project-tag">Speculative Design</span>
+              <span class="project-tag">VR Experience</span>
+              <span class="project-tag">Participatory Research</span>
+              <span class="project-tag">Interactive Architecture</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t6" style="padding:0;overflow:hidden;">
+            <img src="assets/images/Indust_hero.png" alt="In Dust" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('fx-platform')">
+          <div class="project-num">05</div>
+          <div class="project-info">
+            <p class="project-category">Commercial Banking · Enterprise Platform · Service Design</p>
+            <h2 class="project-name">FX Risk Management Platform</h2>
+            <p class="project-desc">A platform designed for scaling businesses to transform accounting data into actionable insight—enabling smarter FX decisions, clearer risk management, and confident cash flow control.</p>
+            <div class="project-tags">
+              <span class="project-tag">Strategic Orchestration</span>
+              <span class="project-tag">Journey Mapping</span>
+              <span class="project-tag">Multi-team Governance</span>
+              <span class="project-tag">Enterprise UX</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t1" style="padding:0;overflow:hidden;">
+            <img src="assets/images/fx-thumbnail.png" alt="FX Risk Management Platform" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('paypoint')">
+          <div class="project-num">06</div>
+          <div class="project-info">
+            <p class="project-category">Service Design · Everyday Banking · Financial Inclusion</p>
+            <h2 class="project-name">PayPoint Cash Deposit</h2>
+            <p class="project-desc">Enabling customers to deposit cash at local shops through PayPoint—designing an inclusive service that maintains banking access for vulnerable customers while supporting branch closure strategy.</p>
+            <div class="project-tags">
+              <span class="project-tag">Inclusive Design</span>
+              <span class="project-tag">Service Design</span>
+              <span class="project-tag">User Research</span>
+              <span class="project-tag">End-to-End UX</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t3" style="padding:0;overflow:hidden;">
+            <img src="assets/images/paypoint-cash-deposit.png" alt="PayPoint Cash Deposit" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('onboarding')">
+          <div class="project-num">07</div>
+          <div class="project-info">
+            <p class="project-category">Service Design · Telephony · B2B Onboarding</p>
+            <h2 class="project-name">Redesigning the merchant onboarding experience</h2>
+            <p class="project-desc">Redesigning the telephony sales and onboarding journey for business customers—reducing call duration by 50% while improving conversational flow and colleague confidence.</p>
+            <div class="project-tags">
+              <span class="project-tag">Discovery Research</span>
+              <span class="project-tag">Co-creation</span>
+              <span class="project-tag">Onboarding</span>
+              <span class="project-tag">Service Design leadership</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t4" style="padding:0;overflow:hidden;">
+            <img src="assets/images/CDC_thumbnail.png" alt="Merchant onboarding" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('ford')">
+          <div class="project-num">08</div>
+          <div class="project-info">
+            <p class="project-category">Automotive · Strategic Research · Human-Centred Design</p>
+            <h2 class="project-name">Ford Motor Company — Future of Truck</h2>
+            <p class="project-desc">Redefining archetypes for Ford's best-selling F-series trucks by uncovering overlooked customer segments and translating deep user research into strategic product roadmaps for 2035 and beyond.</p>
+            <div class="project-tags">
+              <span class="project-tag">Archetype Design</span>
+              <span class="project-tag">Co-creation Workshops</span>
+              <span class="project-tag">Speculative Design</span>
+              <span class="project-tag">Strategic Roadmapping</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t5" style="padding:0;overflow:hidden;">
+            <img src="assets/images/Ford_truck_photo.jpg" alt="Ford Future of Truck" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <h2>Let's create something exceptional together.</h2>
+        <p>Open to senior and lead design roles. Always happy to connect.</p>
+        <div class="footer-links">
+          <a href="/cdn-cgi/l/email-protection#412b24246c24342f012439202c312d246f222e2c"><span class="__cf_email__" data-cfemail="cba1aeaee6aebea58baeb3aaa6bba7aee5a8a4a6">[email&#160;protected]</span></a>
+          <a href="https://linkedin.com/in/jee-eun-lee" target="_blank">LinkedIn</a>
+          <a href="#">Resume</a>
+        </div>
+        <small>© 2026 Jee-Eun Lee. All rights reserved.</small>
+      </div>
+    </footer>
+
+  </div><!-- end work -->
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <div class="page" id="page-about">
+
+    <section class="about-strip" style="padding-top: 160px;">
+      <div class="wrap">
+        <div>
+          <h2>Designing at the intersection of strategy, discovery, and emerging technology.</h2>
+          <p>I'm a product designer with a deep focus on the problem space—understanding systems, stakeholders, and the nuances of human behaviour before a single pixel is placed.</p>
+          <p>My approach is rooted in cross-functional collaboration. I bridge the gap between leadership vision and engineering reality, ensuring design has a seat at the table from day one.</p>
+          <p>Currently open to senior and lead opportunities where I can drive product strategy, mentor teams, and shape AI-enabled experiences.</p>
+          <a href="/cdn-cgi/l/email-protection#bed6dbd2d2d1fed4dbdb93dbcbd090ddd1d3" class="about-cta">Get in touch</a>
+        </div>
+        <div>
+          <ul class="exp-list">
+            <li class="exp-item">
+              <span class="exp-year">2022–Now</span>
+              <div>
+                <div class="exp-title">Senior Product &amp; Service Designer</div>
+                <div class="exp-co">Lloyds Banking Group · London, UK</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <span class="exp-year">Jan–Apr 2022</span>
+              <div>
+                <div class="exp-title">Interaction Designer (Internship)</div>
+                <div class="exp-co">Microsoft Research · Cambridge, UK</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <span class="exp-year">2020–2022</span>
+              <div>
+                <div class="exp-title">Interaction Designer &amp; Interactive Media Researcher</div>
+                <div class="exp-co">Interactive Architecture Lab, The Bartlett, UCL · London, UK</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <span class="exp-year">2019–2020</span>
+              <div>
+                <div class="exp-title">Interaction Designer</div>
+                <div class="exp-co">Ford Motor Company · Detroit, MI, USA</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <span class="exp-year">2017–2019</span>
+              <div>
+                <div class="exp-title">Co-founder, Creative Director</div>
+                <div class="exp-co">Fren · Savannah, GA, USA</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <span class="exp-year">2011–2014</span>
+              <div>
+                <div class="exp-title">Visual Designer</div>
+                <div class="exp-co">Freelance · Seoul, Korea</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <h2>Let's create something exceptional together.</h2>
+        <p>Open to senior and lead design roles. Always happy to connect.</p>
+        <div class="footer-links">
+          <a href="/cdn-cgi/l/email-protection#39515c55555679535c5c145c4c57175a5654"><span class="__cf_email__" data-cfemail="177f727b7b78577d72723a7262793974787a">[email&#160;protected]</span></a>
+          <a href="https://linkedin.com/in/jee-eun-lee" target="_blank">LinkedIn</a>
+          <a href="#">Resume</a>
+        </div>
+        <small>© 2026 Jee-Eun Lee. All rights reserved.</small>
+      </div>
+    </footer>
+
+  </div><!-- end about -->
+
+
+  <!-- ══════════════ FX PLATFORM CASE STUDY ══════════════ -->
+  <div class="page" id="page-fx-platform">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / FX Risk Management Platform</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">FX Risk Management Platform</h1>
+              <p class="cs-summary">A platform designed for scaling businesses to transform accounting data into actionable insight—enabling smarter FX decisions, clearer risk management, and confident cash flow control.</p>
+              <p class="cs-date">2023–2024</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Lloyds Banking Group</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Service Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value">Commercial Banking, Markets, Client Data & Analytics</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img" style="max-height:none;">
+        <img src="assets/images/profile-photo.png" alt="FX Risk Management Platform — Lloyds Bank Connected on laptop and mobile" style="width:100%;height:auto;display:block;" />
+      </div>
+
+      <div style="max-width:1200px;margin:24px auto 0;padding:0 40px;">
+        <a href="https://www.lloydsbank.com/business/international/foreign-exchange/connected.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;">
+          <div style="width:32px;height:32px;background:#006A4E;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M2 15h10M8 11l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:1px;">Lloyds Bank Connected — FX Risk Management Platform</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">lloydsbank.com ↗</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Context &amp; Role</h3></div>
+              <div class="cs-section-content">
+                <p>I served as the central experience design orchestrator across a complex, multi-team delivery environment—governing quality, aligning third-party design delivery, facilitating sign-off, managing end-to-end journeys, and enabling stakeholder feedback across Commercial Banking, Markets, Client Data &amp; Analytics, and a third-party partner (CoBa).</p>
+                <p>This wasn't a traditional product design role. It required designing the operating model itself: how teams would collaborate, how quality would be maintained, and how client value would be measured beyond just feature launches.</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-stakeholder-ecosystem.jpg" alt="Stakeholder ecosystem map" />
+                  <figcaption>Stakeholder ecosystem mapping workshop — identifying all actors across Commercial Banking, Markets, and Partnerships to establish the operating model.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The problem</h3></div>
+              <div class="cs-section-content">
+                <p>Commercial Banking clients were executing 63% of their FX transactions with competitors—revealing major leakage and unmet needs in Lloyds' FX experience. Clients wanted a simple, digital way to view exposures, ingest accounting data, and hedge FX risk without relying on telephony.</p>
+                
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:32px 40px;margin:32px 0">
+                  <div style="font-size:48px;font-weight:600;color:var(--ink);margin-bottom:8px">63%</div>
+                  <div style="font-size:15px;color:var(--ink-2)">of FX transactions executed with competitors</div>
+                </div>
+
+                <h4>Experience goals (based on user research)</h4>
+                <div class="goals-grid">
+                  <div class="goal-card">
+                    <div class="goal-icon">💡</div>
+                    <p>Create a simple, intuitive digital platform for FX exposure visibility and decision making</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">📊</div>
+                    <p>Enable SME clients to self-manage FX exposure more frequently based on live data insights</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">⚡</div>
+                    <p>Enable colleagues to spend less time on simple FX queries and more time supporting strategic decisions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Delivering a third-party FX platform within Lloyds' Experience Standards required more than integration—it demanded alignment across brand, accessibility, and contractual touchpoints.</p>
+                <p>We needed to ensure the partner experience felt seamless and native to Lloyds, while identifying and removing friction across the most critical journeys: onboarding, data integration, user management, and FX booking flows.</p>
+                
+                <div class="insight-card">
+                  <h4>Key delivery challenges</h4>
+                  <p><strong>Fragmented delivery environment:</strong> Multiple teams operating on different timelines, with critical roles like solution architect and E2E testing manager initially missing—creating ambiguity and slowing alignment.</p>
+                  <p><strong>Complex data ingestion journeys:</strong> Data flows between CD&amp;A, Markets, and the third-party platform needed mapping, risk assessment, and translation into implementable UX.</p>
+                  <p><strong>Third-party experience quality:</strong> Ensuring the partner's delivery met Lloyds' brand guidelines, accessibility standards, and experience quality expectations.</p>
+                  <p><strong>End-to-end journey friction:</strong> The overall service journey had numerous handoffs across onboarding, consent, data integration, FX booking, and user management.</p>
+                  <p><strong>Experience debt:</strong> No established measurement framework meant the business was absorbing friction through front-line telephone and email — effective, but unsustainable. The goal was to reduce that load while preserving the human rapport. </p>
+                </div>
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-journey-map.jpg" alt="As-is journey mapping session" />
+                  <figcaption>As-is service journey mapping — documenting existing onboarding, consent, and FX booking flows across all touchpoints to surface friction points before redesign.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My approach</h3></div>
+              <div class="cs-section-content">
+                <p>I tackled these challenges through a combination of strategic orchestration, hands-on journey design, and operational rigor.</p>
+
+                <h4>Established the experience operating model</h4>
+                <p>Introduced a design-led operating model with weekly design governance, structured feedback loops, and a shared view of dependencies across teams. This created the alignment infrastructure that was previously missing.</p>
+
+                <h4>Mapped complex data flows into sharable artefacts</h4>
+                <p>Worked directly with Client Data &amp; Analytics and Markets to map data flows, risks, and gaps—then translated these into service flows and UX artefacts that non-technical stakeholders could understand and act on.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-service-blueprint.png" alt="End-to-end service journey map" />
+                  <figcaption>End-to-end service journey map — charting client and colleague flows across onboarding, data integration, FX booking, and user management, shared across four workstreams.</figcaption>
+                </figure>
+                <h4>Governed third-party design quality</h4>
+                <p>Ran weekly design reviews with the third-party partner, providing actionable feedback against Lloyds' brand guidelines and UX quality standards before each release. This wasn't gatekeeping—it was coaching the partner team toward native-feeling experiences.</p>
+
+                <h4>Identified and prioritised journey friction</h4>
+                <p>Conducted end-to-end journey assessments across onboarding, data integration, consent, FX booking, and user management. Documented friction points and fed improvement opportunities directly into product and engineering backlogs.</p>
+
+                <h4>Reframed success measurement</h4>
+                <p>Applied internal Design Excellence assessments and DAC accessibility reviews to establish a shared understanding of experience success—shifting the conversation from "did we launch?" to "did we create client value?"</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-screen-exploration.png" alt="Early screen explorations" />
+                  <figcaption>Early wireframe explorations — iterative screen designs for the FX booking flows, tested with clients before partner handoff for build.</figcaption>
+                </figure>
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-single-multi-screens.png" alt="Single and multi FX execution flow" />
+                  <figcaption>Single &amp; Multi FX execution flows — final screen sequences covering trade entry, quote review, and confirmation for both individual and bulk FX transactions.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My impact</h3></div>
+              <div class="cs-section-content">
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:24px">
+                  <h4 style="margin-top:0;margin-bottom:16px">Key contributions</h4>
+                  <ul style="list-style:none;padding:0;margin:0">
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Established the experience operating model between Lloyds Banking Group and third-party partner (CoBa)</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Defined end-to-end client and colleague journeys, shared across workstreams to support alignment and delivery</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Ran weekly design governance sessions, identifying risks and driving continuous journey improvements</li>
+                    <li style="padding:12px 0;font-size:15px">✓ Established success-measurement approach using Design Excellence assessments and DAC accessibility reviews</li>
+                  </ul>
+                </div>
+
+                <p>This project demonstrated that great service design isn't just about crafting individual touchpoints—it's about designing the collaboration model, quality standards, and measurement frameworks that enable teams to deliver coherent, valuable experiences at scale.</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/fx-risk-management.png" alt="FX Risk Management dashboard — final product" />
+                  <figcaption>The delivered platform — FX Risk Management dashboard showing trade information, drawdown flow, and live rate monitoring across desktop and mobile. Live on Lloyds Bank Connected.</figcaption>
+                </figure>
+
+                <a href="https://www.lloydsbank.com/business/international/foreign-exchange/connected.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;margin-top:16px;">
+                  <div style="width:32px;height:32px;background:#006A4E;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:1px;">Lloyds Bank Connected — FX Platform</div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">lloydsbank.com ↗</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <div class="pull-quote">"The hardest design challenge wasn't the platform itself—it was designing how distributed teams would collaborate to deliver it."</div>
+                
+                <h4>What I learned</h4>
+                <p>Service design at enterprise scale requires equal parts craft and orchestration. The most valuable design contribution wasn't a specific screen or flow—it was establishing the operating rhythm that allowed multiple teams to stay aligned, maintain quality, and measure what actually mattered.</p>
+                
+                <h4>What I'd do differently</h4>
+                <p>Stay focused within your area of speciality to keep delivery productive and efficient — but invest early in finding the right rhythm for cross-stakeholder alignment. </p>
+                
+                <p>Regular check-ins with large stakeholder groups aren't overhead; they're the mechanism that prevents misalignment from compounding. The earlier you establish how the group will stay in sync, the less time you spend course-correcting later.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('df2030')">
+            <div>
+              <h3>Future Experience Vision for Banking</h3>
+              <p>Designing AI-enabled future experience for 2030—speculative design and strategic storytelling.</p>
+            </div>
+            <div class="cs-next-thumb t2"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:60%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end fx-platform -->
+
+
+  <!-- ══════════════ DF2030 CASE STUDY ══════════════ -->
+  <div class="page" id="page-df2030">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / Future Experience Vision for Banking</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">Future Experience Vision for Banking</h1>
+              <p class="cs-summary">Designing AI-enabled future experience for 2030—speculative design and strategic storytelling to shape Commercial Banking's customer vision and guide executive strategy.</p>
+              <p class="cs-date">2024-2025</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-value">Design Futures, Lloyds Banking Group</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Product Design</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value"> Creative Technologist, Applied Data Scientist, Visual Designer, Motion Designer, Design Researcher</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/DF_hero_storyboard.png" alt="Lloyds BCB 2030 Vision — Personalised, turbo-charged, sector-driven proactive insight dashboard" />
+      </div>
+
+      <div style="max-width:1200px;margin:40px auto 0;padding:0 40px;">
+        <video autoplay loop muted playsinline controls style="width:100%;display:block;border-radius:10px;">
+          <source src="assets/images/DF_BCB_video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Operating as an in-house design agency, the team ran 3-week sprints across different business areas — each one producing a future experience vision to align leaders and seed downstream product thinking. </p>
+                <p>Topics varied widely depending on the brief, spanning retail and business banking moments such as home buying, shopping experiences, and growing a business in future contexts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The goal</h3></div>
+              <div class="cs-section-content">
+                <p>Create a future-facing 2030 experience vision that would align teams across Commercial, Data, AI, Design, and Product on a single narrative.</p>
+                
+                <div class="goals-grid">
+                  <div class="goal-card">
+                    <div class="goal-icon">🤖</div>
+                    <p>Demonstrate how AI can make business financial management automated, proactive, and seamless</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">🎯</div>
+                    <p>Show a realistic but aspirational view of the customer journey for 2030</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">🎬</div>
+                    <p>Produce a conceptual video + strategic deck suitable for ExCo-level provocation and ideation</p>
+                  </div>
+                </div>
+
+                <h4 style="margin-top:32px">Design principles established</h4>
+                <p>The vision was anchored around five foundational principles: contextual, conversational, proactive, composable, and invisible—ensuring AI feels natural rather than intrusive.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My role</h3></div>
+              <div class="cs-section-content">
+                <p>As Product Designer on the Design Futures team, I played a role of a core narrative, UX, and concept-definition lead for the entire vision sprint.</p>
+
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin:32px 0">
+                  <h4 style="margin-top:0;margin-bottom:16px">Core responsibilities</h4>
+                  <ul style="list-style:none;padding:0;margin:0">
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Created and maintained Figma/FigJam spaces for immersion, ideation, and storyboard development</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Crafted and iterated the storyline and future customer scenario</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Led feedback integration from Design Leads, researchers, and stakeholders</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Facilitated alignment sessions and clarified narrative or product logic for contributors</li>
+                    <li style="padding:12px 0;font-size:15px">✓ Pinpointed future banking moments and AI-supported tasks to strengthen provocation</li>
+                  </ul>
+                </div> 
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Process</h3></div>
+              <div class="cs-section-content">
+                
+                <h4>Immersion & foundational setup</h4>
+                <p>Established the vision immersion board and facilitated workshops to align the team around core research, early design principles, and the target persona.</p>
+
+                <h4>Cross-team concepting</h4>
+                <p>Collaborated with Experience Design and Applied Science to define barriers to business growth and identify high-value "AI-intervention" points in the customer lifecycle.</p>
+
+                <h4>Storyboarding & narrative design</h4>
+                <p>Facilitated cross-departmental synthesis through iterative storyboarding to align diverse future strategies into a single narrative anchored by strategic touchpoints.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/DF_-_Business_customer_sprint_storyboard_example.png" alt="Business customer sprint storyboard — BCB Vision 2030" />
+                  <figcaption>Business customer sprint storyboard — illustrating the BCB 2030 vision narrative across key moments in Hannah's day as an SME Finance Director. Contents intentionally blurred to protect confidential internal materials.</figcaption>
+                </figure>
+
+                <div class="pull-quote">"The narrative had to feel human-centered while showcasing technical possibility—bridging aspiration with feasibility."</div>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/DF_Homes_storyboard_for_vision_video.png" alt="Homes 2030 storyboard for vision video" />
+                  <figcaption>Homes 2030 storyboard — frame-by-frame narrative design for the Lloyds Homes vision video, following Ben's first home buying journey through an AI-enabled mortgage experience.</figcaption>
+                </figure>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/DF_Homes_vision.png" alt="Lloyds Homes mortgage journey — mobile and desktop screens" />
+                  <figcaption>Lloyds Homes vision concept — speculative UI showing an integrated mortgage management experience across mobile and desktop, guiding customers from application through to completion.</figcaption>
+                </figure>
+
+                <h4>Visual & UI concept integration</h4>
+                <p>Worked with UI designers to integrate screens into the vision video, ensuring visual coherence and technical plausibility.</p>
+
+                <h4>Synthesis & production</h4>
+                <p>Co-led the production of the provocative 2030 vision video and strategic deck, ensuring version control and content accuracy across evolving concepts and UI integrations.</p>
+
+                <h4>Stakeholder review & iteration</h4>
+                <p>Participated in multiple feedback loops with leadership teams, audit teams, and Product/Tech stakeholders to refine the narrative and strengthen the strategic proposition.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My impact</h3></div>
+              <div class="cs-section-content">
+                
+                <div class="insight-card">
+                  <h4>Anchored the strategic vision</h4>
+                  <p>My work on the persona and scenario ensured the 2030 vision was cohesive, meaningful, and grounded in human-centric research.</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Created cross-functional clarity</h4>
+                  <p>Provided the structure and narrative logic that enabled rapid, high-quality collaboration across diverse teams (Design, Product, Data, Applied Science).</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Elevated the proposition</h4>
+                  <p>By integrating specific merchant-services and AI-driven workflows, I moved the concept beyond generic AI storytelling into a tangible business strategy.</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Drove executive interest</h4>
+                  <p>The final assets were presented to ExCo and Group GenAI leadership, successfully generating heightened interest and follow-on strategic asks for the Design Futures team.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Outcome</h3></div>
+              <div class="cs-section-content">
+                <p>The 2030 Vision video and supporting deck were produced and shared with ExCo and Group GenAI leadership as a provocation tool, shaping ideation for future Commercial AI capabilities.</p>
+                <p>The project successfully aligned disparate teams around a unified future narrative and established foundational principles that continue to guide product strategy discussions within Business &amp; Commercial Banking.</p>
+
+                <h4 style="margin-top:48px">Regenerated UX from vibe-coding</h4>
+                <p style="font-size:14px;color:var(--ink-2);margin-bottom:32px">Customer–Relationship Manager interaction for AI SaaS vision — future business banking experience for mid-corporate customers.</p>
+
+                <p class="cs-subsection-label">Customer</p>
+                <figure class="cs-figure">
+                  <video id="hannah-dashboard-video" loop muted playsinline style="width:100%;border-radius:10px;display:block;">
+                    <source src="assets/images/DF_hannah_dashboard.mov.mov" type="video/quicktime" />
+                    <source src="assets/images/DF_hannah_dashboard.mov.mov" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <script>setTimeout(function(){ var v = document.getElementById('hannah-dashboard-video'); if(v) v.play(); }, 4000);</script>
+                  <figcaption>Hannah's AI-enabled dashboard — customer-side view of the 2030 business banking experience, regenerated through vibe-coding from the original vision concepts.</figcaption>
+                </figure>
+
+                <p class="cs-subsection-label" style="margin-top:40px">Relationship Manager</p>
+                <figure class="cs-figure">
+                  <video autoplay loop muted playsinline style="width:100%;border-radius:10px;display:block;">
+                    <source src="assets/images/DF_Rob_Dashboard_new.mov" type="video/quicktime" />
+                    <source src="assets/images/DF_Rob_Dashboard_new.mov" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <figcaption>Rob's relationship manager dashboard — colleague-side view showing how AI surfaces proactive insights and supports mid-corporate customer conversations in 2030.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('paypoint')">
+            <div><h3>PayPoint Cash Deposit</h3><p>Enabling customers to deposit cash at local shops—designing an inclusive service for vulnerable customers.</p></div>
+            <div class="cs-next-thumb t3"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:55%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end df2030 -->
+
+
+  <!-- ══════════════ PAYPOINT CASE STUDY ══════════════ -->
+  <div class="page" id="page-paypoint">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / PayPoint Cash Deposit</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">PayPoint Cash Deposit</h1>
+              <p class="cs-summary">Designing an inclusive in-app service enabling Lloyds Banking Group customers to deposit cash at over 30,000 PayPoint locations — maintaining banking access for vulnerable customers while expanding the ways people can manage their money beyond traditional branches.</p>
+              <p class="cs-date">August 2025</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Launched</div><div class="cs-meta-value">August 2025</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Service Designer, UX Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value">Product, UX, Content, Research, 3rd Party(PayPoint)</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/paypoint-hero.png" alt="PayPoint Cash Deposit — key screens on mobile" />
+      </div>
+
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Context &amp; challenge</h3></div>
+              <div class="cs-section-content">
+                <p>As Lloyds Banking Group evolved its branch strategy, the organisation needed to ensure customers — particularly those who rely on cash and face mobility or accessibility barriers — would have equal access to everyday banking services.
+                    With 99.5% of people living within a mile of a PayPoint location, the opportunity was clear: design a service that lets customers deposit cash at familiar local shops, simply and securely, without needing a branch. The challenge was making that experience feel as trusted and reliable as the bank itself.</p>
+                <p>The challenge: design a service that enables customers to deposit cash at nearby retail locations (PayPoint-enabled shops) while maintaining trust, security, and the quality of experience customers expect from their bank.</p>
+                
+                <div class="pull-quote">"This journey would save me doing this... I could go down to a corner shop and pay it straight away. I think it's wonderful."</div>
+                <p style="font-size:14px;color:var(--ink-3);margin-top:-16px">— Lived expert panellist, Inclusive Design Panel, Sep 2024</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/paypoint-cash-deposit.png" alt="PayPoint Cash Deposit — delivered screens" />
+                  <figcaption>The delivered service — Deposit Cash screens live across Lloyds Bank, Halifax, and Bank of Scotland. Customers generate a barcode, take it to any PayPoint store, and see funds clear within two hours.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My role</h3></div>
+              <div class="cs-section-content">
+                <p>I led service design and UX design across the full customer journey—from initial concept exploration through launch—ensuring the experience balanced business priorities with customer needs, particularly for vulnerable users.</p>
+
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin:32px 0">
+                  <h4 style="margin-top:0;margin-bottom:16px">Key responsibilities</h4>
+                  <ul style="list-style:none;padding:0;margin:0">
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Journey mapping and wire-framing across three core user flows</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ User research and content development with cross-functional teams</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Led Inclusive Design Panel sessions with lived-experience experts</li>
+                    <li style="padding:12px 0;border-bottom:1px solid var(--border);font-size:15px">✓ Stakeholder alignment across Product, Engineering, Business, and 3rd party (PayPoint)</li>
+                    <li style="padding:12px 0;font-size:15px">✓ Defined MVP and MVP+ scope based on research insights and panel feedback</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Process</h3></div>
+              <div class="cs-section-content">
+                
+                <h4>Early concepting & UX definition (Mid 2024)</h4>
+                <p>Facilitated and contributed to early UX definition and screen flows for the Deposit Cash journey. Created mock-ups and prototypes, conducting walkthroughs with stakeholders including product owners, researchers, content designers, and developers.</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/paypoint-ux-exploration.png" alt="Early UX exploration board — Deposit Cash" />
+                  <figcaption>Early UX exploration board — iterating on barcode creation, management, and in-store deposit flows. Variants tested for discoverability, error states, and multi-account edge cases.</figcaption>
+                </figure>
+
+                <h4>Journey mapping & constraint mapping</h4>
+                <p>Mapped three critical user journeys to surface risks, edge cases, and design constraints before detailed solutioning:</p>
+                
+                <div class="insight-card">
+                  <h4>1. Create a barcode for the first time</h4>
+                  <p>Explored how users create a barcode for the first time, identifying key considerations: entry points, in-store eligibility (PayPoint only), user education, and deposit limits.</p>
+                </div>
+                <figure class="cs-figure">
+                  <img src="assets/images/paypoint-journey-flow-1.png" alt="Journey flow 1 — Create a barcode for the first time" />
+                  <figcaption>Journey 1: Create a barcode for the first time — full screen-by-screen flow mapping entry points, education screens, account selection, amount entry, and barcode generation.</figcaption>
+                </figure>
+
+                <div class="insight-card">
+                  <h4>2. Edit my barcode</h4>
+                  <p>Focused on when and why users need to edit a barcode, highlighting discoverability challenges and risks around unintended user actions.</p>
+                </div>
+                <figure class="cs-figure">
+                  <img src="assets/images/paypoint-journey-flow-2.png" alt="Journey flow 2 — Edit my barcode" />
+                  <figcaption>Journey 2: Edit my barcode — mapping how users discover and modify an existing barcode, surfacing discoverability risks and edge cases around unintended deletion or amount changes.</figcaption>
+                </figure>
+
+                <div class="insight-card">
+                  <h4>3. Scan my barcode and deposit</h4>
+                  <p>Examined the end-to-end in-shop experience, including customer–shopkeeper interactions and how confirmation and communication are handled after deposit.</p>
+                </div>
+                <figure class="cs-figure">
+                  <img src="assets/images/paypoint-journey-flow-3.png" alt="Journey flow 3 — Scan barcode and deposit in-store" />
+                  <figcaption>Journey 3: Scan &amp; deposit in-store — end-to-end flow from showing the barcode to the shopkeeper, through scanning, to confirmation states and scanned barcode history in the app.</figcaption>
+                </figure>
+
+                <p style="margin-top:24px">These early journey breakdowns helped surface user needs, constraints, and potential risks—clarifying user expectations and aligning teams on constraints before detailed design.</p>
+
+                <h4>Workshop facilitation & Inclusive Design Panel</h4>
+                <p>Ran and coordinated key design sessions, then submitted Deposit Cash to the Inclusive Design Panel—an internal programme subsidised by an external inclusive design audit institution. This enabled inclusive design integration across teams with strong validation from lived-experience experts and subject matter specialists.</p>
+
+                <h4>End-to-end service design leadership</h4>
+                <p>Synthesised user research results and Inclusive Design Panel findings, then influenced MVP and MVP+ scope decisions. Ensured design decisions were grounded in real user needs while navigating technical and business constraints.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Key considerations</h3></div>
+              <div class="cs-section-content">
+                <p>The service design required balancing multiple stakeholder needs and technical constraints:</p>
+
+                <div class="insight-card">
+                  <h4>Third-party alignment</h4>
+                  <p>Maintaining a trusted bank relationship while using external retail partners (PayPoint shops). Users needed to feel confident depositing cash in a corner shop while retaining the security and trust of their banking relationship.</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Multi-barcode logic</h4>
+                  <p>Designed a system that supports one active barcode per eligible account. This enables users with multiple accounts to generate and use separate barcodes in a single session—balancing flexibility with security constraints.</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Risk mitigation</h4>
+                  <p>Addressed security concerns including potential money-mule activity. Designed safeguards and validation flows without creating friction for legitimate users—particularly vulnerable customers who rely on this service.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Impact & outcome</h3></div>
+              <div class="cs-section-content">
+                <p> The PayPoint Cash Deposit service launched in August 2025 across Lloyds Bank, Halifax, and Bank of Scotland — making Lloyds the first major UK bank to offer in-app barcode cash deposits at over 30,000 locations nationwide. Customers can deposit up to £300 a day, with money appearing in their account within minutes, across 94% of PayPoint sites open seven days a week.</p>
+
+                <h4>Design impact</h4>
+                <p>The Inclusive Design Panel validation ensured the service met accessibility standards and addressed real user needs—particularly for vulnerable customers who would be most affected by branch closures.</p>
+                
+                <p>By mapping journeys early and surfacing constraints before detailed design, we avoided costly rework and aligned cross-functional teams around a shared understanding of user needs, technical limitations, and business priorities.</p>
+
+                <h4>Strategic contribution</h4>
+                <p>This project demonstrated how service design can support business transformation (branch closure strategy) while maintaining—and even improving—customer access and experience, particularly for vulnerable populations.</p>
+                <a href="https://www.lloydsbankinggroup.com/media/press-releases/2025/lloyds-bank-2025/lloyds-and-paypoint-super-charge-customer-choice-for-cash-depos.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;margin-top:8px;">
+                  <div style="width:32px;height:32px;background:#006A4E;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M2 15h10M8 11l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:1px;">Lloyds & PayPoint — Official Press Release</div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">lloydsbankinggroup.com ↗</div>
+                  </div>
+                </a>
+
+                <figure class="cs-figure" style="margin-top:40px">
+                  <img src="assets/images/paypoint-key-screens.png" alt="Key screens — final delivered Deposit Cash UI" />
+                  <figcaption>Key screens from the final delivered experience — covering entry, education, barcode creation, active barcode management, and barcode history across the Lloyds Banking Group app suite.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('onboarding')">
+            <div><h3>Business Card Payment Onboarding</h3><p>Redesigning telephony sales journey—reducing call duration by 50% while improving colleague confidence.</p></div>
+            <div class="cs-next-thumb t4"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:80%"></div><div class="mock-bar" style="width:95%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end paypoint -->
+
+
+  <!-- ══════════════ ONBOARDING CASE STUDY ══════════════ -->
+  <div class="page" id="page-onboarding">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> /Redesigning the Merchant Onboarding Experience</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">Redesigning the Merchant Onboarding Experience</h1>
+              <p class="cs-summary">Cardnet is a joint venture between Lloyds Banking Group and Fiserv, offering merchants a comprehensive suite of card payment services — from physical terminals and virtual POS to e-commerce payment gateways.</p>
+              <p class="cs-date">2023</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value"> <a href="https://www.lloydsbank.com/business/take-payments-with-cardnet.html" target="_blank" rel="noopener">Cardnet</a>, Lloyds Banking Group
+            </div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Service Designer, UX Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value">Client Development Centre (CDC), Product, Engineering</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/CDC_hero.jpg" alt="Cardnet onboarding tool — Outlet details, Product selector and Checklist screens across multiple laptops" />
+      </div>
+
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Less than 1 in 2 clients onboarded felt positive about their Cardnet experience. The telephony sales and onboarding journey was high-friction, overly scripted, and fragmented across disconnected tools—making it hard for colleagues to build rapport and impossible for customers to track what was happening.</p>
+
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 40px;margin:32px 0;display:grid;grid-template-columns:1fr 1fr;gap:32px">
+                  <div>
+                    <div style="font-size:42px;font-weight:600;color:var(--ink);margin-bottom:6px">&lt;1 in 2</div>
+                    <div style="font-size:14px;color:var(--ink-2)">clients felt positive about their Cardnet onboarding experience</div>
+                  </div>
+                  <div>
+                    <div style="font-size:42px;font-weight:600;color:var(--ink);margin-bottom:6px">28 min</div>
+                    <div style="font-size:14px;color:var(--ink-2)">average call duration before redesign</div>
+                  </div>
+                </div>
+
+                <div class="insight-card">
+                  <h4>What customers were saying</h4>
+                  <p style="font-style:italic;color:var(--ink-2);">"Lots of information to absorb and your agent walked through it extremely fast."</p>
+                  <p style="font-style:italic;color:var(--ink-2);">"Administration overload. Too many instructions. Very disjointed — emails from no less than 8 different addresses over the course of 5 weeks."</p>
+                </div>
+
+                <h4 style="margin-top:32px">The opportunity</h4>
+                <p>How might we optimise the telephony sales experience with quick and easy wins for both customers and CDC colleagues? Three questions shaped our direction:</p>
+                <div class="goals-grid">
+                  <div class="goal-card">
+                    <div class="goal-icon">💬</div>
+                    <p>How might we customise conversation flow based on customer needs?</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">🤝</div>
+                    <p>How might we create better interactions with customers for higher onboarding rates?</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">⚡</div>
+                    <p>How might we get to quote quicker for a smoother customer journey?</p>
+                  </div>
+                </div>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_opportunity_map.png" alt="Opportunity map — how might we redesign Cardnet telephony sales journey" />
+                  <figcaption>Opportunity mapping — plotting ideas across user value and feasibility axes to prioritise quick wins, major projects, and fill-ins for the Cardnet telephony sales redesign.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Process</h3></div>
+              <div class="cs-section-content">
+
+                <h4>Discovery — listening to real calls</h4>
+                <p>I started by conducting call listening sessions and contextual inquiry in Leeds and Basildon with telephony colleagues, observing live calls and sales and mapping the as-is journey to surface where friction was really occurring — for both the colleague and the customer.</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_deep-dive.JPG" alt="Deep-dive research session with telephony colleagues" style="width:100%;border-radius:8px" />
+                    <figcaption>Deep-dive research — observing telephony colleagues in Leeds during live calls to map real friction points in the existing journey.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_deep-dive_2.JPG" alt="Prototypes reviewed during deep-dive session on the wall" style="width:100%;border-radius:8px" />
+                    <figcaption>Prototype review on the wall — early screen flows annotated with colleague feedback during deep-dive sessions in Leeds.</figcaption>
+                  </figure>
+                </div>
+
+                <h4>Discovery workshops</h4>
+                <p> I facilitated a series of co-creation and discovery workshops with telephony colleagues, stakeholders from operation   and product, and cross-functional contributors. These sessions moved from mapping pain points to defining a shared north star and generating prioritised ideas.</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_1.JPG" alt="Discovery workshop — team mapping the journey on glass wall" style="width:100%;border-radius:8px" />
+                    <figcaption>Discovery workshop — cross-functional team mapping the existing Cardnet telephony journey, identifying pain points across each stage.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_2.JPG" alt="Workshop — northstar ideation on whiteboard" style="width:100%;border-radius:8px" />
+                    <figcaption>North star ideation — colleagues defining what success looks like for the redesigned journey: "not like a robot," "conversations more meaningful," "empowered to help us."</figcaption>
+                  </figure>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_3.PNG" alt="Workshop — journey stages on glass wall with sticky notes" style="width:100%;border-radius:8px" />
+                    <figcaption>Journey stage mapping — organising the telephony flow into Pre-call Preparation, Verification, Understand Needs, Product, Pricing, and Follow-up stages.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_4.PNG" alt="Workshop team group photo — redesigning telephony sales journey" style="width:100%;border-radius:8px" />
+                    <figcaption>The cross-functional workshop team — bringing together telephony colleagues, design, product, and risk to align on the future journey.</figcaption>
+                  </figure>
+                </div>
+
+                <div class="pull-quote">"The breakthrough came from letting colleagues shape the script structure — they knew exactly where rigid compliance ordering broke natural rapport."</div>
+
+                <h4>Co-creation & prototyping</h4>
+                <p>Working closely with the CDC team, I co-created and iterated on the redesigned onboarding tool — integrating fragmented systems, simplifying the product decision tree, and building a templated quote email that colleagues could send directly from the tool. Prototypes were tested with both colleagues and customers in two rounds of user testing.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_process_cocreation.JPG" alt="Co-creation session — CDC team working together around a table" />
+                  <figcaption>Co-creation session — CDC colleagues and the design team working together to shape the redesigned onboarding journey, screens, and conversation guides.</figcaption>
+                </figure>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_process_prototying.JPG" alt="Prototyping session — screens printed and annotated on wall" />
+                  <figcaption>Second round of testing with sales colleagues — simulating a live onboarding call to validate the conversation flow end to end.</figcaption>
+                </figure>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>What we delivered</h3></div>
+              <div class="cs-section-content">
+                <p>A redesigned end-to-end onboarding tool for colleagues, built around natural conversation rather than rigid compliance ordering — with every component validated by the people who would use it daily.</p>
+
+                <figure class="cs-figure" style="margin:28px 0 0;">
+                  <img src="assets/images/CDC_screens.jpg" alt="Redesigned Cardnet onboarding tool — key screens across product selector, outlet details, checklist, principal details, eCommerce, and quote email" style="width:100%;border-radius:8px;border:1px solid var(--border);" />
+                  <figcaption>Key screens from the redesigned onboarding tool — from guided product selection and outlet details through to the integrated checklist, principal details form, eCommerce product view, and templated customer quote email.</figcaption>
+                </figure>
+
+                <div class="insight-card">
+                  <h4>Key deliverables</h4>
+                  <p>✓ Redesigned onboarding tool with integrated credit risk requirements (previously fragmented across tools)</p>
+                  <p>✓ Templated customer quote email with embedded pricing matrix for consistent communication</p>
+                  <p>✓ Simplified guided terminal decision tree replacing legacy product selection</p>
+                  <p>✓ Updated conversation guides aligned to natural call flow</p>
+                  <p>✓ Measurement framework tracking lead volume, sales conversion, and time spent</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Impact</h3></div>
+              <div class="cs-section-content">
+                
+                <div class="metrics-row">
+                  <div class="metric-card">
+                    <div class="metric-num">50%</div>
+                    <div class="metric-label">Reduction in time to quote (5–10 mins saved)</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">30%</div>
+                    <div class="metric-label">Reduction in time to complete application</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">5 of 12</div>
+                    <div class="metric-label">Colleague touchpoints removed from the journey</div>
+                  </div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px">
+                  <div class="insight-card" style="margin:0">
+                    <h4>Customer feedback</h4>
+                    <p style="font-style:italic;color:var(--ink-2);">"I can see everything on one page! And there is the picture of the device too. It's good to have the rates there as I couldn't catch all of them while on the call."</p>
+                    <p style="font-style:italic;color:var(--ink-2);">"I like that I can get back to the same person — it's good to know he will be there to support and answer questions."</p>
+                    <p style="font-size:13px;color:var(--ink-3);margin-top:8px">— Customer, user test feedback</p>
+                  </div>
+                  <div class="insight-card" style="margin:0">
+                    <h4>Colleague feedback</h4>
+                    <p style="font-style:italic;color:var(--ink-2);">"Showing this quote email to customers will make us more competitive, especially when other players can send a user-friendly quote — this would add to our credibility."</p>
+                    <p style="font-size:13px;color:var(--ink-3);margin-top:8px">— Colleague, user test feedback</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <p>This project reinforced that the best service design happens when you design with the people doing the work — not just for them. The telephony sales colleagues who interact with customers in daily basis knew exactly where the script broke down; my role was creating the space and structure for their expertise to shape the solution.</p>
+                <p>The challenge wasn't just redesigning a tool — it was redesigning human to human interaction. Moving from rigid compliance-first ordering to conversation-first design required building trust with risk and compliance teams, and demonstrating that natural conversation and regulatory requirements aren't mutually exclusive.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Back to all work</p>
+          <div class="cs-next-card" onclick="switchTab('work')">
+            <div><h3>View all selected work</h3><p>Return to the portfolio homepage to explore all case studies.</p></div>
+            <div class="cs-next-thumb t1"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end onboarding -->
+
+
+  
+  <!-- ══════════════ FORD CASE STUDY ══════════════ -->
+  <div class="page" id="page-ford">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / Ford Motor Company</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">Ford Motor Company — Future of Truck</h1>
+              <p class="cs-summary">Redefining archetypes for Ford's best-selling F-series trucks by identifying overlooked customer segments and translating deep human-centred research into strategic product roadmaps shaping the future of the F-150 and beyond.</p>
+              <p class="cs-date">July 2019 – July 2020</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Ford Motor Company</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Interaction Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-value">Human Centred Design Team, HQ Dearborn, US</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value">Design, Strategy, Engineering</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/Ford_workshop_pic.png" alt="Ford co-creation workshop — cross-functional team reviewing customer insights and product strategy on the walls" />
+      </div>
+
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div style="margin-bottom:48px;">
+            <a href="https://media.ford.com/content/fordmedia/img/me/en/media-kits/2021/all-new-2021-ford-f-150-.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;">
+              <div style="width:32px;height:32px;background:#0064D3;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M2 15h10M8 11l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:1px;">Ford Motor Company — All-New F-150 Media Kit</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">media.ford.com ↗</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Context &amp; Role</h3></div>
+              <div class="cs-section-content">
+                <p>As an Interaction Designer on Ford's Human Centred Design team at HQ in Dearborn, I worked at the intersection of research, strategy, and product design to shape the long-term direction of Ford's F-series truck lineup — America's best-selling vehicle.</p>
+                <p>My work spanned two interconnected streams: the <strong>Future of Truck 2035</strong> strategic roadmap and the <strong>Human Centred Design for Product Cycle Assessment (P702 MCA)</strong> — a co-creation programme that ran across cross-functional teams to uncover product opportunities and align executive leadership around future customer needs.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/Ford_workshop_prep_pic.JPG" alt="Workshop preparation — designer working on customer research synthesis" style="width:100%;max-height:260px;object-fit:cover;" />
+                  <figcaption>Workshop preparation — synthesising customer research and designing probes ahead of co-creation sessions with engineering, strategy, and design partners.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Ford's F-series trucks had long dominated the US market, but legacy archetypes used to inform product decisions were failing to reflect the full range of real customers purchasing and using these vehicles. Segments like women truck buyers and Hispanic customers were systematically underrepresented in the design conversation — leaving significant opportunity on the table.</p>
+
+                <div class="insight-card">
+                  <h4>Key design challenges</h4>
+                  <p><strong>Outdated archetypes:</strong> Existing customer models didn't capture emerging segments or evolving use patterns, creating blind spots in product strategy.</p>
+                  <p><strong>Fragmented cross-functional alignment:</strong> Design, engineering, and strategy teams operated with different assumptions about who the customer was and what they needed.</p>
+                  <p><strong>Bridging research to executive decisions:</strong> Translating nuanced human-centred insights into artefacts that resonated with senior leadership required both design rigour and strategic communication.</p>
+                  <p><strong>Future-state uncertainty:</strong> Designing for 2035 meant working with speculative scenarios — defining not just who the customer is today, but who they will become.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Research foundation</h3></div>
+              <div class="cs-section-content">
+                <p>Before shaping future visions, the team needed a shared foundation. I collaborated with a researcher to create a comprehensive research map tracing the cultural, technological, and market evolution of North American trucks from the post-war era through to 2020.</p>
+                <p>This artefact synthesised historic signals across vehicle culture, automotive technology, generational population shifts, and competitive landscape — giving the team a single reference point to inform future inspiration and hypothesis development.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/Ford_history_of_truck.png" alt="History of North American Truck — research map" />
+                  <figcaption>History of North American Truck (2020) — a research map co-created with a researcher, synthesising signals across vehicle culture, automotive technology, generational shifts, and the competitive landscape to ground future product strategy.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Process</h3></div>
+              <div class="cs-section-content">
+
+                <h4>Co-creation workshops</h4>
+                <p>I ran and participated in co-creation workshops with cross-functional teams — bringing together design, strategy, engineering, and research partners to collectively surface product opportunities and customer insight gaps. Sessions moved from immersion into hypotheses, future context modelling, and customer needs refinement.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/Ford_co-creation_process.jpg" alt="P702 MCA co-creation process timeline" />
+                  <figcaption>P702 MCA Co-Creation Process (2020) — a timeline visualisation mapping the full co-creation arc: from History of Choice Making and hypothesis development, through Future Context and Customer Needs, to Storytelling and concept synthesis with cross-functional teams.</figcaption>
+                </figure>
+
+                <h4>Designing diary study probes</h4>
+                <p>To inform future-state design with real user behaviour, I synthesised previous research and designed custom probes for diary studies — helping the team gather rich contextual data about how diverse customers actually lived with and used their trucks day to day.</p>
+
+                <h4>Archetype redefinition</h4>
+                <p>Working across Future of Truck 2035 and the P702 MCA programme, I helped redefine legacy archetypes to better represent the full spectrum of F-series customers — with particular focus on segments that had been historically overlooked, including women and Hispanic truck buyers.</p>
+
+                <div class="pull-quote">"The most valuable archetypes aren't the ones that describe who's already at the table — they're the ones that reveal who's been missing from it."</div>
+
+                <h4>Storyboard series for leadership alignment</h4>
+                <p>To translate product strategy and technical feasibility into a shared vision, I contributed to a collaborative storyboard series — co-created with design, strategy, and engineering partners. Each storyboard brought an archetype to life through a full day-in-the-life narrative, making abstract customer needs tangible for senior decision-makers.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/Ford_vision_storyboard_posters_for_leadership.png" alt="Vision storyboard posters for leadership — F-150 BASE, F-150 BEV, FLEET archetypes" />
+                  <figcaption>Vision storyboard poster series (2020) — defining new product archetypes (F-150 BASE, BEV, and FLEET variants) through day-in-the-life narratives for Melissa, David, Tim, Matt, and John. Co-created with design, strategy, and engineering to align leadership around diverse customer realities.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>My impact</h3></div>
+              <div class="cs-section-content">
+
+                <div class="metrics-row">
+                  <div class="metric-card">
+                    <div class="metric-num">2035</div>
+                    <div class="metric-label">Strategic roadmap horizon shaped for F-series product line</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">5+</div>
+                    <div class="metric-label">New archetypes defined including overlooked women and Hispanic segments</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">ExCo</div>
+                    <div class="metric-label">Storyboards presented to senior leadership, boosting design team visibility</div>
+                  </div>
+                </div>
+
+                <div class="insight-card" style="margin-top:32px">
+                  <h4>Future of Truck 2035</h4>
+                  <p>Shaped strategic roadmaps for Ford's top products by redefining archetypes and highlighting overlooked segments. Led concept workshops, leveraged user research, and designed probes for diary studies to inform future-state product design.</p>
+                </div>
+
+                <div class="insight-card">
+                  <h4>Human Centred Design for Product Cycle Assessment</h4>
+                  <p>Ran co-creation workshops to identify resource gaps and shape future products, aligning outputs with prior research. Created personas and storyboards that resonated with senior leadership — boosting the design team's visibility and cross-functional collaboration across engineering, strategy, and product.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <p>This project taught me that the most impactful design work often happens before a single pixel is drawn. Reshaping the archetypes that inform a product's entire direction — and ensuring those archetypes reflect the full reality of who uses and buys that product — is a form of design that ripples through every downstream decision.</p>
+                <p>Acting as a strategic bridge between deep user research and executive-level product roadmaps required translating nuance without losing it. The storyboard series became a key vehicle for that — making human stories legible to people who think in strategy, feasibility, and market positioning.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Back to all work</p>
+          <div class="cs-next-card" onclick="switchTab('work')">
+            <div><h3>View all selected work</h3><p>Return to the portfolio homepage to explore all case studies.</p></div>
+            <div class="cs-next-thumb t1"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end ford -->
+
+  <!-- ══════════════ UNSPACE ══════════════ -->
+  <div class="page" id="page-unspace">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / &lt;unspace&gt;</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">&lt;unspace&gt; — Audio-spatial platform for community memory</h1>
+              <p class="cs-summary">A physical-digital platform for local communities to preserve and share their stories through sensory, audio-spatial experience — built with residents of Hackney Wick as a tool for resilience in the face of rapid gentrification.</p>
+              <p class="cs-date">2021</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Final Project, Interactive Architecture Lab, The Bartlett School of Architecture, UCL</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Design Researcher, Interaction Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-value">Jee Eun Lee, Laure Barthelemy, Sofia Kovalenko</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Unity, Kinect</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/unspace_hero.JPG" alt="&lt;unspace&gt; — physical installation with material platform and audio-spatial experience at White Post, Hackney Wick" />
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <!-- Intro Video -->
+      <div class="cs-intro-video">
+        <div class="wrap">
+          <div class="cs-video-label">Project intro -  Audio-spatial platform for community memory </div>
+          <video autoplay muted loop playsinline controls style="width:100%;border-radius:8px;display:block;">
+            <source src="assets/images/unspace_intro.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Research question</h3></div>
+              <div class="cs-section-content">
+                <div class="pull-quote">Community resilience through an interconnected platform of memories in time and space: how do we build a new sense of community and resilience in a socio-ecological system?</div>
+                <p>&lt;unspace&gt; is a platform for local communities to preserve and share their stories and memories in time and space. A community-oriented felt archive, it foregrounds the sensorial, exploratory feel of memory — letting users navigate a community's history through physical experience rather than passive documentation.</p>
+                <p>The platform combines a physical interactive installation — composed of materials drawn from the locality's own history — with an audio-scape built from interviews conducted with community members. A companion digital platform documents the growing archive and makes it accessible beyond the physical space, with the long-term ambition of expanding to communities globally.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Phase 1 — Community outreach</h3></div>
+              <div class="cs-section-content">
+                <h4>Hackney Wick: a community under pressure</h4>
+                <p>Our first collaborator was Hackney Wick — a community in East London endangered by gentrification and ongoing redevelopment. We began by conducting a series of interviews with local residents to understand how the neighbourhood operated, what its history felt like from the inside, and what its people needed.</p>
+                <p>The network of residents and places we encountered was remarkable. From interactions both on and off the record, &lt;unspace&gt; took shape not just as a tool for sharing stories with the world, but as a space for residents to engage in the healing process of remembering in the face of rapid change.</p>
+                <figure class="cs-figure">
+                  <img src="assets/images/unspace_community interview.png" alt="Community interview — on-site discussion with Hackney Wick residents" style="width:100%;border-radius:8px" />
+                  <figcaption>Community interview — engaging with Hackney Wick residents on site to understand how the neighbourhood operates and what it means to its people.</figcaption>
+                </figure>
+
+                <h4>White Walls exhibit — first public showing</h4>
+                <p>The White Walls exhibit is an initiative by inhabitants of the ex-warehouse unit Oslo House — a bi-monthly showcase of local artists in their hallway. One of our interviewees invited us to participate in August 2021. For this occasion, we created and presented a documentary video of our research and interview footage — the first time &lt;unspace&gt; was presented to the Hackney Wick public. Content shared online generated wider community interest in the project.</p>
+                <figure class="cs-figure">
+                  <video src="assets/images/unspace_white_walls_exhibition_movie.mp4" autoplay muted loop playsinline style="width:100%;border-radius:8px"></video>
+                  <figcaption>White Walls exhibit — the first public showing of &lt;unspace&gt; to the Hackney Wick community, presented at Oslo House in August 2021.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Phase 2 — Materiality &amp; soundscape</h3></div>
+              <div class="cs-section-content">
+                <h4>Sensory experience</h4>
+                <p>In the first prototype, the team used physical materials as a sensorial and visual medium — creating connections between the physical and virtual memories of the community. Materials referenced both the industrial past of Hackney Wick and Fish Island (peanuts, rubber, silk) and the ever-present textures of the area today (soil, sand, gravel, bricks, pebbles from Hackney Marshes and the canal-side). The contrast of textures and temperatures was intentional — evoking a range of sensations for people to navigate while listening to the audio-scape.</p>
+
+                <!-- Sensory gallery -->
+                <div class="gallery-block">
+                  <div class="gallery-label">Sensory materials &amp; first platform</div>
+                  <div class="auto-gallery" id="gallerySensory">
+                    <div class="gallery-track" id="gallerySensoryTrack">
+                      <div class="gallery-slide"><img src="assets/images/unspace_texture on platform.JPG" alt="Overhead view of material texture boxes" /><span class="gallery-caption">Material palette — soil, sand, gravel, pebbles, and peanuts arranged across the platform surface</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_user.PNG" alt="Visitor experiencing the sensory platform with headphones" /><span class="gallery-caption">Visitor navigating the material platform barefoot while listening to the audio-scape</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_tracking_platform.PNG" alt="Unity motion tracking setup on MacBook" /><span class="gallery-caption">Motion tracking — camera feeds mapped to Unity for real-time position detection</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_peanut.JPG" alt="Bare feet standing on peanuts material box" /><span class="gallery-caption">Peanut shell texture — referencing the industrial past of Hackney Wick and Fish Island</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_pebble.JPG" alt="Bare feet standing on gravel pebbles" /><span class="gallery-caption">Pebbles from Hackney Marshes and the canal-side — evoking the textures of the neighbourhood</span></div>
+                    </div>
+                    <button class="gallery-btn gallery-prev" onclick="galleryPrev('Sensory')" aria-label="Previous">‹</button>
+                    <button class="gallery-btn gallery-next" onclick="galleryNext('Sensory')" aria-label="Next">›</button>
+                    <div class="gallery-dots" id="gallerySensoryDots"></div>
+                  </div>
+                </div>
+
+                <!-- First platform video -->
+                <figure class="cs-figure" style="margin-top:28px">
+                  <video autoplay muted loop playsinline style="width:100%;border-radius:8px;display:block;">
+                    <source src="assets/images/unspace_first_platform_video.MOV" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <figcaption>First platform prototype — material sensory experience in action.</figcaption>
+                </figure>
+
+                <h4>Motion tracking — first iteration</h4>
+                <p>The first tracking setup used two cameras to register movement from different angles, mapping frame-by-frame differences to detect motion across the platform. While functional, this approach produced a vague and imprecise response — contingent on full-body movement rather than intentional directional input. This limitation drove the next iteration.</p>
+                <p>In response, the team switched to tracking head movements and directional angles as the mechanism for navigating the audio-scape. This shift produced more accurate, responsive feedback — creating a more intuitive relationship between body orientation and sound.</p>
+
+                <!-- Spatial audio video -->
+                <div class="cs-video-inline">
+                  <div class="cs-video-label-sm">Spatial audio test</div>
+                  <a href="https://www.youtube.com/watch?v=6td2lAqKyJk&t=25s" target="_blank" rel="noopener" class="yt-card yt-card--sm" aria-label="Watch spatial audio test on YouTube">
+                    <img src="https://img.youtube.com/vi/6td2lAqKyJk/hqdefault.jpg" alt="&lt;unspace&gt; — Spatial audio test" class="yt-card-thumb" />
+                    <div class="yt-card-play"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+                    <span class="yt-card-cta">Watch on YouTube ↗</span>
+                  </a>
+                </div>
+
+                <!-- Ars Electronica -->
+                <h4>Ars Electronica</h4>
+                <p>Following the White Post installation, &lt;unspace&gt; was presented at Ars Electronica — one of the world's leading festivals for art, technology, and society — extending the project's reach to an international audience and opening conversations around community memory as a global design practice.</p>
+                <a href="https://www.youtube.com/watch?v=qu0J364Y5Is" target="_blank" rel="noopener" class="yt-card" aria-label="Watch &lt;unspace&gt; Ars Electronica installation on YouTube">
+                  <img src="https://img.youtube.com/vi/qu0J364Y5Is/hqdefault.jpg" alt="&lt;unspace&gt; — Ars Electronica installation" class="yt-card-thumb" />
+                  <div class="yt-card-play"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+                  <span class="yt-card-cta">Watch on YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Phase 3 — Modularity &amp; scale</h3></div>
+              <div class="cs-section-content">
+                <h4>Portable toolkit</h4>
+                <p>The next phase focused on producing an architectural-scale modular platform that could be transported, assembled, and reproduced by other communities. Individual box units were designed from dismantleable pieces joined by wood connectors, with carrier bags that communities could fill with their own local and historical materials. The modularity was central to the concept: &lt;unspace&gt; is not a fixed installation but a transferable process and tool.</p>
+
+                <!-- Process gallery -->
+                <div class="gallery-block">
+                  <div class="gallery-label">Making &amp; process</div>
+                  <div class="auto-gallery" id="galleryProcess">
+                    <div class="gallery-track" id="galleryProcessTrack">
+                      <div class="gallery-slide"><img src="assets/images/unspace_scale_model.png" alt="Scale model of modular platform" /><span class="gallery-caption">Scale model — modular unit system</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_platform _building.JPG" alt="Building the modular platform" /><span class="gallery-caption">Platform construction — plywood modules with wood connectors</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_modular_platform.JPG" alt="Modular platform assembled" /><span class="gallery-caption">Assembled modular platform ready for installation</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_felt_archive.JPG" alt="Felt archive material" /><span class="gallery-caption">Felt archive — material memory</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_iteration_cushion.JPG" alt="Cushion iteration" /><span class="gallery-caption">Material iteration — from exposed to hidden materials</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_pattern_making.png" alt="Pattern making" /><span class="gallery-caption">Pattern-making — technical fabric cover</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_sawing.png" alt="Fabrication in the workshop" /><span class="gallery-caption">Fabrication in the workshop</span></div>
+                    </div>
+                    <button class="gallery-btn gallery-prev" onclick="galleryPrev('Process')" aria-label="Previous">‹</button>
+                    <button class="gallery-btn gallery-next" onclick="galleryNext('Process')" aria-label="Next">›</button>
+                    <div class="gallery-dots" id="galleryProcessDots"></div>
+                  </div>
+                </div>
+
+                <h4>Final installation — White Post, Hackney Wick (Nov 2021)</h4>
+                <p>The final installation introduced two key experiential refinements. First, materials were hidden beneath a thin technical fabric — preserving high sensory sensation while removing the visual prompts that had caused visitors to navigate consciously rather than exploratorily. Second, the team switched to Kinect-based tracking, focusing on head position and directional movement. Audio sources were placed at varying heights in the Unity world, encouraging visitors to sit, crouch, and lie down on the platform surface in search of sounds — transforming the body into an active instrument of exploration.</p>
+
+                <!-- Exhibition gallery -->
+                <div class="gallery-block">
+                  <div class="gallery-label">Exhibition — White Post, Hackney Wick</div>
+                  <div class="auto-gallery" id="galleryExhibition">
+                    <div class="gallery-track" id="galleryExhibitionTrack">
+                      <div class="gallery-slide"><img src="assets/images/unspace_exhition_1.JPG" alt="Exhibition opening" /><span class="gallery-caption">Exhibition night — White Post, Hackney Wick (Nov 2021)</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_exhibition_2.JPG" alt="Visitor experiencing the installation" /><span class="gallery-caption">Visitor navigating the audio-scape with headphones</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_exhibition_3.JPG" alt="Visitor experiencing the installtaion 2" /><span class="gallery-caption">Visitor experiencing the installtaion 2</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_exhibition_4.JPG" alt="Audience interacting with the installation" /><span class="gallery-caption">Audience interacting with the installation</span></div>
+                      <div class="gallery-slide"><img src="assets/images/unspace_exhibition_5.JPG" alt="Audience gathered during performance" /><span class="gallery-caption">Audience gathered during performance</span></div>
+                    </div>
+                    <button class="gallery-btn gallery-prev" onclick="galleryPrev('Exhibition')" aria-label="Previous">‹</button>
+                    <button class="gallery-btn gallery-next" onclick="galleryNext('Exhibition')" aria-label="Next">›</button>
+                    <div class="gallery-dots" id="galleryExhibitionDots"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Thesis</h3></div>
+              <div class="cs-section-content">
+                <p>The project was grounded in a broader academic enquiry: how do communities build resilience through shared memory in the face of ecological and social change? The thesis positioned &lt;unspace&gt; as a mechanism for local–global interaction — a way to reconcile threatened communities and individuals through interconnected memory rather than static preservation.</p>
+
+                <div class="insight-card">
+                  <h4>Key proposition</h4>
+                  <p>Resilience is not a fixed state but a continuous process of adaptation. As the sense of community shifts under pressure from gentrification, displacement, and environmental change, &lt;unspace&gt; offers an alternative framework: bridging memories not just within a single locality, but across communities — seeding a coalition built on interconnectedness.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Documentation</h3></div>
+              <div class="cs-section-content">
+                <p>End-to-end project documentation, covering research, making, and exhibition — including the project brief.</p>
+                <a href="https://www.youtube.com/watch?v=aADeHLfKCN4" target="_blank" rel="noopener" class="yt-card" aria-label="Watch &lt;unspace&gt; full project documentation on YouTube">
+                  <img src="https://img.youtube.com/vi/aADeHLfKCN4/hqdefault.jpg" alt="&lt;unspace&gt; — End to end project documentation" class="yt-card-thumb" />
+                  <div class="yt-card-play"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+                  <span class="yt-card-cta">Watch on YouTube ↗</span>
+                </a>
+                <figure class="cs-figure" style="margin-top:28px">
+                  <video autoplay muted loop playsinline controls style="width:100%;border-radius:8px;display:block;">
+                    <source src="assets/images/unspace_website_screen recording.mov" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <figcaption>Website build and design — promoting and archiving the Hackney Wick community as &lt;unspace&gt;'s first project.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Seed project</h3></div>
+              <div class="cs-section-content">
+                <div class="insight-card" style="cursor:pointer;" onclick="showCase('indust')">
+                  <h4>&lt;In Dust&gt; — where &lt;unspace&gt; began</h4>
+                  <p>&lt;unspace&gt; grew directly out of &lt;In Dust&gt; — a VR memory-scape developed at the Interactive Architecture Lab, The Bartlett, UCL in 2021. &lt;In Dust&gt; explored reconstructive memory across past, present and future using dust as metaphor, collecting stories from 28 individuals during lockdown. The sensorial concept of a navigable memory-scape carried forward into &lt;unspace&gt; as a physical, community-rooted platform.</p>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#C85C45;">View &lt;In Dust&gt; case study →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <p>This project shaped how I think about design's relationship to place and community. Working directly with Hackney Wick residents meant that every design decision — what materials to use, how to track movement, how to present the archive — had to earn its place in relation to real people and a real neighbourhood in flux.</p>
+                <p>The iterative process of refining the physical and technical experience reinforced something I carry into all my work: good interaction design is felt before it is understood. The most meaningful shift in the project wasn't a technical one — it was the decision to hide the materials, remove the visual logic, and trust the body to find its own way through.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        /* ── Intro video block ── */
+        .cs-intro-video {
+          background: #F5F0E8;
+          padding: 60px 0 80px;
+          border-top: 1px solid rgba(0,0,0,0.07);
+        }
+        .cs-intro-video .wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 32px;
+        }
+        .cs-video-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #999;
+          margin-bottom: 20px;
+        }
+        .cs-video-label-sm {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #999;
+          margin-bottom: 14px;
+          margin-top: 40px;
+        }
+        .yt-card {
+          display: block;
+          position: relative;
+          border-radius: 8px;
+          overflow: hidden;
+          background: #1a1a1a;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .yt-card-thumb {
+          width: 100%;
+          display: block;
+          aspect-ratio: 16/9;
+          object-fit: cover;
+          transition: opacity 0.25s;
+        }
+        .yt-card:hover .yt-card-thumb { opacity: 0.8; }
+        .yt-card-play {
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          width: 60px; height: 60px;
+          background: rgba(220,0,0,0.9);
+          border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          transition: transform 0.2s, background 0.2s;
+          pointer-events: none;
+        }
+        .yt-card:hover .yt-card-play {
+          background: #cc0000;
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+        .yt-card-play svg {
+          width: 22px; height: 22px;
+          fill: white;
+          margin-left: 3px;
+        }
+        .yt-card-cta {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          padding: 28px 16px 12px;
+          background: linear-gradient(transparent, rgba(0,0,0,0.6));
+          color: rgba(255,255,255,0.85);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px;
+          letter-spacing: 0.03em;
+          pointer-events: none;
+        }
+        .yt-card--sm {
+          max-width: 700px;
+        }
+        .cs-video-inline {
+          margin-top: 36px;
+        }
+
+        /* ── Gallery ── */
+        .gallery-block {
+          margin: 48px 0 0;
+        }
+        .gallery-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #999;
+          margin-bottom: 18px;
+        }
+        .auto-gallery {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          background: #1a1a1a;
+          cursor: grab;
+          user-select: none;
+        }
+        .auto-gallery:active { cursor: grabbing; }
+        .gallery-track {
+          display: flex;
+          transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: transform;
+        }
+        .gallery-slide {
+          min-width: 100%;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
+        .gallery-slide img {
+          width: 100%;
+          height: 520px;
+          object-fit: cover;
+          display: block;
+        }
+        .gallery-caption {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          padding: 14px 20px;
+          background: linear-gradient(transparent, rgba(0,0,0,0.55));
+          color: rgba(255,255,255,0.8);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px;
+          font-weight: 300;
+          letter-spacing: 0.02em;
+        }
+        .gallery-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255,255,255,0.15);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255,255,255,0.2);
+          color: white;
+          width: 40px; height: 40px;
+          border-radius: 50%;
+          font-size: 20px;
+          line-height: 1;
+          cursor: pointer;
+          transition: background 0.2s;
+          display: flex; align-items: center; justify-content: center;
+          z-index: 2;
+        }
+        .gallery-btn:hover { background: rgba(255,255,255,0.28); }
+        .gallery-prev { left: 16px; }
+        .gallery-next { right: 16px; }
+        .gallery-dots {
+          position: absolute;
+          bottom: 14px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex; gap: 6px;
+          z-index: 2;
+        }
+        .gallery-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.35);
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+        }
+        .gallery-dot.active {
+          background: white;
+          transform: scale(1.3);
+        }
+        @media (max-width: 768px) {
+          .gallery-slide img { height: 260px; }
+        }
+      </style>
+
+      <script>
+        // ── Gallery logic ──
+        (function() {
+          var galleries = {};
+
+          function initGallery(name) {
+            var track = document.getElementById('gallery' + name + 'Track');
+            var dotsEl = document.getElementById('gallery' + name + 'Dots');
+            if (!track) return;
+            var slides = track.querySelectorAll('.gallery-slide');
+            var count = slides.length;
+            var current = 0;
+            var timer;
+
+            // Build dots
+            for (var i = 0; i < count; i++) {
+              var d = document.createElement('div');
+              d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+              d.setAttribute('data-idx', i);
+              d.addEventListener('click', (function(idx){ return function(){ goto(idx); }; })(i));
+              dotsEl.appendChild(d);
+            }
+
+            function goto(idx) {
+              current = (idx + count) % count;
+              track.style.transform = 'translateX(-' + (current * 100) + '%)';
+              dotsEl.querySelectorAll('.gallery-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === current);
+              });
+            }
+
+            function next() { goto(current + 1); }
+            function prev() { goto(current - 1); }
+
+            function startAuto() {
+              clearInterval(timer);
+              timer = setInterval(next, 4000);
+            }
+            function stopAuto() {
+              clearInterval(timer);
+            }
+
+            galleries[name] = { goto: goto, next: next, prev: prev, startAuto: startAuto, stopAuto: stopAuto };
+
+            var wrapper = document.getElementById('gallery' + name);
+            wrapper.addEventListener('mouseenter', stopAuto);
+            wrapper.addEventListener('mouseleave', startAuto);
+
+            // Touch/drag
+            var startX = 0;
+            wrapper.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; stopAuto(); }, {passive:true});
+            wrapper.addEventListener('touchend', function(e) {
+              var dx = e.changedTouches[0].clientX - startX;
+              if (dx < -40) next(); else if (dx > 40) prev();
+              startAuto();
+            }, {passive:true});
+            wrapper.addEventListener('mousedown', function(e) { startX = e.clientX; stopAuto(); });
+            wrapper.addEventListener('mouseup', function(e) {
+              var dx = e.clientX - startX;
+              if (dx < -40) next(); else if (dx > 40) prev();
+              startAuto();
+            });
+
+            startAuto();
+          }
+
+          window.galleryNext = function(name) {
+            if (galleries[name]) { galleries[name].next(); galleries[name].startAuto(); }
+          };
+          window.galleryPrev = function(name) {
+            if (galleries[name]) { galleries[name].prev(); galleries[name].startAuto(); }
+          };
+
+          // Init when case study is visible
+          function tryInit() {
+            var cs = document.getElementById('page-unspace');
+            if (cs && cs.classList.contains('active')) {
+              initGallery('Sensory');
+              initGallery('Process');
+              initGallery('Exhibition');
+            }
+          }
+
+          // Watch for unspace case study becoming active
+          var observer = new MutationObserver(function() {
+            var cs = document.getElementById('page-unspace');
+            if (cs && cs.classList.contains('active')) {
+              observer.disconnect();
+              initGallery('Sensory');
+              initGallery('Process');
+              initGallery('Exhibition');
+            }
+          });
+          var target = document.getElementById('page-unspace');
+          if (target) {
+            observer.observe(target, { attributes: true, attributeFilter: ['class'] });
+          }
+          // Also try on DOMContentLoaded in case it's already open
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', tryInit);
+          } else {
+            tryInit();
+          }
+        })();
+      </script>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('ford')">
+            <div><h3>Ford Motor Company — Future of Truck</h3><p>Redefining archetypes for Ford's best-selling F-series trucks through co-creation and human-centred research.</p></div>
+            <div class="cs-next-thumb t5"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end unspace -->
+
+  <!-- ══════════════ IN DUST CASE STUDY ══════════════ -->
+  <div class="page" id="page-indust">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / &lt;In Dust&gt;</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">&lt;In Dust&gt; — Virtual memory-scape VR experience</h1>
+              <p class="cs-summary">&lt;In Dust&gt; is a virtual memory-scape using dust as the guiding metaphor for our relationship with the planet and with each other — an experimentation of people's reconstructive memory in past, present and future, built from stories collected from 28 individuals.</p>
+              <p class="cs-date">2021</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Interactive Architecture Lab, The Bartlett School of Architecture, UCL</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-value">Jee Eun Lee, Sofia Kovalenko, Laure Barthélemy</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Cinema4D, Unity</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/Indust_hero.png" alt="&lt;In Dust&gt; — virtual memory-scape VR experience" />
+      </div>
+
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Overview</h3></div>
+              <div class="cs-section-content">
+                <p>&lt;In Dust&gt; is a virtual reality world made up of swirling dust clouds, each containing an audio memory that the user could pass through and listen to. Concentrating on the idea of dust as a constantly growing individual story unit, the team created an immersive space where memory is navigated through the body rather than read or watched.</p>
+                <p>The project collected stories and memories from 28 individuals, exploring people's reconstructive memory across different times — past, present and future. It was developed at the Interactive Architecture Lab, The Bartlett, UCL in 2021.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Story</h3></div>
+              <div class="cs-section-content">
+                <p>The team began experimentation during lockdown, exploring the possibility of using the virtual world as a global connector between different localities and experiences. At the time, they were based in London, Moscow and New York — a separation which dictated the use of the virtual medium.</p>
+                <p>Concentrating on the idea of dust as a constantly growing individual story unit, the team created a virtual reality world made up of swirling dust clouds. Each cloud contained an audio memory that the user could pass through and listen to. The metaphor of dust — ever-present, invisible, connecting everything — became the core language for how personal memory circulates between people, places and times.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Film</h3></div>
+              <div class="cs-section-content">
+                <figure class="cs-figure">
+                  <video autoplay muted loop playsinline controls style="width:100%;border-radius:8px;display:block;">
+                    <source src="assets/images/Indust_film_2021.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <figcaption>&lt;In Dust&gt; — project film, 2021. A virtual memory-scape navigated through swirling dust clouds, each containing an audio story from one of 28 participants.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Seed of &lt;unspace&gt;</h3></div>
+              <div class="cs-section-content">
+                <p>&lt;In Dust&gt; was the direct precursor to &lt;unspace&gt;. The core concept — a navigable memory-scape where stories are encountered through physical presence and movement rather than passive viewing — carried forward into &lt;unspace&gt; as a physical, community-rooted platform.</p>
+                <p>Where &lt;In Dust&gt; operated in the virtual realm during a moment of enforced global separation, &lt;unspace&gt; brought that same sensorial logic back into the physical world — grounding it in a specific community, a specific place, and materials drawn from the land itself.</p>
+                <div class="insight-card" style="cursor:pointer;margin-top:24px" onclick="showCase('unspace')">
+                  <h4>Continue to &lt;unspace&gt;</h4>
+                  <p>The sensorial platform &lt;unspace&gt; developed directly from &lt;In Dust&gt; — maintaining the concept of memory-scape in shared time and space, and bringing it into the physical world with Hackney Wick residents.</p>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#C85C45;">View &lt;unspace&gt; case study →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">From seed to platform</p>
+          <div class="cs-next-card" onclick="showCase('unspace')">
+            <div><h3>&lt;unspace&gt; — Audio-spatial platform for community memory</h3><p>The physical evolution of &lt;In Dust&gt; — developed with Hackney Wick residents as a tool for community resilience.</p></div>
+            <div class="cs-next-thumb t6"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:60%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end indust -->
+
+  <!-- ══════════════ MICROSOFT RESEARCH CASE STUDY ══════════════ -->
+  <div class="page" id="page-msr">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / Microsoft Research</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">Microsoft Research — Inclusive Futures in AI &amp; Mixed Reality</h1>
+              <p class="cs-summary">Two independent research projects at Microsoft Research Cambridge exploring the ethical and experiential foundations of inclusive AI — from avatar authenticity in spatial computing to human-AI interaction design for Blind and Low-Vision users.</p>
+              <p class="cs-date">Jan – Apr 2022 · Cambridge, UK</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Organisation</div><div class="cs-meta-value">Microsoft Research, Cambridge, UK</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Lab</div><div class="cs-meta-value"><a href="https://www.microsoft.com/en-us/research/project/taix/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Teachable AI Experiences (TaiX) ↗</a></div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Research Lead &amp; Strategist · Research &amp; Co-Design Facilitator</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaborators</div><div class="cs-meta-value">ML Researchers, Engineers, Design Researchers, BLV Community</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:16px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);margin-bottom:48px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10" stroke="#999" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#777;margin:0;line-height:1.6;">This case study is written in a reflective, blog-style format due to NDA and copyright restrictions with Microsoft Research. Detailed artefacts, screens, and internal materials cannot be shared.</p>
+          </div>
+
+          <!-- ── PROJECT 1 ── -->
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Project 01</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 8px 0;">Human-AI Interaction for Find My Things</h2>
+                <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#999;margin:0;letter-spacing:0.04em;">Research &amp; Co-Design Facilitator · Cross-functional with ML Researchers &amp; Engineers</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Assistive AI tools can often provide feedback that is too dense or poorly timed, leading to cognitive overload for Blind and Low-Vision (BLV) users. Working alongside a specialised team of Machine Learning researchers and engineers, the goal was to research how AI-driven object recognition could be communicated through intuitive, non-visual interaction patterns.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Co-design process</h3></div>
+              <div class="cs-section-content">
+                <p>I served as a bridge between the BLV community and the technical research team — facilitating a specialised co-design series to ensure user-identified needs were accurately captured for engineers to address.</p>
+
+                <h4>Workshop execution</h4>
+                <p>Supported the facilitation of three intensive workshops with 10+ participants from the BLV community. Sessions focused on uncovering how users naturally want to "handshake" with an AI system — exploring the balance between speed, certainty, and sensory feedback.</p>
+
+                <h4>Research synthesis</h4>
+                <p>Synthesised high-level qualitative data from workshops into actionable patterns for the technical team:</p>
+
+                <div class="insight-card">
+                  <h4>Key interaction principles defined</h4>
+                  <p><strong>Auditory Hierarchy:</strong> Spatial orientation (direction and proximity) must be prioritised over verbal description — users need to know <em>where</em> before <em>what</em>.</p>
+                  <p><strong>Interaction Optimisation:</strong> Identified the specific cues users required to feel in control during search — helping the team understand how the AI should communicate its confidence levels.</p>
+                  <p><strong>Scalable Accessibility Patterns:</strong> Defined non-visual interaction patterns (audio and haptic) designed to reduce cognitive load for power users of assistive tools.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Outcome</h3></div>
+              <div class="cs-section-content">
+                <p>This foundational research was instrumental in the development of the "Find My Things" feature within the Seeing AI ecosystem. By centering the expertise of the BLV community and collaborating across technical disciplines, the research helped move the feature from a technical concept to a functional, human-centric assistive tool.</p>
+
+                <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;">
+                  <a href="https://www.microsoft.com/en-us/research/story/find-my-things/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:18px 22px;background:#F5F0E8;border-radius:10px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;flex:1;min-width:200px;">
+                    <div style="width:40px;height:40px;background:#0078D4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M2 15h10M8 11l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:2px;">Find My Things — Microsoft Research Story</div>
+                      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">microsoft.com/en-us/research ↗</div>
+                    </div>
+                  </a>
+                  <a href="https://www.microsoft.com/en-us/research/video/find-my-things/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:18px 22px;background:#F5F0E8;border-radius:10px;border:1px solid rgba(0,0,0,0.07);text-decoration:none;flex:1;min-width:200px;">
+                    <div style="width:40px;height:40px;background:#0078D4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:2px;">Find My Things — Research Video</div>
+                      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#999;">microsoft.com/en-us/research ↗</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── DIVIDER ── -->
+          <div style="border-top:1px solid rgba(0,0,0,0.08);margin:48px 0 56px 0;"></div>
+
+          <!-- ── PROJECT 2 ── -->
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Project 02</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 8px 0;">Inclusive Avatars in Mixed Reality</h2>
+                <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#999;margin:0 0 28px 0;letter-spacing:0.04em;">Research Lead &amp; Strategist · 4-Month Research Project</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>In spatial computing, avatars often rely on standardised motion libraries that fail to represent the diverse physicalities of people with disabilities. This creates a "digital uncanny valley" where a user's virtual representation does not align with their lived physical identity — leading to exclusion in social Mixed Reality environments.</p>
+                <div class="insight-card">
+                  <h4>Core question</h4>
+                  <p>How do people with disabilities in Mixed Reality want to perform their avatar's <em>bodily movements</em> to support communication?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Methodology</h3></div>
+              <div class="cs-section-content">
+                <h4 style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:400;color:#1a1a1a;margin:0 0 16px 0;">Decoding Movement Authenticity — in collaboration with lived experts from the creative industry</h4>
+                <p>Over four months, I led a deep-dive discovery phase to bridge the gap between human expression and technical architecture. I facilitated collaborative sessions and interviews with movement specialists, choreographers, and performance artists — experts with a professional vocabulary for non-verbal communication that technical teams typically lack.</p>
+
+                <div class="insight-card">
+                  <h4>Critical insight — Movement Authenticity</h4>
+                  <p>Authenticity in a digital space is not about "perfect" or "smoothed" motion. Through expert interviews, we defined <strong>Movement Authenticity</strong> as a qualitative result of how an individual's intent and physical presence are translated into a digital medium.</p>
+                  <p>By working with artists with extensive experience of physical disabilities, we identified <strong>Signature Movements</strong> — the unique ways individuals occupy space and express identity through motion.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Key deliverables</h3></div>
+              <div class="cs-section-content">
+                <h4>The Inclusive Research Handbook</h4>
+                <p>A comprehensive strategic guide for engineers and designers, synthesising artistic and qualitative insights into a formal <strong>Taxonomy of Inclusive Movement</strong>. This provided a framework for future ML data collection and model generation — translating human experience into technical requirements.</p>
+
+                <h4>Vision Videos</h4>
+                <p>Conceptual storytelling assets demonstrating the potential of an "authenticity-first" approach to avatar design. These artefacts were produced to align product teams and senior leadership around a more inclusive vision for the future of Mixed Reality.</p>
+
+                <div class="insight-card">
+                  <h4>Goal</h4>
+                  <p>To define the foundational "ground truth" required to inform the ethical development of future machine-learning-generated avatars — ensuring that disabled users can be represented with integrity in spatial computing environments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <p>My time at Microsoft Research deepened my conviction that the most meaningful AI design work happens at the intersection of technical rigour and lived human experience. Both projects required me to act as a translator — between artists and engineers, between BLV users and ML researchers — synthesising qualitative truth into frameworks that technical teams could build from.</p>
+                <p>The ability to define "ground truth" in human terms, and then make that legible to a system, is something I carry into every AI-adjacent project I work on today.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('ford')">
+            <div><h3>Ford Motor Company — Future of Truck</h3><p>Redefining archetypes for Ford's best-selling F-series trucks through co-creation and human-centred research.</p></div>
+            <div class="cs-next-thumb t5"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end msr -->
+
+  <script src="scripts.js"></script>
+  <script src="landing.js"></script>
+</body>
+</html>
