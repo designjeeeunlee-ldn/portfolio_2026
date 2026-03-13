@@ -492,7 +492,7 @@ footer small { font-size: 12px; color: var(--ink-3); }
   .scroll-hint { display: none; }
 
   /* ── Dropdowns ── */
-  .dropdown { min-width: calc(100vw - 40px); left: 0; }
+  .dropdown { position: fixed; left: 20px; right: 20px; width: auto; min-width: unset; top: auto; }
 
   /* ── Works ── */
   .works-section { padding: 24px 0 80px; }
