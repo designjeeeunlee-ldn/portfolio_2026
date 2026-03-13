@@ -460,3 +460,76 @@ footer small { font-size: 12px; color: var(--ink-3); }
 /* ── SHARED KEYFRAMES ── */
 @keyframes fadeIn  { from { opacity:0; }                              to { opacity:1; } }
 @keyframes slideUp { from { opacity:0; transform:translateY(20px); }  to { opacity:1; transform:translateY(0); } }
+
+/* ══════════════════════════════════
+   MOBILE RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Prevent horizontal overflow */
+  body { overflow-x: hidden; cursor: auto; }
+  .wrap { padding: 0 20px; }
+
+  /* Cursor — hide on touch devices */
+  .cursor, .cursor-ring { display: none; }
+  * { cursor: auto !important; }
+
+  /* Hide decorative desktop-only elements */
+  .landing-rule, .landing-footnote, .parallax-bg, .descriptor-rule { display: none; }
+
+  /* ── Nav ── */
+  .pill-nav { gap: 0; }
+  .pill-btn { padding: 8px 12px; font-size: 11px; }
+
+  /* ── Landing ── */
+  .landing { padding: 100px 0 64px; }
+  .landing-portrait { padding-left: 20px !important; }
+  .landing-eyebrow { padding-left: 20px; margin-bottom: 16px; }
+  .landing-headline { padding-left: 20px; }
+  .landing-descriptor { padding-left: 20px; flex-direction: column; gap: 12px; }
+  .landing-chips { padding-left: 20px; }
+  .landing-bottom { padding: 0 20px; margin-top: 40px; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .landing-location { text-align: left; }
+  .scroll-hint { display: none; }
+
+  /* ── Dropdowns ── */
+  .dropdown { min-width: calc(100vw - 40px); left: 0; }
+
+  /* ── Works ── */
+  .works-section { padding: 24px 0 80px; }
+  .works-header { margin-bottom: 32px; padding-bottom: 24px; }
+  .project-row { padding: 28px 0; gap: 16px; }
+
+  /* ── About ── */
+  .about-strip { padding: 56px 0; }
+
+  /* ── Footer ── */
+  footer { padding: 56px 0 36px; }
+  .footer-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+  /* ── Case study — containers with inline padding ── */
+  .cs-wide-container { padding: 0 20px !important; }
+  .cs-header { padding: 40px 0 32px; }
+  .cs-body { padding: 40px 0; }
+  .cs-section { margin-bottom: 48px; }
+  .cs-section-layout { grid-template-columns: 1fr; gap: 16px; }
+  .cs-section-label { position: static; }
+  .cs-section-label h3::before { display: none; }
+  .cs-header-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .cs-meta-item { margin-bottom: 0; }
+
+  /* ── Cards & grids ── */
+  .goals-grid { grid-template-columns: 1fr; }
+  .metrics-row { grid-template-columns: 1fr 1fr; }
+  .cs-figure-pair { grid-template-columns: 1fr; }
+  .cs-next-card { grid-template-columns: 1fr; }
+
+  /* ── Inline link cards — make them full width ── */
+  .cs-wide-container a[style*="inline-flex"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Video ── */
+  .cs-video-label { padding: 0 20px; }
+}
