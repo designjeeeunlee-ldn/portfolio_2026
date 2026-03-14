@@ -405,6 +405,7 @@ footer small { font-size: 12px; color: var(--ink-3); }
 
 .cs-figure { margin: 36px 0 0 0; width: 100%; }
 .cs-figure img { width:100%; border-radius:6px; border:1px solid var(--border); display:block; }
+.cs-figure img.natural-size { width:auto; max-width:480px; height:auto; }
 .cs-figure figcaption { margin-top:12px; font-size:12px; color:var(--ink-3); line-height:1.6; font-style:italic; max-width:640px; }
 .cs-figure-pair { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
 .cs-figure-pair .cs-figure { margin:0; }
