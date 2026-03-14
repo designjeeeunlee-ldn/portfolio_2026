@@ -4,6 +4,8 @@
    ============================================================ */
 
 /* ── PAGE NAVIGATION ── */
+const TABS = ['home', 'work', 'about'];
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
@@ -15,10 +17,14 @@ function switchTab(tab) {
   showPage(tab === 'home' ? 'home' : tab === 'work' ? 'work' : tab === 'about' ? 'about' : tab);
   document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('nav-' + tab).classList.add('active');
+  const hash = tab === 'home' ? '' : '#' + tab;
+  history.pushState({ page: tab }, '', location.pathname + hash);
 }
 
 function showCase(slug) {
   showPage(slug);
+  document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+  history.pushState({ page: slug }, '', location.pathname + '#' + slug);
 }
 
 function goHome(section) {
@@ -30,6 +36,27 @@ function goHome(section) {
       const el = document.getElementById(section + '-section');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 80);
+  }
+}
+
+/* ── HANDLE BROWSER BACK/FORWARD ── */
+window.addEventListener('popstate', () => {
+  navigateToHash(location.hash);
+});
+
+function navigateToHash(hash) {
+  const slug = hash.replace('#', '');
+  if (!slug || slug === 'home') {
+    showPage('home');
+    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('nav-home').classList.add('active');
+  } else if (TABS.includes(slug)) {
+    showPage(slug);
+    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('nav-' + slug).classList.add('active');
+  } else {
+    showPage(slug);
+    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
   }
 }
 
@@ -182,6 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  switchTab('home');
+  navigateToHash(location.hash || '#home');
   initFade();
 });
