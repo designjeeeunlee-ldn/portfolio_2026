@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+s<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -106,8 +106,8 @@
           <div class="dropdown" id="dropdown-ai">
             <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('df2030')">Future Experience Vision for Banking — AI scenario planning</a>
             <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('msr')">Microsoft Research — Teachable AI tool helps blind and low-vision people find lost personal items </a>
-            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('lending')" style="opacity:0.45;pointer-events:none;cursor:default;">AI-Powered Commercial Lending Portal — broker to back office <span style="font-size:11px;background:#E4E3E0;color:#777;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">Work in progress</span></a>
-            <a href="#" class="dropdown-item" onclick="event.preventDefault();" style="opacity:0.45;pointer-events:none;cursor:default;">CRE Loan Review Automation — AI document ingestion <span style="font-size:11px;background:#E4E3E0;color:#777;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">Work in progress</span></a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('lending')">AI-Powered Commercial Lending Portal — broker to back office</a>
+            <a href="#" class="dropdown-item" onclick="event.preventDefault(); showCase('lending')">CRE Loan Review Automation — AI document ingestion</a>
           </div>
         </div>
 
@@ -197,8 +197,33 @@
           </div>
         </div>
 
-        <div class="project-row fade-in" onclick="showCase('msr')">
+        <div class="project-row fade-in" onclick="showCase('lending')">
           <div class="project-num">03</div>
+          <div class="project-info">
+            <p class="project-category">AI Discovery · Commercial Lending · Enterprise UX</p>
+            <h2 class="project-name">AI discovery and delivery for commercial lending</h2>
+            <p class="project-desc">A connected case study of CRE loan review automation and credit narrative generation—shaping AI-enabled workflows for risk-critical lending decisions.</p>
+            <div class="project-tags">
+              <span class="project-tag">AI Strategy</span>
+              <span class="project-tag">Document Intelligence</span>
+              <span class="project-tag">Human-in-the-loop</span>
+              <span class="project-tag">Commercial Lending</span>
+            </div>
+            <span class="project-link">View case study →</span>
+          </div>
+          <div class="project-thumb t3" style="padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F3EFE8,#D9D5CE);">
+              <div style="width:68%;height:68%;background:rgba(255,255,255,0.8);border-radius:18px;box-shadow:0 12px 28px rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px;">
+                <div style="width:100%;height:8px;background:#D8D2CB;border-radius:999px;"></div>
+                <div style="width:80%;height:8px;background:#D8D2CB;border-radius:999px;"></div>
+                <div style="width:60%;height:8px;background:#D8D2CB;border-radius:999px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row fade-in" onclick="showCase('msr')">
+          <div class="project-num">04</div>
           <div class="project-info">
             <p class="project-category">AI Research · Accessibility · Mixed Reality · Human-Computer Interaction</p>
             <h2 class="project-name">Inclusive Futures in AI &amp; Mixed Reality</h2>
@@ -225,7 +250,7 @@
         </div>
 
         <div class="project-row fade-in" onclick="showCase('unspace')">
-          <div class="project-num">04</div>
+          <div class="project-num">05</div>
           <div class="project-info">
             <p class="project-category">Speculative Design · Spatial Interaction · Community Resilience</p>
             <h2 class="project-name">&lt;unspace&gt; — Audio-spatial platform for community memory</h2>
@@ -244,7 +269,7 @@
         </div>
 
         <div class="project-row fade-in" onclick="showCase('indust')">
-          <div class="project-num">05</div>
+          <div class="project-num">06</div>
           <div class="project-info">
             <p class="project-category">Speculative Design · VR · Memory · Interactive Architecture</p>
             <h2 class="project-name">&lt;In Dust&gt; — Virtual memory-scape VR experience</h2>
@@ -263,7 +288,7 @@
         </div>
 
         <div class="project-row fade-in" onclick="showCase('paypoint')">
-          <div class="project-num">06</div>
+          <div class="project-num">07</div>
           <div class="project-info">
             <p class="project-category">Service Design · Everyday Banking · Financial Inclusion</p>
             <h2 class="project-name">PayPoint Cash Deposit</h2>
@@ -282,7 +307,7 @@
         </div>
 
         <div class="project-row fade-in" onclick="showCase('onboarding')">
-          <div class="project-num">07</div>
+          <div class="project-num">08</div>
           <div class="project-info">
             <p class="project-category">Service Design · Telephony · B2B Onboarding</p>
             <h2 class="project-name">Redesigning the merchant onboarding experience</h2>
@@ -301,7 +326,7 @@
         </div>
 
         <div class="project-row fade-in" onclick="showCase('ford')">
-          <div class="project-num">08</div>
+          <div class="project-num">09</div>
           <div class="project-info">
             <p class="project-category">Automotive · Strategic Research · Human-Centred Design</p>
             <h2 class="project-name">Ford Motor Company — Future of Truck</h2>
@@ -2202,6 +2227,302 @@
     </div>
   </div><!-- end indust -->
 
+  <!-- ══════════════ LENDING CASE STUDY ══════════════ -->
+  <div class="page" id="page-lending">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="switchTab('work')">← Work</button> / AI Discovery and Delivery</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">AI discovery and delivery — Commercial lending</h1>
+              <p class="cs-summary">A blog-style synthesis of two connected AI projects in commercial lending: CRE loan review automation and generative credit narrative delivery for risk-critical credit assessment.</p>
+              <p class="cs-date">2026 · London, UK</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Document Intelligence · Generative Narrative · Human-in-the-loop</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Lead Product &amp; Service Designer · AI Strategy</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Outcome</div><div class="cs-meta-value">Designed AI-enabled workflows that shift effort from data entry to review and decision.</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:16px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);margin-bottom:48px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10" stroke="#999" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#777;margin:0;line-height:1.6;">This case study is written in a reflective, blog-style format due to ongoing project and share restrictions with Lloyds Banking Group. Visuals are re-generated seperately via personal tool.</p>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Project 01</h3></div>
+              <div class="cs-section-content">
+                <div class="project-title-group">
+                  <div class="project-title-icon"></div>
+                  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);font-weight:400;color:#1a1a1a;margin:0 0 12px 0;">Project 01 — Generative AI & Credit Narratives</h2>
+                </div>
+                <div class="project-visual wave-visual">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p><strong>Discovering AI opportunities within the commercial credit application journey.</strong></p>
+                <p>This project focused on the complex workflow of Relationship Managers (RMs)—mapping how generative AI could intelligently support narrative drafting, surface critical risk-relevant context, and foster a more trustworthy handoff between RMs and Credit Officers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Project 02</h3></div>
+              <div class="cs-section-content">
+                <div class="project-title-group">
+                  <div class="project-title-icon"></div>
+                  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);font-weight:400;color:#1a1a1a;margin:0 0 12px 0;">Project 02 — Document Intelligence & Data Review</h2>
+                </div>
+                <div class="project-visual wave-visual">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p><strong>Designing interaction models for Commercial Real Estate (CRE) loan automation.</strong></p>
+                <p>This work addressed structured data extraction—designing an interaction paradigm where AI-powered models extract and pre-fill dense loan metrics, while human operators retain ultimate control over validation and high-stakes decision-making.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The context</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 12px 0;">The Context &amp; The Compounding Pain Points</h2>
+                <p>The two workstreams sat within the same high-stakes, colleague-facing journey: commercial lending credit assessment. The environment was highly regulated, deeply manual, and fragmented across tools and teams.</p>
+                <ul style="font-size:15px;line-height:1.8;color:#444;margin:18px 0 0 20px;">
+                  <li><strong>Heavy Manual Extraction:</strong> Financial data arrived in wildly inconsistent formats. Relationship Managers spent hours extracting data manually from different tools for different data, carrying the full cognitive weight of data entry before doing any actual analysis.</li>
+                  <li><strong>Tool Fragmentation:</strong> Across the organisation, we found a staggering variance of calculators used for the exact same underlying task, leading to no single source of truth.</li>
+                  <li><strong>Structural Errors &amp; Low Auditability:</strong> Manual re-keying structurally introduced downstream errors, while calculations embedded in standalone tools reduced trust and visibility.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Insight</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 12px 0;">The Insight That Reframed Everything</h2>
+                <div class="insight-card">
+                  <p><strong>Midway through the research, a single insight shifted our trajectory:</strong> <em>The real bottleneck wasn't the calculation engine itself — which was already automated. The pain sat upstream in data ingestion, extraction, and validation.</em></p>
+                  <p>The system was spending enormous human effort on inputs, shortchanging the strategic judgment that actually required human expertise. This is why both workstreams converged on the same opportunity: AI-assisted prefill and structured ingestion. Not smarter calculators, but smarter data intake.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Lessons</h3></div>
+              <div class="cs-section-content">
+                <div class="lesson-grid">
+                  <div class="lesson-card">
+                    <div class="lesson-card-icon">1</div>
+                    <div>
+                      <h4>Lesson 1 — AI readiness is a data architecture challenge</h4>
+                      <p>The earliest and most disorienting realisation: the data wasn't ready for AI. Preparing for AI isn't just a technical footnote—it’s an information architecture problem that directly dictates the user experience.</p>
+                    </div>
+                  </div>
+                  <div class="lesson-card">
+                    <div class="lesson-card-icon">2</div>
+                    <div>
+                      <h4>Lesson 2 — Matching tolerance is contextual, not universal</h4>
+                      <p>The question wasn't just “does the data match?” It was “what counts as a sufficient match for this specific decision in this specific context?” Acceptable incompleteness is a core UX parameter.</p>
+                    </div>
+                  </div>
+                  <div class="lesson-card">
+                    <div class="lesson-card-icon">3</div>
+                    <div>
+                      <h4>Lesson 3 — Same output, fundamentally different lenses</h4>
+                      <p>A credit narrative is a single document, but it serves two distinct roles: the RM who generates it and the credit officer who evaluates it. The same screen becomes two different design problems.</p>
+                    </div>
+                  </div>
+                  <div class="lesson-card">
+                    <div class="lesson-card-icon">4</div>
+                    <div>
+                      <h4>Lesson 4 — AI cannot generate context that was never captured</h4>
+                      <p>Relational context lives in an RM’s head, not in a system field. AI can synthesise structured data, but humans must remain in the loop to inject critical nuance and judgment.</p>
+                    </div>
+                  </div>
+                  <div class="lesson-card">
+                    <div class="lesson-card-icon">5</div>
+                    <div>
+                      <h4>Lesson 5 — Research the journey before you introduce the solution</h4>
+                      <p>If you open discovery with an AI solution, people react to the tech, not the problem. Start with service design basics: map journeys and let users name friction in their own language.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Design framework</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 12px 0;">The Design Framework: How We discover AI Opportunities</h2>
+                <p>Translating these lessons into a delivery plan required a structured process. In high-stakes enterprise environments, the work couldn't be a catalog of ideas — it had to be a repeatable framework for spotting and validating AI opportunity.</p>
+                <div class="framework-grid">
+                  <div class="framework-card">
+                    <div class="framework-highlight">
+                      <span class="framework-step">1</span>
+                      <h4>Meet the right people from different angles</h4>
+                    </div>
+                    <div class="framework-card-content">
+                      <p>Complex systems never operate as one-size-fits-all. Informal workaround tactics are rich design sources—they show where legacy systems are failing users.</p>
+                    </div>
+                  </div>
+                  <div class="framework-card">
+                    <div class="framework-highlight">
+                      <span class="framework-step">2</span>
+                      <h4>Establish assessment criteria to scale ideas</h4>
+                    </div>
+                    <div class="framework-card-content">
+                      <p>After divergence, we avoided shiny ideas by scoring opportunities on Impact and Effort. Impact included RM hours saved and downstream reliability; Effort measured data readiness and technical overlap.</p>
+                    </div>
+                  </div>
+                  <div class="framework-card">
+                    <div class="framework-highlight">
+                      <span class="framework-step">3</span>
+                      <h4>Decide where to deep-dive and what to deliver first</h4>
+                    </div>
+                    <div class="framework-card-content">
+                      <p>Ambition is vital, but execution needs phasing. We mapped quick-wins versus far-future bets and expressly treated unknowns as design hypotheses.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Design example</h3></div>
+              <div class="cs-section-content">
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:#1a1a1a;margin:0 0 14px 0;">Design prototype for CRE AI tool <span style="font-size:15px;font-weight:400;color:#888;">(Project 2 example)</span></h2>
+                <div class="tool-sketch-video">
+                  <video autoplay loop muted playsinline controls>
+                    <source src="assets/videos/lending-prototype.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <p class="tool-sketch-video-caption">Re-created by vibe-design from Lovable, based on the work-in-progress design. <br>Concept reviewed through a feasibility lens.</p>
+                </div>
+                              <div style="margin:40px 0 0 0;text-align:center;">
+                                <img src="assets/images/ai_impact_effort_matrix.png" alt="AI Opportunity Discovery — Impact vs. Effort" style="max-width:520px;width:100%;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,0.07);margin-bottom:10px;" />
+                                <div style="font-size:13px;color:#666;line-height:1.6;margin-top:4px;">AI Opportunity Discovery — Impact vs. Effort<br>A simplified prioritisation framework mapping discovered AI opportunities against the value they create and the effort required to ship them.</div>
+                              </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="reviewPropertyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;" onclick="closeReviewModal()">
+            <div style="position:absolute;right:0;top:0;width:60%;height:100%;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;overflow-y:auto;" onclick="event.stopPropagation()">
+              <div style="padding:32px 36px;border-bottom:1px solid #e8e5e1;position:relative;">
+                <button onclick="closeReviewModal()" style="position:absolute;top:24px;right:24px;background:none;border:none;font-size:28px;cursor:pointer;color:#aaa;line-height:1;">×</button>
+                <h2 style="margin:0 0 8px 0;font-size:20px;color:#1a1a1a;font-weight:700;letter-spacing:-0.01em;">Property Review</h2>
+                <p style="margin:0;font-size:13px;color:#888;font-weight:500;">Camden Wharf · Unit 3 · NW1 8AF</p>
+              </div>
+              <div style="flex:1;padding:32px 36px;overflow-y:auto;">
+                <div style="margin-bottom:32px;">
+                  <h4 style="margin:0 0 14px 0;font-size:11px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.12em;">Property Information</h4>
+                  <div style="background:#fafaf8;border:1px solid #e8e5e1;border-radius:12px;padding:20px;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                      <div>
+                        <p style="margin:0 0 6px 0;font-size:10px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.1em;">Address</p>
+                        <p style="margin:0;font-size:14px;color:#1a1a1a;font-weight:600;">Camden Wharf · Unit 3</p>
+                      </div>
+                      <div>
+                        <p style="margin:0 0 6px 0;font-size:10px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.1em;">Postcode</p>
+                        <p style="margin:0;font-size:14px;color:#1a1a1a;font-weight:600;">NW1 8AF</p>
+                      </div>
+                      <div>
+                        <p style="margin:0 0 6px 0;font-size:10px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.1em;">Tenant</p>
+                        <p style="margin:0;font-size:14px;color:#888;">–</p>
+                      </div>
+                      <div>
+                        <p style="margin:0 0 6px 0;font-size:10px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.1em;">Lease Start</p>
+                        <p style="margin:0;font-size:14px;color:#888;">–</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-bottom:32px;">
+                  <h4 style="margin:0 0 14px 0;font-size:11px;color:#999;text-transform:uppercase;font-weight:800;letter-spacing:0.12em;">Data Validation Status</h4>
+                  <div style="display:grid;gap:10px;">
+                    <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center;padding:14px 16px;background:#fff;border:1px solid #e8e5e1;border-radius:10px;">
+                      <span style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Property Name</span>
+                      <div style="display:flex;align-items:center;gap:8px;"><span style="padding:6px 10px;border-radius:5px;background:#0d7a3e;color:#fff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;">Matched</span><span style="font-size:13px;color:#1a1a1a;font-weight:600;">Camden Wharf Unit 3</span></div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center;padding:14px 16px;background:#fff;border:1px solid #e8e5e1;border-radius:10px;">
+                      <span style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Lease Term</span>
+                      <span style="font-size:13px;color:#999;">–</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center;padding:14px 16px;background:#fff;border:1px solid #e8e5e1;border-radius:10px;">
+                      <span style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Tenant Name</span>
+                      <span style="font-size:13px;color:#999;">–</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center;padding:14px 16px;background:#fff;border:1px solid #e8e5e1;border-radius:10px;">
+                      <span style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Brief Comment</span>
+                      <span style="font-size:13px;color:#999;">–</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-bottom:24px;">
+                  <h4 style="margin:0 0 12px 0;font-size:12px;color:#999;text-transform:uppercase;font-weight:700;letter-spacing:0.08em;">Next Steps</h4>
+                  <div style="display:grid;grid-template-columns:1fr;gap:10px;">
+                    <button onclick="handlePropertyAction('accept')" style="padding:14px 16px;background:#0d7a3e;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.08em;">Accept & Confirm</button>
+                    <button onclick="handlePropertyAction('review')" style="padding:14px 16px;background:#f9f8f6;color:#1a1a1a;border:1px solid #e8e5e1;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.08em;">Request Info</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Wrap up</h3></div>
+              <div class="cs-section-content">
+                <p>The future of high-stakes enterprise design is clear: shifting from a paradigm where the human does the heavy lifting of data entry, to one where <strong>AI extracts and prefills, and the human reviews, validates, and decides.</strong></p>
+                <p>Both projects are ongoing. The most honest thing I can say is that the work has consistently revealed more complexity than it resolved — which is a sign the research is working.</p>
+                <p>The ultimate value isn't just a shipped feature; it's strategic clarity. Transform the structural foundations before AI can become genuinely useful. That, I think, is what design is truly for.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Next Project</p>
+          <div class="cs-next-card" onclick="showCase('msr')">
+            <div><h3>Microsoft Research — Inclusive Futures in AI &amp; Mixed Reality</h3><p>Two research projects exploring the ethical foundations of inclusive AI and human-centred interaction design.</p></div>
+            <div class="cs-next-thumb t5"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end lending -->
+
   <!-- ══════════════ MICROSOFT RESEARCH CASE STUDY ══════════════ -->
   <div class="page" id="page-msr">
     <div class="cs-page">
@@ -2234,7 +2555,7 @@
 
           <div style="display:flex;align-items:flex-start;gap:12px;padding:16px 20px;background:#F5F0E8;border-radius:8px;border:1px solid rgba(0,0,0,0.07);margin-bottom:48px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10" stroke="#999" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#777;margin:0;line-height:1.6;">This case study is written in a reflective, blog-style format due to NDA and copyright restrictions with Microsoft Research. Detailed artefacts, screens, and internal materials cannot be shared.</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#777;margin:0;line-height:1.6;">This case study is written in a reflective, blog-style format due to ongoing project and share restrictions with Lloyds Banking Group. Visuals are re-generated separately via personal tool.</p>
           </div>
 
           <!-- ── PROJECT 1 ── -->
