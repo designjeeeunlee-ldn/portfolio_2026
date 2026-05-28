@@ -405,7 +405,7 @@ footer small { font-size: 12px; color: var(--ink-3); }
 .cs-hero-img img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
 .tool-sketch-video { width:100%; margin:24px 0 28px; }
 .tool-sketch-video video { width:100%; border-radius:16px; display:block; background:#000; }
-.tool-sketch-video-caption { margin:12px 0 0; font-size:13px; color:#666; letter-spacing:0.01em; }
+.tool-sketch-video-caption { margin:12px 0 0; font-size:12px; color:var(--ink-3); line-height:1.6; font-style:italic; }
 .cs-hero-placeholder { width:100%; aspect-ratio:16/7; display:flex; align-items:center; justify-content:center; background:#EEECEA; }
 .cs-hero-placeholder .inner { width:52%; max-width:640px; background:white; border-radius:8px; padding:28px 32px; box-shadow:0 20px 60px rgba(0,0,0,.08); }
 .ph-row { display:flex; gap:16px; margin-bottom:12px; }
