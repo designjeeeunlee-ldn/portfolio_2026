@@ -177,13 +177,6 @@ nav { position: fixed; top: 24px; left: 0; right: 0; z-index: 900; pointer-event
 .descriptor-rule { width: 28px; height: 1px; background: var(--ink-3); margin-top: 12px; flex-shrink: 0; }
 .landing-sub { font-size: 15px; color: var(--ink-2); line-height: 1.78; max-width: 440px; font-weight: 300; letter-spacing: 0.01em; }
 
-.landing-chips {
-  padding-left: calc(64px + 44px); margin-top: 48px;
-  display: flex; flex-wrap: wrap; gap: 8px; position: relative;
-  z-index: 200;
-  opacity: 0; animation: slideUp 1s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
 .landing-bottom {
   padding: 0 64px 0 calc(64px + 44px); margin-top: 80px;
   display: flex; align-items: center; justify-content: space-between;
@@ -267,7 +260,19 @@ nav { position: fixed; top: 24px; left: 0; right: 0; z-index: 900; pointer-event
 .scrolled-down .scroll-hint--page { opacity: 0; transition: opacity 0.4s ease; }
 
 /* ── CHIPS ── */
-.chip-wrap { position: relative; display: inline-block; }
+.landing-chips {
+  padding-left: calc(64px + 44px);
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+  z-index: 200;
+  opacity: 0; animation: slideUp 1s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.chip-wrap { position: relative; display: inline-flex; flex: 0 1 auto; min-width: 0; }
 .chip {
   position: relative; border: 1px solid var(--border); border-radius: 2px;
   padding: 7px 16px; font-size: 12px; font-weight: 400; color: var(--ink-2);
@@ -422,6 +427,9 @@ footer small { font-size: 12px; color: var(--ink-3); }
 .cs-section-label h3::before { content: ''; width: 20px; height: 1px; background: var(--ink-3); display: block; }
 .cs-section-content p { font-size: 15px; line-height: 1.82; color: var(--ink-2); margin-bottom: 24px; max-width: 680px; }
 .cs-section-content p:last-child { margin-bottom: 0; }
+.cs-section-content h2 { margin-top: 0; margin-bottom: 22px; line-height: 1.3; }
+.cs-section-content ul { margin: 18px 0 24px 20px; padding-left: 18px; color: var(--ink-2); }
+.cs-section-content li { margin-bottom: 14px; }
 .cs-section-content h4 { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 8px; margin-top: 28px; letter-spacing: 0.03em; text-transform: uppercase; }
 .cs-section-content h4:first-child { margin-top: 0; }
 
@@ -545,22 +553,24 @@ footer small { font-size: 12px; color: var(--ink-3); }
   .landing-rule, .landing-footnote, .parallax-bg, .descriptor-rule { display: none; }
 
   /* ── Nav ── */
+  nav { top: max(24px, env(safe-area-inset-top)); }
   .pill-nav { gap: 0; }
   .pill-btn { padding: 8px 12px; font-size: 11px; }
 
   /* ── Landing ── */
-  .landing { padding: 100px 0 64px; }
+  .landing { padding: calc(100px + env(safe-area-inset-top, 0px)) 0 64px; }
   .landing-portrait { padding-left: 20px !important; }
   .landing-eyebrow { padding-left: 20px; margin-bottom: 16px; }
   .landing-headline { padding-left: 20px; }
   .landing-descriptor { padding-left: 20px; flex-direction: column; gap: 12px; }
-  .landing-chips { padding-left: 20px; }
+  .landing-chips { padding-left: 20px; flex-wrap: wrap !important; gap: 12px; }
+  .chip-wrap { flex: 1 1 calc(50% - 10px); min-width: 0; }
   .landing-bottom { padding: 0 20px; margin-top: 40px; flex-direction: column; align-items: flex-start; gap: 20px; }
   .landing-location { text-align: left; }
   .scroll-hint { display: none; }
 
   /* ── Dropdowns ── */
-  .dropdown { position: fixed; left: 20px; right: 20px; width: auto; min-width: unset; top: auto; }
+  .dropdown { position: absolute; left: 0; right: auto; width: 100%; min-width: unset; top: calc(100% + 10px); }
 
   /* ── Works ── */
   .works-section { padding: 24px 0 80px; }
@@ -584,8 +594,17 @@ footer small { font-size: 12px; color: var(--ink-3); }
   .cs-section-label h3::before { display: none; }
   .cs-header-grid { grid-template-columns: 1fr; gap: 32px; }
   .cs-meta { display: flex; gap: 24px; flex-wrap: wrap; }
-  .cs-meta-item { margin-bottom: 0; }
-
+  .cs-meta-item { margin-bottom: 0; }  .cs-section-content p,
+  .cs-section-content ul,
+  .cs-section-content .insight-card,
+  .cs-section-content .framework-card,
+  .cs-section-content .tool-sketch-video,
+  .cs-section-content .project-title-group { max-width: 100%; }
+  .project-title-group { flex-wrap: wrap; }
+  .project-visual { min-height: 0; }
+  .project-visual span { min-width: 0; }
+  .cs-page #reviewPropertyModal > div { width: 100%; max-width: 100%; right: 0; box-shadow: none; border-radius: 0; }
+  .cs-page #reviewPropertyModal { align-items: flex-end; }
   /* ── Cards & grids ── */
   .goals-grid { grid-template-columns: 1fr; }
   .metrics-row { grid-template-columns: 1fr 1fr; }

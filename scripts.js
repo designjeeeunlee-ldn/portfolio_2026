@@ -212,3 +212,25 @@ document.addEventListener('DOMContentLoaded', () => {
   navigateToHash(location.hash || '#home');
   initFade();
 });
+
+/* ── REVIEW PROPERTY MODAL ── */
+function showReviewModal() {
+  const modal = document.getElementById('reviewPropertyModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeReviewModal() {
+  const modal = document.getElementById('reviewPropertyModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function handlePropertyAction(action) {
+  console.log('Property action:', action);
+  closeReviewModal();
+}
