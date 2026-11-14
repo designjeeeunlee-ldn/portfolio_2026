@@ -10,6 +10,60 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="theme-cv.css">
 <script src="passcode-gate.js"></script>
+<style>
+.outcome-bento{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:24px 0 28px;
+}
+.bento-tile{
+  background:#FFFFFF;
+  border:1px solid rgba(24,24,27,0.10);
+  border-radius:16px;
+  padding:22px 24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:16px;
+  min-height:148px;
+}
+.bento-tile.is-wide{grid-column:span 2;}
+.bento-tile.is-tint{background:#F3EFFB;border-color:rgba(107,83,166,0.18);}
+.bento-tile.is-lime{background:#EDF5D5;border-color:#D8E6B3;}
+.bento-tile.is-dark{background:#18181B;border-color:#18181B;color:#FAFAFA;}
+.bento-kicker{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:#6B53A6;
+}
+.bento-tile.is-lime .bento-kicker{color:#4A6118;}
+.bento-tile.is-dark .bento-kicker{color:#EDF5D5;}
+.bento-num{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:clamp(32px,3.6vw,44px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-0.03em;
+  color:#18181B;
+}
+.bento-tile.is-wide .bento-num{font-size:clamp(40px,4.8vw,56px);}
+.bento-tile.is-dark .bento-num{color:#FAFAFA;font-size:clamp(22px,2.4vw,26px);line-height:1.2;}
+.bento-sub{
+  font-size:13.5px;
+  line-height:1.45;
+  color:#52525B;
+}
+.bento-tile.is-lime .bento-sub{color:#3F5215;}
+.bento-tile.is-dark .bento-sub{color:rgba(250,250,250,0.72);}
+@media(max-width:760px){
+  .outcome-bento{grid-template-columns:1fr;}
+  .bento-tile.is-wide{grid-column:auto;}
+  .bento-tile{min-height:auto;}
+}
+</style>
 </head>
 <body>
 <nav class="topbar" aria-label="Case study navigation">
@@ -28,7 +82,14 @@
             <div>
               <h1 class="cs-title">PayPoint Cash Deposit</h1>
               <p class="cs-summary">Keeping cash banking accessible as branches close.</p>
-              <p class="cs-date">August 2025</p>
+              <div><p class="cs-date">August 2025</p></div>
+              <div style="display:flex;width:fit-content;max-width:100%;align-items:center;gap:14px;margin-top:18px;padding:11px 16px;background:#FFFFFF;border:1px solid rgba(24,24,27,0.10);border-radius:10px;">
+                <img src="assets/images/fstech-logo.png" alt="FS Tech" style="height:22px;width:auto;display:block;flex-shrink:0;" />
+                <div style="border-left:1px solid rgba(24,24,27,0.10);padding-left:14px;">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);line-height:1.3;">FS Tech Awards · Mar 2026</div>
+                  <div style="font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35;margin-top:2px;">Winner — Best Use of IT in Consumer Finance</div>
+                </div>
+              </div>
             </div>
             <div class="cs-meta">
               <div class="cs-meta-item"><div class="cs-meta-label">Launched</div><div class="cs-meta-value">August 2025</div></div>
@@ -43,6 +104,22 @@
         <img src="assets/images/paypoint-hero.png" alt="PayPoint Cash Deposit — key screens on mobile" />
       </div>
 
+      <div class="cs-wide-container" style="max-width:1160px;margin:32px auto 0;padding:0 clamp(20px,4vw,48px);">
+        <figure class="cs-figure" style="margin:0;">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(24,24,27,0.10);background:#18181B;">
+            <iframe
+              src="https://www.youtube.com/embed/T5-bGyJxUbU?start=29&rel=0"
+              title="Lloyds Bank — PayPoint Cash Deposit walkthrough"
+              style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <figcaption>Official Lloyds Bank walkthrough of the launched Deposit Cash at PayPoint service (starts at 0:29). <a href="https://www.youtube.com/watch?v=T5-bGyJxUbU&t=29s" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Watch on YouTube ↗</a></figcaption>
+        </figure>
+      </div>
 
       <!-- Scroll indicator -->
       <div class="scroll-hint scroll-hint--page">
@@ -85,7 +162,7 @@
                     <li><span class="cs-check-mark" aria-hidden="true">✓</span><span>Shaped MVP and MVP+ decisions from research and panel findings</span></li>
                   </ul>
                 </div>
-                <!-- TODO(jee-eun): Specify MVP vs MVP+ split. -->
+                <p style="margin-top:20px;">For MVP, each eligible Current or Savings account supports one active barcode at a time. We deliberately cut barcode editing (deleting and generating a new barcode proved just as fast) and shipped a manual post-scan check ("Tap when used") as an explicit MVP compromise before automated scan confirmation in MVP+.</p>
               </div>
             </div>
           </div>
@@ -106,7 +183,7 @@
                   <h4>1. Create a barcode for the first time</h4>
                   <p>Mapped entry points, PayPoint eligibility, user education, deposit limits and first-time barcode generation.</p>
                 </div>
-                <figure class="cs-figure">
+                <figure class="cs-figure" style="max-width:600px;">
                   <img src="assets/images/paypoint-journey-flow-1.png" alt="Journey flow 1 — Create a barcode for the first time" />
                   <figcaption>V1 Journey 1: creating a barcode for the first time, from entry point and account selection to amount entry and barcode generation.</figcaption>
                 </figure>
@@ -115,7 +192,7 @@
                   <h4>2. Edit my barcode (V1)</h4>
                   <p>Designed so customers could change a mistyped amount on an active barcode without starting again.</p>
                 </div>
-                <figure class="cs-figure">
+                <figure class="cs-figure" style="max-width:600px;">
                   <img src="assets/images/paypoint-journey-flow-2.png" alt="Journey flow 2 — Edit my barcode" />
                   <figcaption>V1 Journey 2: the original edit-barcode flow for mistyped amounts, which I later removed after the Inclusive Design Panel.</figcaption>
                 </figure>
@@ -124,17 +201,16 @@
                   <h4>3. Scan my barcode in a shop</h4>
                   <p>Mapped the in-shop handover with the retailer, scanning, and post-deposit confirmation in the app.</p>
                 </div>
-                <figure class="cs-figure">
+                <figure class="cs-figure" style="max-width:600px;">
                   <img src="assets/images/paypoint-journey-flow-3.png" alt="Journey flow 3 — Scan barcode and deposit in-store" />
                   <figcaption>V1 Journey 3: scanning the barcode in a PayPoint store and viewing confirmation states in the app.</figcaption>
                 </figure>
 
                 <h4>The Inclusive Design Panel changed what 'tested' meant</h4>
-                <p>In September 2024, I took the journey to the Inclusive Design Panel—an internal programme subsidised by an external inclusive design audit institution, bringing together lived-experience experts and subject specialists. I used it to stress-test the flows beyond task completion. While unmoderated testing confirmed users could click through the prototypes, the panel's detailed feedback surfaced financial crime risks such as money mule activity and real-world shop conditions that unmoderated testing had missed.</p>
-                <!-- TODO(jee-eun): Add good feedback from the Inclusive Design Panel talk. -->
+                <p>In September 2024, I took the journey to the Inclusive Design Panel—an internal programme subsidised by an external inclusive design audit institution, bringing together lived-experience experts and subject specialists. While unmoderated testing confirmed users could click through the prototypes, the panel pushed our thinking beyond usability and accessibility into foreseeable harm: coercion, financial abuse, exploitation, and money-muling.</p>
 
                 <h4>I removed my own edit flow</h4>
-                <p>I overruled my own V1 design to reduce financial crime risks such as money mule activity:</p>
+                <p>I cut the V1 edit flow for MVP and restricted accounts to one active barcode per Current or Savings account. Deleting a mistyped barcode and creating a new one was simpler to build and just as easy for customers—while closing off ways to manipulate or reuse active tickets:</p>
                 <div class="cs-compare">
                   <div class="cs-compare-card">
                     <span class="cs-compare-badge">Before · V1</span>
@@ -146,9 +222,8 @@
                   </div>
                 </div>
 
-                <h4>Real-world conditions: no signal, no screenshot</h4>
-                <p>The panel also highlighted a practical barrier in physical shops: customers with no mobile signal in store, or relying on wifi without mobile data, cannot reach their ticket at the counter, and screenshots of the ticket are not possible.</p>
-                <!-- TODO(jee-eun): Add final design response for no-signal and screenshot constraints. -->
+                <h4>Trust vs convenience: why screenshots were blocked</h4>
+                <p>The central design tension was trust versus convenience. Customers liked the convenience of generating a barcode, but they wanted reassurance about handing cash to a corner-shop counter, clear proof of deposit, and unambiguous ticket status. At the same time, screenshot prevention was intentional—blocking screenshots stopped barcodes from being shared or transferred to third parties under coercion or money-muling. That left a real-world trade-off for customers with poor mobile signal in store, which made clear pre-shop guidance and explicit ticket states essential.</p>
 
                 <h4>Users needed to see where their ticket stood</h4>
                 <p>To make single-barcode management clear, I introduced a Deposit Cash home showing three explicit ticket states: active, scanned and expired.</p>
@@ -157,12 +232,11 @@
                   <figcaption>Delivered Deposit Cash screens — showing barcode creation, the "Tap when used" prompt, the single active barcode state, and the Deposit Cash home with Active, Scanned and Expired tabs.</figcaption>
                 </figure>
 
-                <h4>We could not see the scan, so we put the customer in the loop</h4>
-                <p>Scan status does not update automatically in the app; PayPoint can only confirm a scan when our app triggers the check. To work within this constraint, I added a "Tap when used" button—if the ticket has not been scanned yet, the app tells the customer so. The trade-off is that status updates rely on the customer taking that action.</p>
+                <h4>We could not see the scan, so we designed around the constraint</h4>
+                <p>Research strongly preferred automatic confirmation once cash was handed over. In MVP, however, PayPoint could only confirm a scan when our app triggered a check. Rather than pretending that technical constraint did not exist, I added an explicit MVP compromise: a "Tap when used" button. If the ticket has not been scanned yet, the app tells the customer so—giving them clear status feedback while keeping the manual step transparent until automated confirmation arrives in MVP+.</p>
 
-                <h4>What lives outside the app</h4>
-                <p>"Find nearby cash point" began as my own suggestion. I wanted it integrated directly into the Deposit Cash journey, and it shipped as a link to an external page.</p>
-                <!-- TODO(jee-eun): Add reason why "Find nearby cash point" shipped as an external link rather than integrated. -->
+                <h4>Helping customers find a store</h4>
+                <p>I introduced "Find nearby cash point" to minimise friction and clear up confusion around the "cash point" concept, and it shipped as a link to an external page.</p>
               </div>
             </div>
           </div>
@@ -180,12 +254,12 @@
 
                 <div class="insight-card">
                   <h4>Single-barcode logic</h4>
-                  <p>One active barcode at a time, valid for two hours. If a customer mistypes an amount, they delete the active barcode from the Deposit Cash home and create a new one.</p>
+                  <p>One active barcode per Current or Savings account, valid for two hours. If a customer mistypes an amount, they delete the active barcode from the Deposit Cash home and create a new one.</p>
                 </div>
 
                 <div class="insight-card">
-                  <h4>Risk mitigation</h4>
-                  <p>Addressed financial crime risks such as money mule activity by removing barcode editing and capping active tickets. Risk and product teams collaborated to set a reasonable £300 daily limit, and I designed within it.</p>
+                  <h4>Risk &amp; harm mitigation</h4>
+                  <p>Addressed coercion, financial abuse, exploitation, and money-muling by blocking screenshots, cutting barcode editing, and capping active tickets. Risk and product teams set a £300 daily limit, and I designed within it.</p>
                 </div>
               </div>
             </div>
@@ -195,8 +269,45 @@
             <div class="cs-section-layout">
               <div class="cs-section-label"><h3>Impact &amp; outcome</h3></div>
               <div class="cs-section-content">
-                <p>PayPoint Cash Deposit launched in August 2025 across Lloyds Bank, Halifax, and Bank of Scotland. It made Lloyds the first major UK bank to offer in-app barcode cash deposits. Customers can deposit up to £300 a day across 30,000+ PayPoint locations, with 94% of sites open seven days a week and 99.5% of people living within a mile of a PayPoint.</p>
-                <!-- TODO(jee-eun): Add post-launch usage data. -->
+                <p>PayPoint Cash Deposit launched in August 2025 across Lloyds Bank, Halifax, and Bank of Scotland—jointly delivered by the Payment Lab and Payment Services on an end-to-end cloud-native GCP stack, making Lloyds the first major UK bank to offer in-app barcode cash deposits.</p>
+
+                <div class="outcome-bento" aria-label="Post-launch impact metrics">
+                  <div class="bento-tile is-wide is-tint">
+                    <div class="bento-kicker">Aug 2025 – Mar 2026</div>
+                    <div>
+                      <div class="bento-num">223,000</div>
+                      <div class="bento-sub">Deposits completed with consistent month-on-month growth</div>
+                    </div>
+                  </div>
+                  <div class="bento-tile">
+                    <div class="bento-kicker">Volume</div>
+                    <div>
+                      <div class="bento-num">£30.05M</div>
+                      <div class="bento-sub">Total cash deposited across 3 brands</div>
+                    </div>
+                  </div>
+                  <div class="bento-tile">
+                    <div class="bento-kicker">Ticket Size</div>
+                    <div>
+                      <div class="bento-num">£137</div>
+                      <div class="bento-sub">Average deposit (up to £300 daily limit)</div>
+                    </div>
+                  </div>
+                  <div class="bento-tile is-lime">
+                    <div class="bento-kicker">Reach</div>
+                    <div>
+                      <div class="bento-num">30,000+</div>
+                      <div class="bento-sub">PayPoint stores · 94% open 7 days · 99.5% within 1 mile</div>
+                    </div>
+                  </div>
+                  <div class="bento-tile is-dark">
+                    <div class="bento-kicker">FS Tech Awards · Mar 2026</div>
+                    <div>
+                      <div class="bento-num">Winner</div>
+                      <div class="bento-sub">Best Use of IT in Consumer Finance</div>
+                    </div>
+                  </div>
+                </div>
 
                 <a class="cs-press-link" href="https://www.lloydsbankinggroup.com/media/press-releases/2025/lloyds-bank-2025/lloyds-and-paypoint-super-charge-customer-choice-for-cash-depos.html" target="_blank" rel="noopener">
                   <div class="cs-press-icon">
@@ -215,10 +326,7 @@
             <div class="cs-section-layout">
               <div class="cs-section-label"><h3>Reflection</h3></div>
               <div class="cs-section-content">
-                <!-- DRAFT: owner to review -->
                 <p>Unmoderated testing showed me my V1 flows were usable, yet the Inclusive Design Panel proved they were not yet safe or dependable in real-world conditions. Overruling my own first design—removing barcode editing and making ticket states explicit—was the turning point that made the service trustworthy at launch.</p>
-                <!-- /DRAFT -->
-                <!-- TODO(jee-eun): Add what I would do differently. -->
               </div>
             </div>
           </div>
