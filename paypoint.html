@@ -58,8 +58,49 @@
 }
 .bento-tile.is-lime .bento-sub{color:#3F5215;}
 .bento-tile.is-dark .bento-sub{color:rgba(250,250,250,0.72);}
+.jtbd-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:24px 0 32px;
+}
+.jtbd-card{
+  background:#FFFFFF;
+  border:1px solid rgba(24,24,27,0.10);
+  border-radius:16px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:14px;
+}
+.jtbd-card.is-cut{
+  background:#F4F4F6;
+}
+.jtbd-head h4{
+  font-size:15px!important;
+  margin:6px 0 6px!important;
+  line-height:1.3!important;
+}
+.jtbd-head p{
+  font-size:13.5px!important;
+  line-height:1.5!important;
+  color:#52525B!important;
+  margin:0!important;
+}
+.jtbd-thumb{
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(24,24,27,0.08);
+  background:#FFFFFF;
+}
+.jtbd-thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 @media(max-width:760px){
-  .outcome-bento{grid-template-columns:1fr;}
+  .outcome-bento,.jtbd-grid{grid-template-columns:1fr;}
   .bento-tile.is-wide{grid-column:auto;}
   .bento-tile{min-height:auto;}
 }
@@ -236,32 +277,40 @@
                   <figcaption>Early UX exploration board — testing entry points, barcode creation and in-store deposit flows.</figcaption>
                 </figure>
 
-                <div class="insight-card">
-                  <h4>1. Create a barcode for the first time</h4>
-                  <p>Mapped entry points, PayPoint eligibility, user education, deposit limits and first-time barcode generation.</p>
-                </div>
-                <figure class="cs-figure" style="max-width:600px;">
-                  <img src="assets/images/paypoint-journey-flow-1.png" alt="Journey flow 1 — Create a barcode for the first time" />
-                  <figcaption>V1 Journey 1: creating a barcode for the first time, from entry point and account selection to amount entry and barcode generation.</figcaption>
-                </figure>
+                <div class="jtbd-grid" aria-label="Three Jobs-to-be-Done key moments">
+                  <div class="jtbd-card">
+                    <div class="jtbd-head">
+                      <div class="bento-kicker">JTBD 01</div>
+                      <h4>Create a barcode for the first time</h4>
+                      <p>Entry points, PayPoint eligibility, user education, deposit limits, and first-time barcode generation.</p>
+                    </div>
+                    <div class="jtbd-thumb">
+                      <img src="assets/images/paypoint-journey-flow-1.png" alt="V1 Journey 1 — Create a barcode for the first time" />
+                    </div>
+                  </div>
 
-                <div class="insight-card">
-                  <h4>2. Edit my barcode (V1)</h4>
-                  <p>Designed so customers could change a mistyped amount on an active barcode without starting again.</p>
-                </div>
-                <figure class="cs-figure" style="max-width:600px;">
-                  <img src="assets/images/paypoint-journey-flow-2.png" alt="Journey flow 2 — Edit my barcode" />
-                  <figcaption>V1 Journey 2: the original edit-barcode flow for mistyped amounts, which I later removed after the Inclusive Design Panel.</figcaption>
-                </figure>
+                  <div class="jtbd-card is-cut">
+                    <div class="jtbd-head">
+                      <div class="bento-kicker">JTBD 02 · Cut for MVP</div>
+                      <h4>Edit my barcode (V1)</h4>
+                      <p>Let customers fix a mistyped amount on an active barcode—later removed after the Inclusive Design Panel.</p>
+                    </div>
+                    <div class="jtbd-thumb">
+                      <img src="assets/images/paypoint-journey-flow-2.png" alt="V1 Journey 2 — Edit my barcode" />
+                    </div>
+                  </div>
 
-                <div class="insight-card">
-                  <h4>3. Scan my barcode in a shop</h4>
-                  <p>Mapped the in-shop handover with the retailer, scanning, and post-deposit confirmation in the app.</p>
+                  <div class="jtbd-card">
+                    <div class="jtbd-head">
+                      <div class="bento-kicker">JTBD 03</div>
+                      <h4>Scan my barcode in a shop</h4>
+                      <p>In-shop handover with the retailer, barcode scanning, and post-deposit confirmation in the app.</p>
+                    </div>
+                    <div class="jtbd-thumb">
+                      <img src="assets/images/paypoint-journey-flow-3.png" alt="V1 Journey 3 — Scan barcode and deposit in-store" />
+                    </div>
+                  </div>
                 </div>
-                <figure class="cs-figure" style="max-width:600px;">
-                  <img src="assets/images/paypoint-journey-flow-3.png" alt="Journey flow 3 — Scan barcode and deposit in-store" />
-                  <figcaption>V1 Journey 3: scanning the barcode in a PayPoint store and viewing confirmation states in the app.</figcaption>
-                </figure>
 
                 <h4>The Inclusive Design Panel changed what 'tested' meant</h4>
                 <p>In September 2024, I took the journey to the Inclusive Design Panel—an internal programme subsidised by an external inclusive design audit institution, bringing together lived-experience experts and subject specialists. While unmoderated testing confirmed users could click through the prototypes, the panel pushed our thinking beyond usability and accessibility into foreseeable harm: coercion, financial abuse, exploitation, and money-muling.</p>
