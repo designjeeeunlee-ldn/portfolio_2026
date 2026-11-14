@@ -19,6 +19,9 @@ html,body{
   -webkit-font-smoothing:antialiased;
 }
 .cursor,.cursor-ring,.parallax-bg,.scroll-hint{display:none!important}
+html,body,body *{cursor:auto!important}
+a,a *,button,button *,[role="button"],.cs-next-card,.cs-next-card *,[onclick],summary{cursor:pointer!important}
+input,textarea{cursor:text!important}
 .page{display:block!important;opacity:1!important;padding-top:0!important}
 
 /* Sticky Top Navigation */
