@@ -1,0 +1,181 @@
+:root{
+  --bg:#FAFAFA!important;
+  --surface:#FFFFFF!important;
+  --surface-alt:#F4F4F6!important;
+  --white:#FFFFFF!important;
+  --ink:#18181B!important;
+  --ink-2:#52525B!important;
+  --muted:#52525B!important;
+  --accent:#6B53A6!important;
+  --accent-2:#EDF5D5!important;
+  --border:rgba(24,24,27,.10)!important;
+}
+html,body{
+  background:#FAFAFA!important;
+  color:#18181B!important;
+  font-family:'Inter',system-ui,sans-serif!important;
+  font-size:15px!important;
+  line-height:1.6!important;
+  -webkit-font-smoothing:antialiased;
+}
+.cursor,.cursor-ring,.parallax-bg,.scroll-hint{display:none!important}
+.page{display:block!important;opacity:1!important;padding-top:0!important}
+
+/* Sticky Top Navigation */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,250,250,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(24,24,27,.10);
+}
+.topbar-inner{
+  max-width:1160px;margin:0 auto;padding:12px clamp(20px,4vw,48px);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.brand{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;text-decoration:none;color:#18181B}
+.brand span{font-weight:400;color:#52525B;margin-left:4px}
+.nav-back{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;
+  padding:5px 14px;border-radius:999px;border:1px solid rgba(24,24,27,.14);
+  color:#18181B;background:#FFFFFF;text-decoration:none;transition:border-color .15s;
+}
+.nav-back:hover{border-color:#6B53A6;color:#6B53A6}
+
+/* Case Study Typography & Hierarchy */
+.cs-breadcrumb{display:none!important}
+.cs-header{background:#FAFAFA!important;border-bottom:1px solid rgba(24,24,27,.10)!important;padding:clamp(40px,6vw,72px) 0 clamp(32px,4vw,48px)!important}
+.cs-header-grid{gap:clamp(28px,5vw,72px)!important}
+.wrap{max-width:1160px!important;padding:0 clamp(20px,4vw,48px)!important}
+.cs-title{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif!important;
+  font-size:clamp(34px,5.2vw,60px)!important;
+  font-weight:700!important;line-height:1.06!important;letter-spacing:-.03em!important;
+  color:#18181B!important;margin-bottom:18px!important;
+}
+.cs-summary{font-size:clamp(17px,1.8vw,20px)!important;color:#52525B!important;line-height:1.55!important;max-width:54ch!important;margin-bottom:16px!important}
+.cs-date{
+  display:inline-block;margin-top:4px!important;
+  font-family:'JetBrains Mono',monospace!important;font-size:11.5px!important;
+  background:#EDF5D5;color:#4A6118!important;border:1px solid #D8E6B3;
+  padding:4px 12px;border-radius:999px;
+}
+.cs-meta-item{margin-bottom:20px!important}
+.cs-meta-item:last-child{margin-bottom:0!important}
+.cs-meta-label{
+  font-family:'JetBrains Mono',monospace!important;font-size:11px!important;
+  text-transform:uppercase!important;letter-spacing:.08em!important;color:#6B53A6!important;
+  margin-bottom:4px!important;
+}
+.cs-meta-value{font-size:14px!important;line-height:1.5!important;color:#18181B!important;font-weight:500!important}
+
+.cs-hero-img{background:#F4F4F6!important;border-bottom:1px solid rgba(24,24,27,.10)}
+.cs-hero-img img,.cs-figure img{border-radius:12px!important}
+.cs-body{padding:clamp(44px,6vw,72px) 0!important}
+
+.cs-section{
+  border-bottom:1px solid rgba(24,24,27,.10)!important;
+  padding-bottom:clamp(40px,5vw,56px)!important;
+  margin-bottom:clamp(40px,5vw,56px)!important;
+}
+.cs-section:last-child{border-bottom:none!important;padding-bottom:0!important;margin-bottom:0!important}
+.cs-section-label h3{
+  font-family:'JetBrains Mono',monospace!important;font-size:11.5px!important;
+  text-transform:uppercase!important;letter-spacing:.08em!important;
+  color:#6B53A6!important;font-weight:500!important;
+}
+.cs-section-content p{
+  font-size:15.5px!important;line-height:1.7!important;color:#18181B!important;
+  margin-bottom:20px!important;max-width:64ch!important;
+}
+.cs-section-content h4{
+  font-family:'Plus Jakarta Sans',sans-serif!important;font-size:19px!important;
+  font-weight:700!important;line-height:1.3!important;letter-spacing:-.015em!important;
+  text-transform:none!important;color:#18181B!important;margin:40px 0 12px!important;
+}
+.cs-section-content h4:first-child{margin-top:0!important}
+.cs-section-content ul{margin:16px 0 24px!important;padding-left:20px!important;color:#18181B!important;max-width:64ch}
+.cs-section-content li{font-size:15.5px;line-height:1.68;margin-bottom:10px!important}
+
+.cs-figure{margin:24px 0 32px!important}
+.cs-figure:last-child{margin-bottom:0!important}
+.cs-figure figcaption{font-size:13px!important;line-height:1.55!important;color:#52525B!important;margin-top:10px!important;font-style:normal!important;max-width:64ch!important}
+
+.goal-card,.cs-card,.insight-card{
+  background:#FFFFFF!important;border:1px solid rgba(24,24,27,.10)!important;
+  border-radius:12px!important;padding:22px 24px!important;margin:20px 0 16px!important;
+}
+.insight-card h4{font-size:16px!important;margin:0 0 8px!important}
+.insight-card p{font-size:14.5px!important;line-height:1.62!important;color:#52525B!important;margin-bottom:0!important;max-width:none!important}
+
+.pull-quote{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif!important;
+  font-size:clamp(19px,2.1vw,24px)!important;font-weight:500!important;
+  line-height:1.42!important;letter-spacing:-.015em!important;color:#18181B!important;
+  background:#F3EFFB;border-left:3px solid #6B53A6!important;border-radius:0 12px 12px 0;
+  padding:20px 24px!important;margin:24px 0 10px!important;max-width:64ch!important;
+}
+.cs-quote-attr{font-family:'JetBrains Mono',monospace;font-size:11.5px!important;color:#52525B!important;margin-bottom:28px!important}
+
+.cs-checklist{
+  background:#FFFFFF;border:1px solid rgba(24,24,27,.10);border-radius:12px;
+  padding:24px 28px;margin:24px 0 0;max-width:64ch;
+}
+.cs-checklist h4{margin:0 0 12px!important;font-size:16px!important}
+.cs-checklist ul{list-style:none!important;padding:0!important;margin:0!important;max-width:none}
+.cs-checklist li{
+  padding:12px 0;border-bottom:1px solid rgba(24,24,27,.08);
+  font-size:14.5px!important;line-height:1.55!important;color:#18181B!important;
+  margin-bottom:0!important;display:flex;gap:10px;align-items:baseline;
+}
+.cs-checklist li:last-child{border-bottom:none;padding-bottom:0}
+.cs-check-mark{color:#6B53A6;font-weight:700;flex-shrink:0}
+
+.cs-compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  margin:20px 0 32px;max-width:680px;
+}
+.cs-compare-card{
+  border-radius:12px;padding:20px 22px;border:1px solid rgba(24,24,27,.10);
+  background:#F4F4F6;
+}
+.cs-compare-card.is-after{
+  background:#FFFFFF;border-color:#D8E6B3;
+  box-shadow:0 1px 3px rgba(24,24,27,.04);
+}
+.cs-compare-badge{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:999px;
+  margin-bottom:10px;background:#FFFFFF;color:#52525B;border:1px solid rgba(24,24,27,.10);
+}
+.cs-compare-card.is-after .cs-compare-badge{
+  background:#EDF5D5;color:#4A6118;border-color:#D8E6B3;
+}
+.cs-compare-card p{font-size:14.5px!important;line-height:1.6!important;margin-bottom:0!important;color:#18181B!important}
+
+.cs-press-link{
+  display:inline-flex;align-items:center;gap:14px;padding:14px 18px;
+  background:#FFFFFF;border:1px solid rgba(24,24,27,.12);border-radius:12px;
+  text-decoration:none;margin-top:8px;transition:border-color .15s,transform .15s;
+}
+.cs-press-link:hover{border-color:#6B53A6;transform:translateY(-1px)}
+.cs-press-icon{
+  width:36px;height:36px;background:#6B53A6;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cs-press-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#18181B;margin-bottom:2px}
+.cs-press-url{font-family:'JetBrains Mono',monospace;font-size:11px;color:#52525B}
+
+.cs-quote{
+  background:#18181B!important;color:#FAFAFA!important;border-radius:12px!important;
+  border-left:4px solid #6B53A6!important;padding:24px 28px!important;
+}
+.cs-next-card{cursor:pointer!important}
+.cs-footer-nav{padding:36px 0 64px;border-top:1px solid rgba(24,24,27,.10);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+@media(max-width:768px){
+  .cs-meta{display:grid!important;grid-template-columns:1fr!important;gap:16px!important}
+  .cs-compare{grid-template-columns:1fr}
+  .cs-checklist{padding:20px}
+  .cs-section-content h4{margin:32px 0 10px!important}
+  .cs-next{padding:44px 0 56px!important}
+}
