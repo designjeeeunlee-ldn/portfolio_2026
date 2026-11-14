@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merchant Onboarding — Jee-Eun Lee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theme-cv.css">
+</head>
+<body>
+<nav class="topbar" aria-label="Case study navigation">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">Jee-Eun Lee <span>Design</span></a>
+    <a class="nav-back" href="index.html#work">← Back to work</a>
+  </div>
+</nav>
+
+  <div class="page" id="page-onboarding">
+    <div class="cs-page">
+      <header class="cs-header">
+        <div class="wrap">
+          <div class="cs-breadcrumb"><button onclick="window.location.href='index.html#work'">← Work</button> /Redesigning the Merchant Onboarding Experience</div>
+          <div class="cs-header-grid">
+            <div>
+              <h1 class="cs-title">Redesigning the Merchant Onboarding Experience</h1>
+              <p class="cs-summary">Cardnet is a joint venture between Lloyds Banking Group and Fiserv, offering merchants a comprehensive suite of card payment services — from physical terminals and virtual POS to e-commerce payment gateways.</p>
+              <p class="cs-date">2023</p>
+            </div>
+            <div class="cs-meta">
+              <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value"> <a href="https://www.lloydsbank.com/business/take-payments-with-cardnet.html" target="_blank" rel="noopener">Cardnet</a>, Lloyds Banking Group
+            </div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Service Designer, UX Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Collaboration</div><div class="cs-meta-value">Client Development Centre (CDC), Product, Engineering</div></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cs-hero-img">
+        <img src="assets/images/CDC_hero.jpg" alt="Cardnet onboarding tool — Outlet details, Product selector and Checklist screens across multiple laptops" />
+      </div>
+
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint scroll-hint--page">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+
+      <div class="cs-body">
+        <div class="wrap">
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>The challenge</h3></div>
+              <div class="cs-section-content">
+                <p>Less than 1 in 2 clients onboarded felt positive about their Cardnet experience. The telephony sales and onboarding journey was high-friction, overly scripted, and fragmented across disconnected tools—making it hard for colleagues to build rapport and impossible for customers to track what was happening.</p>
+
+                <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px 40px;margin:32px 0;display:grid;grid-template-columns:1fr 1fr;gap:32px">
+                  <div>
+                    <div style="font-size:42px;font-weight:600;color:var(--ink);margin-bottom:6px">&lt;1 in 2</div>
+                    <div style="font-size:14px;color:var(--ink-2)">clients felt positive about their Cardnet onboarding experience</div>
+                  </div>
+                  <div>
+                    <div style="font-size:42px;font-weight:600;color:var(--ink);margin-bottom:6px">28 min</div>
+                    <div style="font-size:14px;color:var(--ink-2)">average call duration before redesign</div>
+                  </div>
+                </div>
+
+                <div class="insight-card">
+                  <h4>What customers were saying</h4>
+                  <p style="font-style:italic;color:var(--ink-2);">"Lots of information to absorb and your agent walked through it extremely fast."</p>
+                  <p style="font-style:italic;color:var(--ink-2);">"Administration overload. Too many instructions. Very disjointed — emails from no less than 8 different addresses over the course of 5 weeks."</p>
+                </div>
+
+                <h4 style="margin-top:32px">The opportunity</h4>
+                <p>How might we optimise the telephony sales experience with quick and easy wins for both customers and CDC colleagues? Three questions shaped our direction:</p>
+                <div class="goals-grid">
+                  <div class="goal-card">
+                    <div class="goal-icon">💬</div>
+                    <p>How might we customise conversation flow based on customer needs?</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">🤝</div>
+                    <p>How might we create better interactions with customers for higher onboarding rates?</p>
+                  </div>
+                  <div class="goal-card">
+                    <div class="goal-icon">⚡</div>
+                    <p>How might we get to quote quicker for a smoother customer journey?</p>
+                  </div>
+                </div>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_opportunity_map.png" alt="Opportunity map — how might we redesign Cardnet telephony sales journey" />
+                  <figcaption>Opportunity mapping — plotting ideas across user value and feasibility axes to prioritise quick wins, major projects, and fill-ins for the Cardnet telephony sales redesign.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Process</h3></div>
+              <div class="cs-section-content">
+
+                <h4>Discovery — listening to real calls</h4>
+                <p>I started by conducting call listening sessions and contextual inquiry in Leeds and Basildon with telephony colleagues, observing live calls and sales and mapping the as-is journey to surface where friction was really occurring — for both the colleague and the customer.</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_deep-dive.JPG" alt="Deep-dive research session with telephony colleagues" style="width:100%;border-radius:8px" />
+                    <figcaption>Deep-dive research — observing telephony colleagues in Leeds during live calls to map real friction points in the existing journey.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_deep-dive_2.JPG" alt="Prototypes reviewed during deep-dive session on the wall" style="width:100%;border-radius:8px" />
+                    <figcaption>Prototype review on the wall — early screen flows annotated with colleague feedback during deep-dive sessions in Leeds.</figcaption>
+                  </figure>
+                </div>
+
+                <h4>Discovery workshops</h4>
+                <p> I facilitated a series of co-creation and discovery workshops with telephony colleagues, stakeholders from operation   and product, and cross-functional contributors. These sessions moved from mapping pain points to defining a shared north star and generating prioritised ideas.</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_1.JPG" alt="Discovery workshop — team mapping the journey on glass wall" style="width:100%;border-radius:8px" />
+                    <figcaption>Discovery workshop — cross-functional team mapping the existing Cardnet telephony journey, identifying pain points across each stage.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_2.JPG" alt="Workshop — northstar ideation on whiteboard" style="width:100%;border-radius:8px" />
+                    <figcaption>North star ideation — colleagues defining what success looks like for the redesigned journey: "not like a robot," "conversations more meaningful," "empowered to help us."</figcaption>
+                  </figure>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0">
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_3.PNG" alt="Workshop — journey stages on glass wall with sticky notes" style="width:100%;border-radius:8px" />
+                    <figcaption>Journey stage mapping — organising the telephony flow into Pre-call Preparation, Verification, Understand Needs, Product, Pricing, and Follow-up stages.</figcaption>
+                  </figure>
+                  <figure class="cs-figure" style="margin:0">
+                    <img src="assets/images/CDC_process_discovery_workshop_4.PNG" alt="Workshop team group photo — redesigning telephony sales journey" style="width:100%;border-radius:8px" />
+                    <figcaption>The cross-functional workshop team — bringing together telephony colleagues, design, product, and risk to align on the future journey.</figcaption>
+                  </figure>
+                </div>
+
+                <div class="pull-quote">"The breakthrough came from letting colleagues shape the script structure — they knew exactly where rigid compliance ordering broke natural rapport."</div>
+
+                <h4>Co-creation & prototyping</h4>
+                <p>Working closely with the CDC team, I co-created and iterated on the redesigned onboarding tool — integrating fragmented systems, simplifying the product decision tree, and building a templated quote email that colleagues could send directly from the tool. Prototypes were tested with both colleagues and customers in two rounds of user testing.</p>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_process_cocreation.JPG" alt="Co-creation session — CDC team working together around a table" />
+                  <figcaption>Co-creation session — CDC colleagues and the design team working together to shape the redesigned onboarding journey, screens, and conversation guides.</figcaption>
+                </figure>
+
+                <figure class="cs-figure">
+                  <img src="assets/images/CDC_process_prototying.JPG" alt="Prototyping session — screens printed and annotated on wall" />
+                  <figcaption>Second round of testing with sales colleagues — simulating a live onboarding call to validate the conversation flow end to end.</figcaption>
+                </figure>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>What we delivered</h3></div>
+              <div class="cs-section-content">
+                <p>A redesigned end-to-end onboarding tool for colleagues, built around natural conversation rather than rigid compliance ordering — with every component validated by the people who would use it daily.</p>
+
+                <figure class="cs-figure" style="margin:28px 0 0;">
+                  <img src="assets/images/CDC_screens.jpg" alt="Redesigned Cardnet onboarding tool — key screens across product selector, outlet details, checklist, principal details, eCommerce, and quote email" style="width:100%;border-radius:8px;border:1px solid var(--border);" />
+                  <figcaption>Key screens from the redesigned onboarding tool — from guided product selection and outlet details through to the integrated checklist, principal details form, eCommerce product view, and templated customer quote email.</figcaption>
+                </figure>
+
+                <div class="insight-card">
+                  <h4>Key deliverables</h4>
+                  <p>✓ Redesigned onboarding tool with integrated credit risk requirements (previously fragmented across tools)</p>
+                  <p>✓ Templated customer quote email with embedded pricing matrix for consistent communication</p>
+                  <p>✓ Simplified guided terminal decision tree replacing legacy product selection</p>
+                  <p>✓ Updated conversation guides aligned to natural call flow</p>
+                  <p>✓ Measurement framework tracking lead volume, sales conversion, and time spent</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Impact</h3></div>
+              <div class="cs-section-content">
+                
+                <div class="metrics-row">
+                  <div class="metric-card">
+                    <div class="metric-num">50%</div>
+                    <div class="metric-label">Reduction in time to quote (5–10 mins saved)</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">30%</div>
+                    <div class="metric-label">Reduction in time to complete application</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-num">5 of 12</div>
+                    <div class="metric-label">Colleague touchpoints removed from the journey</div>
+                  </div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px">
+                  <div class="insight-card" style="margin:0">
+                    <h4>Customer feedback</h4>
+                    <p style="font-style:italic;color:var(--ink-2);">"I can see everything on one page! And there is the picture of the device too. It's good to have the rates there as I couldn't catch all of them while on the call."</p>
+                    <p style="font-style:italic;color:var(--ink-2);">"I like that I can get back to the same person — it's good to know he will be there to support and answer questions."</p>
+                    <p style="font-size:13px;color:var(--ink-3);margin-top:8px">— Customer, user test feedback</p>
+                  </div>
+                  <div class="insight-card" style="margin:0">
+                    <h4>Colleague feedback</h4>
+                    <p style="font-style:italic;color:var(--ink-2);">"Showing this quote email to customers will make us more competitive, especially when other players can send a user-friendly quote — this would add to our credibility."</p>
+                    <p style="font-size:13px;color:var(--ink-3);margin-top:8px">— Colleague, user test feedback</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-layout">
+              <div class="cs-section-label"><h3>Reflection</h3></div>
+              <div class="cs-section-content">
+                <p>This project reinforced that the best service design happens when you design with the people doing the work — not just for them. The telephony sales colleagues who interact with customers in daily basis knew exactly where the script broke down; my role was creating the space and structure for their expertise to shape the solution.</p>
+                <p>The challenge wasn't just redesigning a tool — it was redesigning human to human interaction. Moving from rigid compliance-first ordering to conversation-first design required building trust with risk and compliance teams, and demonstrating that natural conversation and regulatory requirements aren't mutually exclusive.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-next">
+        <div class="wrap">
+          <p class="next-label">Back to all work</p>
+          <div class="cs-next-card" onclick="window.location.href='index.html#work'">
+            <div><h3>View all selected work</h3><p>Return to the portfolio homepage to explore all case studies.</p></div>
+            <div class="cs-next-thumb t1"><div class="mock-ui" style="height:100%"><div class="mock-card" style="width:65%"><div class="mock-bar" style="width:90%"></div><div class="mock-bar" style="width:65%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end onboarding -->
+
+
+  
+  <!-- ══════════════ FORD CASE STUDY ══════════════ -->
+
+<div class="wrap">
+  <div class="cs-footer-nav">
+    <a class="nav-back" href="index.html#work">← All projects</a>
+    <a class="nav-back" href="msr.html">Next: Microsoft Research →</a>
+  </div>
+</div>
+</body>
+</html>
