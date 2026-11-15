@@ -64,6 +64,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   color:var(--ink)!important;background:var(--surface);
 }
 .nav-back:hover{border-color:var(--ink)}
+.cs-footer-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:36px 0 64px;border-top:1px solid var(--hairline)}
+.cs-footer-nav a{text-decoration:none}
 
 .container{max-width:1160px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
 
@@ -140,16 +142,35 @@ section.sec:last-of-type{border-bottom:0}
 .dark-band .kicker{color:var(--accent-pastel)}
 .pq{font-family:var(--font-display);font-size:clamp(22px,2.8vw,34px);line-height:1.25;font-weight:600;letter-spacing:-.015em}
 .pq mark{background:none;color:var(--accent-pastel)}
-.ft{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:18px}
-.ft div{border-radius:var(--radius);padding:18px 20px;font-size:15px;font-weight:500}
+.ft{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-top:18px}
+.ft div{border-radius:var(--radius);padding:18px 20px;font-size:15px;font-weight:500;display:flex;flex-direction:column;justify-content:center}
 .ft .f{background:var(--surface-alt);color:var(--ink)}
 .ft .t{background:var(--accent-soft);color:var(--ink)}
-.ft i{font-style:normal;font-size:20px;color:var(--muted)}
+.ft i{font-style:normal;font-size:20px;color:var(--muted);align-self:center}
 .ft small{display:block;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:4px}
 
 /* Problem Journey Strip */
 .jc{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:18px;list-style:none;padding:0}
-.jc li{border-radius:10px;padding:14px;background:var(--surface);border:1px solid var(--hairline);font-size:13px;color:var(--muted)}
+.jc li{
+  border-radius:10px;padding:14px;background:var(--surface);border:1px solid var(--hairline);
+  font-size:13px;color:var(--muted);
+  transform-origin:center;
+  will-change:transform,box-shadow;
+  animation:jcStepPop 7.2s cubic-bezier(.22,1,.36,1) infinite;
+}
+.jc li:nth-child(1){animation-delay:0s}
+.jc li:nth-child(2){animation-delay:1.2s}
+.jc li:nth-child(3){animation-delay:2.4s}
+.jc li:nth-child(4){animation-delay:3.6s}
+.jc li:nth-child(5){animation-delay:4.8s}
+.jc li:nth-child(6){animation-delay:6.0s}
+@keyframes jcStepPop{
+  0%,20%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 0 rgba(107,83,166,0)}
+  5%,13%{transform:translateY(-3px) scale(1.045);box-shadow:0 14px 28px -12px rgba(107,83,166,.34)}
+}
+@media (prefers-reduced-motion: reduce){
+  .jc li{animation:none}
+}
 .jc li b{display:block;font-family:var(--font-display);font-size:14.5px;color:var(--ink);margin-bottom:2px}
 .jc li.mid{background:var(--accent-soft);border-color:transparent}
 .jc li.on{background:var(--dark-bg);border-color:transparent;color:rgba(250,250,250,.85)}
@@ -325,15 +346,7 @@ hr.sp{border:0;border-top:1px solid var(--hairline);margin:40px 0}
   <div class="topbar-inner">
     <a class="brand" href="index.html">Jee-Eun Lee <span>Design</span></a>
     <div class="nav-links">
-      <a href="#context">Context</a>
-      <a href="#pivot">Discovery</a>
-      <a href="#problem">Problem</a>
-      <a href="#design">Design Process</a>
-      <a href="#moments">Solution</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#proof">Impact</a>
-      <a href="#parallel">Parallel Work</a>
-      <a class="nav-back" href="index.html">← Back to work</a>
+      <a class="nav-back" href="index.html#work">← Back to work</a>
     </div>
   </div>
 </nav>
@@ -789,6 +802,11 @@ hr.sp{border:0;border-top:1px solid var(--hairline);margin:40px 0}
   </div>
   <div class="par">Not one building block after another: all three run in parallel, in a complex organisation.</div>
 </section>
+
+<div class="cs-footer-nav">
+  <a class="nav-back" href="index.html#work">← All projects</a>
+  <a class="nav-back" href="paypoint.html">Next: PayPoint Cash Deposit →</a>
+</div>
 
 </main>
 
