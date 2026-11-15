@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generated Narrative Summary — Stageshow Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{
+  background:#F4F4F6;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:#111827;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.stage-wrap{
+  position:relative;
+  width:100%;
+  max-width:740px;
+}
+
+/* Generated Narrative Summary Card */
+.nar-card{
+  position:relative;
+  background:#FFFFFF;
+  border:1px solid #E5E7EB;
+  border-radius:14px;
+  box-shadow:0 24px 48px -22px rgba(0,0,0,.14);
+  overflow:hidden;
+}
+
+.nar-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 22px;
+  border-bottom:1px solid #ECEEF2;
+  background:#FFFFFF;
+}
+.nar-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:#374151;
+  text-transform:uppercase;
+}
+.nar-badges{display:flex;align-items:center;gap:6px}
+.badge-ai{
+  font-size:10px;font-weight:700;letter-spacing:.04em;
+  padding:3px 8px;border-radius:5px;
+  background:#E6F7EE;color:#059669;text-transform:uppercase;
+  transition:all .25s ease;
+}
+.badge-ver{
+  font-size:10px;font-weight:600;
+  padding:3px 8px;border-radius:5px;
+  border:1px solid #E5E7EB;color:#6B7280;background:#FAFAFA;
+  font-variant-numeric:tabular-nums;
+}
+
+.nar-body{
+  padding:18px 22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:#FAFAFB;
+}
+
+/* Inner Sub-Cards */
+.sub-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:12px;
+  background:#FFFFFF;
+  border:1px solid #ECEEF2;
+  border-radius:10px;
+  padding:16px 18px;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+.sub-spark{
+  width:24px;height:24px;border-radius:50%;
+  background:#EFFAF3;color:#10B981;
+  display:grid;place-items:center;
+  cursor:pointer;
+  transition:background-color .2s, transform .15s;
+}
+.sub-spark svg{animation:slowSpark 3.2s ease-in-out infinite}
+@keyframes slowSpark{
+  0%,100%{transform:scale(1) rotate(0deg);opacity:.9}
+  50%{transform:scale(1.12) rotate(8deg);opacity:1}
+}
+.sub-spark.is-active{
+  background:#10B981;color:#fff;transform:scale(1.08);
+}
+.sub-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.05em;
+  color:#6B7280;text-transform:uppercase;margin-bottom:8px;
+}
+.sub-text{
+  font-size:12.5px;line-height:1.62;color:#1F2937;font-variant-numeric:tabular-nums;
+}
+.sub-text p+p{margin-top:8px}
+
+/* Evidence Highlights */
+.ev{
+  text-decoration:underline;
+  text-decoration-color:#10B981;
+  text-underline-offset:3px;
+  text-decoration-thickness:1.5px;
+  border-radius:3px;
+  padding:0 2px;
+  transition:background-color .25s ease, color .25s ease;
+}
+.ev.is-lit{
+  background:#D1FAE5;
+  color:#065F46;
+}
+.ev-dark{
+  text-decoration:underline;
+  text-decoration-color:#374151;
+  text-underline-offset:3px;
+  text-decoration-thickness:1.5px;
+}
+
+.new-sentence{
+  display:none;
+  background:#EFFAF3;
+  border-radius:4px;
+  padding:2px 4px;
+  animation:fadeIn .45s ease;
+}
+.new-sentence.is-shown{display:inline}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Source Chips */
+.chip-row{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;
+}
+.src-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10.5px;font-weight:500;color:#4B5563;
+  background:#F9FAFB;border:1px solid #E5E7EB;
+  border-radius:6px;padding:4px 8px;
+  transition:all .25s ease;
+}
+.src-chip.is-lit{
+  background:#E6F7EE;border-color:#10B981;color:#065F46;font-weight:600;
+}
+
+/* Bottom Bar */
+.nar-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 22px;border-top:1px solid #ECEEF2;background:#FFFFFF;
+}
+.btn-edit{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:7px;border:none;
+  background:#18181B;color:#FFFFFF;font-family:inherit;font-size:12px;font-weight:600;
+}
+.btn-insert{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:7px;border:none;
+  background:#006A4E;color:#FFFFFF;font-family:inherit;font-size:12px;font-weight:600;
+}
+
+/* Floating "What do you want to change?" AI Edit Popover */
+.edit-popover{
+  position:absolute;
+  top:58px;left:48px;
+  width:340px;
+  background:#FFFFFF;
+  border:1px solid #D1D5DB;
+  border-radius:12px;
+  box-shadow:0 20px 44px -12px rgba(17,24,39,.26);
+  padding:12px;
+  z-index:20;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(6px) scale(.97);
+  transition:opacity .25s ease, transform .25s cubic-bezier(.22,1,.36,1);
+}
+.edit-popover.is-open{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+.pop-input-row{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid #D1D5DB;border-radius:8px;
+  padding:8px 10px;background:#F9FAFB;
+  margin-bottom:8px;
+}
+.pop-input-row.is-typing{
+  background:#FFFFFF;border-color:#00875A;
+}
+.pop-prompt{
+  flex:1;font-size:12px;color:#6B7280;line-height:1.4;
+}
+.pop-prompt.has-val{color:#111827}
+.caret{
+  display:none;width:1.5px;height:13px;background:#00875A;
+  vertical-align:-2px;margin-left:1px;animation:blink .8s step-end infinite;
+}
+.pop-input-row.is-typing .caret{display:inline-block}
+@keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+
+.pop-send{
+  width:24px;height:24px;border-radius:50%;border:none;
+  background:#9CA3AF;color:#fff;display:grid;place-items:center;flex-shrink:0;
+  font-size:12px;font-weight:700;
+  transition:background-color .2s, transform .15s;
+}
+.pop-send.is-ready{background:#006A4E}
+.pop-send.is-pressed{transform:scale(.9)}
+
+.pop-options{display:flex;flex-direction:column;gap:4px}
+.pop-opt{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 8px;border-radius:6px;font-size:11.5px;color:#374151;
+  transition:background-color .2s, color .2s;
+}
+.pop-opt.is-selected{background:#EFFAF3;color:#065F46;font-weight:600}
+
+/* Animated Cursor (GPU compositor transform) */
+.cursor{
+  position:absolute;width:22px;height:22px;pointer-events:none;z-index:30;
+  left:0;top:0;
+  transform:translate3d(420px,190px,0);
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));
+}
+.cursor svg{transition:transform .15s ease-out}
+.cursor.is-clicking svg{transform:scale(.82)}
+.cursor-ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid #006A4E;opacity:0;transform:scale(.5);
+}
+.cursor.is-clicking .cursor-ring{animation:ripple .45s ease-out}
+@keyframes ripple{0%{opacity:.9;transform:scale(.5)}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion: reduce){
+  .cursor{display:none}
+}
+
+@media(max-width:600px){
+  .edit-popover{left:16px;right:16px;width:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="stage-wrap" id="stage-wrap">
+  <div class="nar-card">
+    <div class="nar-head">
+      <div class="nar-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/></svg>
+        <span>GENERATED NARRATIVE SUMMARY</span>
+      </div>
+      <div class="nar-badges">
+        <span class="badge-ai" id="badge-ai">AI ASSISTED</span>
+        <span class="badge-ver" id="badge-ver">V 1.1</span>
+      </div>
+    </div>
+
+    <div class="nar-body">
+      <!-- Application Summary -->
+      <div class="sub-card">
+        <div class="sub-spark" id="sub-spark" title="Edit with AI">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/></svg>
+        </div>
+        <div>
+          <div class="sub-label">APPLICATION SUMMARY</div>
+          <div class="sub-text">
+            <p>The applicant is seeking a commercial term loan to facilitate the acquisition of high-yield residential properties across Greater Manchester. This strategic pivot leverages current market inefficiencies in the Northern Powerhouse region. The applicants have demonstrated an established and profitable property letting activity. Property accounts show <span class="ev" id="ev-income">gross rental income of £65,387 per annum and net rental income of £59,827 per annum after property expenses of £5,560</span>. The HMRC property return also evidences taxable property profits arising from UK property income.</p>
+            <p>The property business generates a <span class="ev">net rental margin of approximately 91.5% (£59,827 ÷ £65,387)</span>, indicating that the portfolio is producing a significant surplus after operating costs. <span class="new-sentence" id="new-sentence">The applicants have a proven track record of acquiring and successfully managing residential investment properties, with eight properties acquired and refurbished over the last five years, all of which are currently fully occupied.</span></p>
+          </div>
+          <div class="chip-row">
+            <span class="src-chip" id="chip-accounts">📄 Property Accounts</span>
+            <span class="src-chip">📄 Jan 25 statement</span>
+            <span class="src-chip">📄 Feb 25 statement</span>
+            <span class="src-chip">📄 HMRC Tax Return</span>
+          </div>
+        </div>
+
+        <!-- Inline AI Edit Popover -->
+        <div class="edit-popover" id="edit-popover">
+          <div class="pop-input-row" id="pop-input-row">
+            <div class="pop-prompt" id="pop-prompt"><span id="pop-typed">What do you want to change?</span><span class="caret"></span></div>
+            <button type="button" class="pop-send" id="pop-send" aria-label="Apply">↑</button>
+          </div>
+          <div class="pop-options">
+            <div class="pop-opt">✦ Auto rewrite</div>
+            <div class="pop-opt">↻ Retrieve latest client data</div>
+            <div class="pop-opt" id="opt-conv">💬 Incorporate recent client conversations</div>
+            <div class="pop-opt">📄 Emphasise serviceability evidence</div>
+            <div class="pop-opt">✓ Use the latest CRM updates</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Risks and Mitigants -->
+      <div class="sub-card">
+        <div class="sub-spark">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/></svg>
+        </div>
+        <div>
+          <div class="sub-label">KEY RISKS AND MITIGANTS</div>
+          <div class="sub-text">
+            <p>The repayment strategy is dependent upon the continued performance and occupancy of the secured residential investment properties. <span class="ev-dark">Market conditions, rental demand and property values may impact future income generation and refinancing options.</span></p>
+            <p>External market analysis indicates <span class="ev-dark">continued tenant demand within the local rental market</span>, while security analysis confirms that the property is currently income-producing and generating rental income consistent with the submitted accounts. <span class="ev-dark">Independent property valuation also supports the security position and provides additional protection against market fluctuations.</span></p>
+          </div>
+          <div class="chip-row">
+            <span class="src-chip">📄 Security Property Analysis</span>
+            <span class="src-chip">📄 External Market Research</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Commentary -->
+      <div class="sub-card">
+        <div class="sub-spark">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/></svg>
+        </div>
+        <div>
+          <div class="sub-text">
+            <p>Market data for the Manchester metropolitan area indicates a persistent supply-demand imbalance, specifically in professional let multi-unit blocks. This supports the viability of the proposed 1.45x DSCR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nar-foot">
+      <button type="button" class="btn-edit">✎ Edit</button>
+      <button type="button" class="btn-insert">Insert into application</button>
+    </div>
+  </div>
+
+  <!-- Animated Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M5 3L19 12L12.5 13.8L9.5 20L5 3Z" fill="#18181B" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('stage-wrap');
+  var cursor = document.getElementById('cursor');
+  var evIncome = document.getElementById('ev-income');
+  var chipAccounts = document.getElementById('chip-accounts');
+  var subSpark = document.getElementById('sub-spark');
+  var editPopover = document.getElementById('edit-popover');
+  var optConv = document.getElementById('opt-conv');
+  var popInputRow = document.getElementById('pop-input-row');
+  var popPrompt = document.getElementById('pop-prompt');
+  var popTyped = document.getElementById('pop-typed');
+  var popSend = document.getElementById('pop-send');
+  var newSentence = document.getElementById('new-sentence');
+  var badgeAi = document.getElementById('badge-ai');
+  var badgeVer = document.getElementById('badge-ver');
+
+  var rmEditText = 'The applicants have acquired and refurbished 8 properties over the last 5 years, all currently fully let.';
+  var timers = [];
+
+  function clearTimers(){
+    timers.forEach(clearTimeout);
+    timers = [];
+  }
+
+  function setCursorPos(x, y){
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  function moveCursor(el, click){
+    var wr = wrap.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    setCursorPos(er.left - wr.left + er.width * 0.5, er.top - wr.top + er.height * 0.55);
+    if (click) {
+      timers.push(setTimeout(function(){
+        cursor.classList.add('is-clicking');
+        timers.push(setTimeout(function(){ cursor.classList.remove('is-clicking'); }, 240));
+      }, 620));
+    }
+  }
+
+  function resetAll(){
+    evIncome.classList.remove('is-lit');
+    chipAccounts.classList.remove('is-lit');
+    subSpark.classList.remove('is-active');
+    editPopover.classList.remove('is-open');
+    optConv.classList.remove('is-selected');
+    popInputRow.classList.remove('is-typing');
+    popPrompt.classList.remove('has-val');
+    popTyped.textContent = 'What do you want to change?';
+    popSend.classList.remove('is-ready', 'is-pressed');
+    newSentence.classList.remove('is-shown');
+    badgeAi.textContent = 'AI ASSISTED';
+    badgeVer.textContent = 'V 1.1';
+    setCursorPos(480, 180);
+  }
+
+  function runSequence(){
+    clearTimers();
+    resetAll();
+
+    // 1. Hover underlined financial evidence -> highlights source chip
+    timers.push(setTimeout(function(){
+      moveCursor(evIncome, false);
+      timers.push(setTimeout(function(){
+        evIncome.classList.add('is-lit');
+        chipAccounts.classList.add('is-lit');
+      }, 680));
+    }, 900));
+
+    // 2. Move to sparkle icon and click -> opens "What do you want to change?" popover
+    timers.push(setTimeout(function(){
+      evIncome.classList.remove('is-lit');
+      chipAccounts.classList.remove('is-lit');
+      moveCursor(subSpark, true);
+      timers.push(setTimeout(function(){
+        subSpark.classList.add('is-active');
+        editPopover.classList.add('is-open');
+      }, 680));
+    }, 2800));
+
+    // 3. Select "Incorporate recent client conversations" & type RM edit context
+    timers.push(setTimeout(function(){
+      moveCursor(optConv, true);
+      timers.push(setTimeout(function(){
+        optConv.classList.add('is-selected');
+        popInputRow.classList.add('is-typing');
+        popPrompt.classList.add('has-val');
+        popTyped.textContent = '';
+        popSend.classList.add('is-ready');
+        var i = 0;
+        function typeStep(){
+          if (i <= rmEditText.length) {
+            popTyped.textContent = rmEditText.slice(0, i);
+            i++;
+            timers.push(setTimeout(typeStep, 42));
+          }
+        }
+        typeStep();
+      }, 680));
+    }, 4300));
+
+    // 4. Click Send (↑) -> closes popover & inserts updated sentence (V 1.2)
+    timers.push(setTimeout(function(){
+      moveCursor(popSend, true);
+      timers.push(setTimeout(function(){
+        popSend.classList.add('is-pressed');
+        editPopover.classList.remove('is-open');
+        subSpark.classList.remove('is-active');
+        newSentence.classList.add('is-shown');
+        badgeAi.textContent = 'UPDATED';
+        badgeVer.textContent = 'V 1.2';
+      }, 680));
+    }, 9800));
+
+    timers.push(setTimeout(runSequence, 13000));
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false;
+  if (!reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !running) { running = true; runSequence(); }
+        else if (!entries[0].isIntersecting && running) { running = false; clearTimers(); }
+      }, { threshold: 0.15 }).observe(wrap);
+    } else {
+      runSequence();
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -115,7 +115,7 @@ input,textarea{cursor:text!important}
   font-family:'Plus Jakarta Sans',system-ui,sans-serif!important;
   font-size:clamp(19px,2.1vw,24px)!important;font-weight:500!important;
   line-height:1.42!important;letter-spacing:-.015em!important;color:#18181B!important;
-  background:#F3EFFB;border-left:3px solid #6B53A6!important;border-radius:0 12px 12px 0;
+  background:#F4F4F6;border:1px solid rgba(24,24,27,.10)!important;border-radius:12px;
   padding:20px 24px!important;margin:24px 0 10px!important;max-width:64ch!important;
 }
 .cs-quote-attr{font-family:'JetBrains Mono',monospace;font-size:11.5px!important;color:#52525B!important;margin-bottom:28px!important}
@@ -171,7 +171,7 @@ input,textarea{cursor:text!important}
 
 .cs-quote{
   background:#18181B!important;color:#FAFAFA!important;border-radius:12px!important;
-  border-left:4px solid #6B53A6!important;padding:24px 28px!important;
+  border-left:none!important;padding:24px 28px!important;
 }
 .cs-next-card{cursor:pointer!important}
 .cs-footer-nav{padding:36px 0 64px;border-top:1px solid rgba(24,24,27,.10);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}

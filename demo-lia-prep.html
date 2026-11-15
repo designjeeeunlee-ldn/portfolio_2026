@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIA AI Workspace — Stageshow Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{
+  background:#F4F4F6;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:#111827;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.stage-wrap{
+  position:relative;
+  width:100%;
+  max-width:540px;
+}
+
+/* Exact Right Workspace Card */
+.lia-panel{
+  position:relative;
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  grid-template-rows:minmax(0,1fr);
+  height:680px;
+  background:#FFFFFF;
+  border:1.5px solid #B7E2C9;
+  border-radius:16px;
+  box-shadow:0 24px 48px -20px rgba(0,0,0,.16);
+  overflow:hidden;
+}
+
+/* Left Icon Rail — Top-aligned per original design */
+.lia-rail{
+  background:#FFFFFF;
+  border-right:1px solid #ECEEF0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:16px 0 14px;
+}
+.rail-top{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.rail-a{
+  width:26px;height:26px;border-radius:6px;
+  background:#0F3D2E;color:#fff;
+  font-size:11.5px;font-weight:700;
+  display:grid;place-items:center;
+  margin-bottom:2px;
+}
+.rail-btn{
+  width:30px;height:30px;border-radius:8px;
+  display:grid;place-items:center;
+  color:#6B7280;
+}
+.rail-btn.is-active{
+  background:#E6F7EE;
+  color:#006A4E;
+}
+.rail-collapse{
+  margin-top:auto;
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid #E5E7EB;
+  display:grid;place-items:center;
+  color:#6B7280;font-size:12px;
+}
+
+/* Top-left AI Orb in Header */
+.lia-orb{
+  width:26px;height:26px;border-radius:50%;
+  background:#EFFAF3;color:#10B981;
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+.lia-orb svg{animation:slowSpark 3.2s ease-in-out infinite}
+@keyframes slowSpark{
+  0%,100%{transform:scale(1) rotate(0deg);opacity:.9}
+  50%{transform:scale(1.12) rotate(8deg);opacity:1}
+}
+
+/* Main Workspace Column */
+.lia-main{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+}
+
+/* Fixed Top Bar */
+.lia-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:16px 28px 12px;
+  background:#FFFFFF;
+  flex-shrink:0;
+}
+.lia-status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#10B981;
+  transition:transform .25s ease;
+}
+.status-dot.is-pulsing{
+  animation:dotPulse .9s ease-in-out infinite;
+}
+@keyframes dotPulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.6);opacity:.5}
+}
+.status-text{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:#4B5563;
+  text-transform:uppercase;
+}
+.head-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.size-toggle{
+  display:inline-flex;
+  border:1px solid #E5E7EB;
+  border-radius:6px;
+  overflow:hidden;
+  font-size:10.5px;
+  font-weight:600;
+}
+.size-toggle span{
+  padding:3px 8px;
+  color:#9CA3AF;
+  background:#fff;
+}
+.size-toggle span:first-child{
+  color:#111827;
+  background:#F9FAFB;
+  border-right:1px solid #E5E7EB;
+}
+.close-x{
+  color:#6B7280;
+  font-size:16px;
+  line-height:1;
+}
+
+/* Scrollable Middle Region — Generous Spacing */
+.lia-scroll{
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  padding:10px 28px 26px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  scrollbar-width:thin;
+  scrollbar-color:#D1D5DB transparent;
+}
+.lia-scroll > *{flex-shrink:0}
+.lia-scroll::-webkit-scrollbar{width:5px}
+.lia-scroll::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:999px}
+
+/* Prepared Banner */
+.prep-banner{
+  background:#EFFAF3;
+  border:1px solid #D5F0E0;
+  border-radius:10px;
+  padding:11px 13px;
+}
+.prep-title{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#00875A;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.prep-sub{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11.5px;
+  color:#374151;
+}
+
+/* Greeting */
+.lia-msg{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.lia-typing-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.sage-avatar{
+  width:24px;height:24px;border-radius:50%;
+  background:#9AD1AD;
+}
+.dots-thinking{
+  display:flex;gap:3px;
+}
+.dots-thinking span{
+  width:4px;height:4px;border-radius:50%;background:#9CA3AF;
+  transition:opacity .2s;
+}
+.dots-thinking.is-active span{
+  animation:thinkBounce 1s infinite;
+}
+.dots-thinking.is-active span:nth-child(2){animation-delay:.15s}
+.dots-thinking.is-active span:nth-child(3){animation-delay:.3s}
+@keyframes thinkBounce{
+  0%,80%,100%{transform:translateY(0);opacity:.45}
+  40%{transform:translateY(-3px);opacity:1}
+}
+.lia-msg p{
+  font-size:13px;
+  line-height:1.5;
+  color:#1F2937;
+}
+
+/* WHAT I PREPARED */
+.section-label{
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:#6B7280;
+  text-transform:uppercase;
+  margin-top:2px;
+}
+.action-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.action-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#F8FAFC;
+  border:1px solid #EEF0F3;
+  border-radius:10px;
+  padding:10px 12px;
+}
+.action-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  font-weight:500;
+  color:#111827;
+}
+.check-circle{
+  width:18px;height:18px;border-radius:50%;
+  background:#2563EB;color:#fff;
+  display:grid;place-items:center;
+  flex-shrink:0;
+  font-size:10px;font-weight:700;
+}
+.review-btn{
+  border:none;
+  background:#EFF6FF;
+  color:#2563EB;
+  font-family:inherit;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.04em;
+  padding:5px 10px;
+  border-radius:6px;
+}
+
+.lia-note{
+  font-size:12.5px;
+  line-height:1.48;
+  color:#374151;
+}
+
+/* MY RECOMMENDATIONS Callout Boxes */
+.rec-stack{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.rec-card{
+  border:1px solid #ECEEF2;
+  border-radius:12px;
+  background:#FFFFFF;
+  box-shadow:0 6px 16px -10px rgba(17,24,39,.12);
+  overflow:hidden;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+.rec-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px 14px;
+  background:#FFF6EB;
+  border-bottom:1px solid #FDE7CE;
+}
+.rec-title{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#D97706;
+  text-transform:uppercase;
+}
+.rec-badge{
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:3px 8px;
+  border-radius:5px;
+  background:#FDE2C4;
+  color:#B45309;
+  white-space:nowrap;
+}
+.rec-body{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  padding:13px 14px;
+  font-size:12.5px;
+  line-height:1.48;
+  color:#1F2937;
+}
+.warn-ico{
+  color:#D97706;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.rec-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px 14px;
+  background:#FAFAFB;
+  border-top:1px solid #F1F3F5;
+}
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:7px;
+  border:1px solid #D1D5DB;
+  background:#FFFFFF;
+  color:#111827;
+  font-family:inherit;
+  font-size:11px;
+  font-weight:600;
+}
+.btn-green{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 12px;
+  border-radius:7px;
+  border:none;
+  background:#006A4E;
+  color:#FFFFFF;
+  font-family:inherit;
+  font-size:11px;
+  font-weight:600;
+}
+
+/* Sticky Bottom Footer inside Panel */
+.lia-footer{
+  padding:12px 28px 18px;
+  background:#FFFFFF;
+  border-top:1px solid #F1F3F5;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex-shrink:0;
+}
+
+/* Input Box */
+.ask-box{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#F3F4F6;
+  border:1px solid #E5E7EB;
+  border-radius:12px;
+  padding:10px 10px 10px 14px;
+  min-height:50px;
+  transition:border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
+}
+.ask-box.is-focused{
+  background:#FFFFFF;
+  border-color:#00875A;
+  box-shadow:0 0 0 3px rgba(0,135,90,.12);
+}
+.ask-text{
+  font-size:12.5px;
+  color:#6B7280;
+  line-height:1.4;
+  flex:1;
+}
+.ask-text.has-value{
+  color:#111827;
+}
+.caret{
+  display:none;
+  width:1.5px;height:14px;
+  background:#00875A;
+  vertical-align:-2px;
+  margin-left:1px;
+  animation:blink .8s step-end infinite;
+}
+.ask-box.is-focused .caret{display:inline-block}
+@keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+
+.send-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  background:#00A86B;color:#fff;
+  display:grid;place-items:center;flex-shrink:0;
+  transition:transform .15s ease, background-color .2s ease;
+}
+.send-btn.is-pressed{
+  transform:scale(.9);
+  background:#006A4E;
+}
+
+/* Primary Footer CTA */
+.primary-btn{
+  width:100%;
+  border:none;
+  background:#006A4E;
+  color:#fff;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  padding:11px 16px;
+  border-radius:8px;
+}
+.return-link{
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:#6B7280;
+  text-transform:uppercase;
+}
+
+/* Animated Stageshow Cursor (GPU compositor transform) */
+.cursor{
+  position:absolute;
+  width:22px;height:22px;
+  pointer-events:none;
+  z-index:30;
+  left:0;top:0;
+  transform:translate3d(320px,240px,0);
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));
+}
+.cursor svg{transition:transform .15s ease-out}
+.cursor.is-clicking svg{transform:scale(.82)}
+.cursor-ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid #006A4E;opacity:0;transform:scale(.5);
+}
+.cursor.is-clicking .cursor-ring{
+  animation:ripple .45s ease-out;
+}
+@keyframes ripple{
+  0%{opacity:.9;transform:scale(.5)}
+  100%{opacity:0;transform:scale(1.6)}
+}
+@media (prefers-reduced-motion: reduce){
+  .cursor,.status-dot,.dots-thinking{animation:none!important}
+  .cursor{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="stage-wrap" id="stage-wrap">
+  <div class="lia-panel">
+    <!-- Left Vertical Icon Rail (top-aligned) -->
+    <aside class="lia-rail" aria-hidden="true">
+      <div class="rail-top">
+        <div class="rail-a">A</div>
+        <div class="rail-btn is-active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+      </div>
+      <div class="rail-collapse">‹</div>
+    </aside>
+
+    <!-- Right Main Column -->
+    <div class="lia-main">
+      <div class="lia-head">
+        <div class="lia-status">
+          <div class="lia-orb" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/>
+            </svg>
+          </div>
+          <span class="status-dot" id="status-dot"></span>
+          <span class="status-text" id="status-text">DRAFTING...</span>
+        </div>
+        <div class="head-right">
+          <div class="size-toggle"><span>M</span><span>L</span></div>
+          <span class="close-x" aria-hidden="true">×</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Workspace Body -->
+      <div class="lia-scroll" id="lia-scroll">
+        <div class="prep-banner">
+          <div class="prep-title">✦ YOUR CASE IS PREPARED.</div>
+          <div class="prep-sub">ⓘ I'm using the current application context.</div>
+        </div>
+
+        <div class="lia-msg">
+          <div class="lia-typing-row">
+            <div class="sage-avatar"></div>
+            <div class="dots-thinking" id="dots-thinking"><span></span><span></span><span></span></div>
+          </div>
+          <p>Hi Jenny. I've prepared this case for you and gathered the key information needed to progress the application.<br>Here's what I've already completed.</p>
+        </div>
+
+        <div class="section-label">WHAT I PREPARED</div>
+
+        <div class="action-list">
+          <div class="action-card">
+            <div class="action-left"><span class="check-circle">✓</span><span>Financial accounts assessed</span></div>
+            <button type="button" class="review-btn">REVIEW</button>
+          </div>
+          <div class="action-card">
+            <div class="action-left"><span class="check-circle">✓</span><span>Existing facilities analysed</span></div>
+            <button type="button" class="review-btn">REVIEW</button>
+          </div>
+          <div class="action-card">
+            <div class="action-left"><span class="check-circle">✓</span><span>Tenancy schedule validated</span></div>
+            <button type="button" class="review-btn">REVIEW</button>
+          </div>
+        </div>
+
+        <p class="lia-note">Credit may request additional serviceability or valuation evidence. I've highlighted the key areas for review.</p>
+
+        <div class="section-label" id="rec-anchor">MY RECOMMENDATIONS</div>
+
+        <div class="rec-stack">
+          <div class="rec-card">
+            <div class="rec-head">
+              <span class="rec-title">✦ PROPERTY VALUATION</span>
+              <span class="rec-badge">ACTION REQUIRED</span>
+            </div>
+            <div class="rec-body">
+              <svg class="warn-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Property valuation is over 3 years old. Credit may request an updated valuation.</span>
+            </div>
+            <div class="rec-foot">
+              <button type="button" class="btn-outline">View supporting evidence</button>
+              <button type="button" class="btn-green">Add to Case Plan</button>
+            </div>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-head">
+              <span class="rec-title">✦ POTENTIAL SERVICEABILITY QUERY</span>
+              <span class="rec-badge">EVIDENCE</span>
+            </div>
+            <div class="rec-body">
+              <svg class="warn-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Potential serviceability query identified. I've prepared a draft request for the client.</span>
+            </div>
+            <div class="rec-foot">
+              <button type="button" class="btn-outline">View supporting evidence</button>
+              <button type="button" class="btn-green">Review email draft</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fixed Bottom Chatbar & CTA -->
+      <div class="lia-footer">
+        <div class="ask-box" id="ask-box">
+          <div class="ask-text" id="ask-text"><span id="typed-prompt">Ask your question</span><span class="caret"></span></div>
+          <button type="button" class="send-btn" id="send-btn" aria-label="Send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+
+        <button type="button" class="primary-btn">Go back to the application</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M5 3L19 12L12.5 13.8L9.5 20L5 3Z" fill="#18181B" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('stage-wrap');
+  var scrollBox = document.getElementById('lia-scroll');
+  var recAnchor = document.getElementById('rec-anchor');
+  var cursor = document.getElementById('cursor');
+  var askBox = document.getElementById('ask-box');
+  var askText = document.getElementById('ask-text');
+  var typedPrompt = document.getElementById('typed-prompt');
+  var sendBtn = document.getElementById('send-btn');
+  var statusDot = document.getElementById('status-dot');
+  var statusText = document.getElementById('status-text');
+  var dotsThinking = document.getElementById('dots-thinking');
+
+  var rmMessage = 'Note in the client email that Q4 rent-free period ends in May and request updated EPC';
+  var timers = [];
+  var scrollRaf = null;
+
+  function clearTimers(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    if (scrollRaf) cancelAnimationFrame(scrollRaf);
+  }
+
+  function smoothScrollTo(targetTop, duration){
+    var start = scrollBox.scrollTop;
+    var change = targetTop - start;
+    var startTime = performance.now();
+    function easeInOut(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+    function step(now){
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      scrollBox.scrollTop = start + change * easeInOut(progress);
+      if (progress < 1) scrollRaf = requestAnimationFrame(step);
+    }
+    scrollRaf = requestAnimationFrame(step);
+  }
+
+  function setCursorPos(x, y){
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  function moveCursor(el, click){
+    var wr = wrap.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    setCursorPos(er.left - wr.left + er.width * 0.52, er.top - wr.top + er.height * 0.55);
+    if (click) {
+      timers.push(setTimeout(function(){
+        cursor.classList.add('is-clicking');
+        timers.push(setTimeout(function(){ cursor.classList.remove('is-clicking'); }, 240));
+      }, 620));
+    }
+  }
+
+  function resetAll(){
+    scrollBox.scrollTop = 0;
+    askBox.classList.remove('is-focused');
+    askText.classList.remove('has-value');
+    typedPrompt.textContent = 'Ask your question';
+    sendBtn.classList.remove('is-pressed');
+    statusDot.classList.remove('is-pulsing');
+    dotsThinking.classList.remove('is-active');
+    statusText.textContent = 'DRAFTING...';
+    setCursorPos(330, 230);
+  }
+
+  function runSequence(){
+    clearTimers();
+    resetAll();
+
+    // 1. User reads WHAT I PREPARED (no clicks), then scrolls down to MY RECOMMENDATIONS
+    timers.push(setTimeout(function(){
+      smoothScrollTo(scrollBox.scrollHeight - scrollBox.clientHeight, 1300);
+      setCursorPos(345, 290);
+    }, 1500));
+
+    // 2. After scrolling down, cursor moves to chatbar, clicks, and RM types context for client email
+    timers.push(setTimeout(function(){
+      moveCursor(askBox, true);
+      timers.push(setTimeout(function(){
+        askBox.classList.add('is-focused');
+        askText.classList.add('has-value');
+        typedPrompt.textContent = '';
+        var i = 0;
+        function typeStep(){
+          if (i <= rmMessage.length) {
+            typedPrompt.textContent = rmMessage.slice(0, i);
+            i++;
+            timers.push(setTimeout(typeStep, 45));
+          }
+        }
+        typeStep();
+      }, 680));
+    }, 3500));
+
+    // 3. Cursor moves to green send button and clicks
+    timers.push(setTimeout(function(){
+      moveCursor(sendBtn, true);
+      timers.push(setTimeout(function(){
+        sendBtn.classList.add('is-pressed');
+        askBox.classList.remove('is-focused');
+        askText.classList.remove('has-value');
+        typedPrompt.textContent = 'Ask your question';
+        statusDot.classList.add('is-pulsing');
+        dotsThinking.classList.add('is-active');
+        statusText.textContent = 'UPDATING...';
+      }, 680));
+    }, 8400));
+
+    // 4. Settle briefly, then loop
+    timers.push(setTimeout(function(){
+      sendBtn.classList.remove('is-pressed');
+      statusDot.classList.remove('is-pulsing');
+      dotsThinking.classList.remove('is-active');
+      statusText.textContent = 'DRAFTING...';
+    }, 9800));
+
+    timers.push(setTimeout(runSequence, 11500));
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false;
+  if (!reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !running) { running = true; runSequence(); }
+        else if (!entries[0].isIntersecting && running) { running = false; clearTimers(); }
+      }, { threshold: 0.15 }).observe(wrap);
+    } else {
+      runSequence();
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIA Document Intelligence — Stageshow Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{
+  background:#F4F4F6;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:#111827;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.stage-wrap{
+  position:relative;
+  width:100%;
+  max-width:540px;
+}
+
+/* Exact Right Workspace Card (aligned with Animation 1) */
+.lia-panel{
+  position:relative;
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  grid-template-rows:minmax(0,1fr);
+  height:680px;
+  background:#FFFFFF;
+  border:1.5px solid #B7E2C9;
+  border-radius:16px;
+  box-shadow:0 24px 48px -20px rgba(0,0,0,.16);
+  overflow:hidden;
+}
+
+/* Left Icon Rail — Top-aligned */
+.lia-rail{
+  background:#FFFFFF;
+  border-right:1px solid #ECEEF0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:16px 0 14px;
+}
+.rail-top{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.rail-a{
+  width:26px;height:26px;border-radius:6px;
+  background:#0F3D2E;color:#fff;
+  font-size:11.5px;font-weight:700;
+  display:grid;place-items:center;
+  margin-bottom:2px;
+}
+.rail-btn{
+  width:30px;height:30px;border-radius:8px;
+  display:grid;place-items:center;
+  color:#6B7280;
+}
+.rail-btn.is-active{
+  background:#E6F7EE;
+  color:#006A4E;
+}
+.rail-collapse{
+  margin-top:auto;
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid #E5E7EB;
+  display:grid;place-items:center;
+  color:#6B7280;font-size:12px;
+}
+
+/* Main Workspace Column */
+.lia-main{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+}
+
+/* Fixed Top Bar */
+.lia-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:16px 28px 12px;
+  background:#FFFFFF;
+  flex-shrink:0;
+}
+.lia-status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.lia-orb{
+  width:26px;height:26px;border-radius:50%;
+  background:#EFFAF3;color:#10B981;
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+.lia-orb svg{animation:slowSpark 3.2s ease-in-out infinite}
+@keyframes slowSpark{
+  0%,100%{transform:scale(1) rotate(0deg);opacity:.9}
+  50%{transform:scale(1.12) rotate(8deg);opacity:1}
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#10B981;
+  transition:transform .25s ease;
+}
+.status-dot.is-pulsing{animation:dotPulse .9s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+.status-text{
+  font-size:11px;font-weight:600;letter-spacing:.05em;
+  color:#4B5563;text-transform:uppercase;
+}
+.head-right{display:flex;align-items:center;gap:10px}
+.size-toggle{
+  display:inline-flex;border:1px solid #E5E7EB;border-radius:6px;
+  overflow:hidden;font-size:10.5px;font-weight:600;
+}
+.size-toggle span{padding:3px 8px;color:#9CA3AF;background:#fff}
+.size-toggle span:first-child{color:#111827;background:#F9FAFB;border-right:1px solid #E5E7EB}
+.close-x{color:#6B7280;font-size:16px;line-height:1}
+
+/* Scrollable Body */
+.lia-scroll{
+  flex:1;min-height:0;overflow-y:auto;
+  padding:10px 28px 26px;
+  display:flex;flex-direction:column;gap:20px;
+  scrollbar-width:thin;scrollbar-color:#D1D5DB transparent;
+}
+.lia-scroll > *{flex-shrink:0}
+.lia-scroll::-webkit-scrollbar{width:5px}
+.lia-scroll::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:999px}
+
+/* Banner */
+.prep-banner{
+  background:#EFFAF3;border:1px solid #D5F0E0;border-radius:10px;padding:11px 13px;
+}
+.prep-title{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;
+  color:#00875A;text-transform:uppercase;margin-bottom:4px;
+}
+.prep-sub{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#374151}
+
+/* Greeting */
+.lia-msg{display:flex;flex-direction:column;gap:8px}
+.lia-typing-row{display:flex;align-items:center;gap:8px}
+.sage-avatar{width:24px;height:24px;border-radius:50%;background:#9AD1AD}
+.dots-thinking{display:flex;gap:3px}
+.dots-thinking span{width:4px;height:4px;border-radius:50%;background:#9CA3AF}
+.lia-msg p{font-size:13px;line-height:1.5;color:#1F2937}
+
+/* Cards */
+.doc-card{
+  border:1px solid #ECEEF2;border-radius:12px;background:#FFFFFF;
+  box-shadow:0 6px 16px -10px rgba(17,24,39,.12);
+  overflow:hidden;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.doc-head{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 14px;border-bottom:1px solid #ECEEF2;
+  background:#F8FAFC;
+}
+.doc-head.is-warn{background:#FFF6EB;border-bottom-color:#FDE7CE}
+.doc-head.is-done{background:#EFFAF3;border-bottom-color:#D5F0E0}
+.doc-title{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:#1F2937;
+}
+.doc-head.is-warn .doc-title{color:#D97706}
+.doc-head.is-done .doc-title{color:#00875A}
+
+.doc-badge{
+  font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:3px 8px;border-radius:5px;background:#E5E7EB;color:#4B5563;white-space:nowrap;
+}
+.doc-badge.is-warn{background:#FDE2C4;color:#B45309}
+.doc-badge.is-done{background:#D1FAE5;color:#065F46}
+
+.doc-body{padding:13px 14px;display:flex;flex-direction:column;gap:9px}
+.upd-row{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12.5px;line-height:1.45;color:#1F2937;
+}
+.upd-check{
+  width:16px;height:16px;border-radius:50%;
+  background:#E6F7EE;color:#059669;
+  display:grid;place-items:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;
+}
+
+.choice-list{display:flex;flex-direction:column;gap:7px;margin-top:2px}
+.choice-item{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:8px 10px;border-radius:8px;border:1px solid #E5E7EB;
+  background:#FFFFFF;font-size:12px;color:#374151;
+  transition:border-color .25s, background-color .25s;
+}
+.choice-item.is-selected{
+  border-color:#00875A;background:#F3FBF7;color:#111827;font-weight:500;
+}
+.choice-left{display:flex;align-items:center;gap:8px}
+.radio-dot{
+  width:14px;height:14px;border-radius:50%;border:1.5px solid #9CA3AF;
+  display:grid;place-items:center;flex-shrink:0;
+}
+.choice-item.is-selected .radio-dot{border-color:#00875A}
+.choice-item.is-selected .radio-dot::after{
+  content:'';width:7px;height:7px;border-radius:50%;background:#00875A;
+}
+.rec-pill{
+  font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 6px;border-radius:4px;background:#DBEAFE;color:#1D4ED8;
+}
+
+.doc-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 14px;background:#FAFAFB;border-top:1px solid #F1F3F5;
+}
+.btn-outline{
+  padding:6px 10px;border-radius:7px;border:1px solid #D1D5DB;
+  background:#FFFFFF;color:#111827;font-family:inherit;font-size:11px;font-weight:600;
+}
+.btn-green{
+  padding:7px 12px;border-radius:7px;border:none;
+  background:#006A4E;color:#FFFFFF;font-family:inherit;font-size:11px;font-weight:600;
+  transition:transform .15s, background-color .2s;
+}
+.btn-green.is-pressed{transform:scale(.95);background:#004D38}
+
+/* Match Details Table (appears when Review match details is clicked) */
+.match-card{
+  border:1px solid #D5F0E0;border-radius:12px;background:#FFFFFF;overflow:hidden;
+  display:none;
+  animation:fadeSlide .35s cubic-bezier(.22,1,.36,1);
+}
+.match-card.is-open{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.match-table{width:100%;border-collapse:collapse;font-size:11.5px;font-variant-numeric:tabular-nums}
+.match-table th{
+  text-align:left;padding:7px 10px;background:#F8FAFC;
+  border-bottom:1px solid #ECEEF2;color:#6B7280;font-weight:600;font-size:10.5px;
+}
+.match-table td{padding:8px 10px;border-bottom:1px solid #F1F3F5;color:#1F2937}
+.st-pill{
+  font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;display:inline-block;
+}
+.st-match{background:#E6F7EE;color:#059669}
+.st-upd{background:#DBEAFE;color:#1D4ED8}
+
+/* Footer */
+.lia-footer{
+  padding:12px 28px 18px;background:#FFFFFF;border-top:1px solid #F1F3F5;
+  display:flex;flex-direction:column;gap:10px;flex-shrink:0;
+}
+.ask-box{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:#F3F4F6;border:1px solid #E5E7EB;border-radius:12px;
+  padding:10px 10px 10px 14px;min-height:48px;
+}
+.ask-text{font-size:12.5px;color:#6B7280;flex:1}
+.send-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  background:#00A86B;color:#fff;display:grid;place-items:center;flex-shrink:0;
+}
+.primary-btn{
+  width:100%;border:none;background:#006A4E;color:#fff;
+  font-family:inherit;font-size:13px;font-weight:600;padding:11px 16px;border-radius:8px;
+}
+
+/* Animated Cursor (GPU compositor transform) */
+.cursor{
+  position:absolute;width:22px;height:22px;pointer-events:none;z-index:30;
+  left:0;top:0;
+  transform:translate3d(320px,240px,0);
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));
+}
+.cursor svg{transition:transform .15s ease-out}
+.cursor.is-clicking svg{transform:scale(.82)}
+.cursor-ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid #006A4E;opacity:0;transform:scale(.5);
+}
+.cursor.is-clicking .cursor-ring{animation:ripple .45s ease-out}
+@keyframes ripple{0%{opacity:.9;transform:scale(.5)}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion: reduce){
+  .cursor,.status-dot{animation:none!important}
+  .cursor{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="stage-wrap" id="stage-wrap">
+  <div class="lia-panel">
+    <!-- Left Vertical Icon Rail -->
+    <aside class="lia-rail" aria-hidden="true">
+      <div class="rail-top">
+        <div class="rail-a">A</div>
+        <div class="rail-btn is-active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+      </div>
+      <div class="rail-collapse">‹</div>
+    </aside>
+
+    <!-- Main Column -->
+    <div class="lia-main">
+      <div class="lia-head">
+        <div class="lia-status">
+          <div class="lia-orb" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/>
+            </svg>
+          </div>
+          <span class="status-dot" id="status-dot"></span>
+          <span class="status-text" id="status-text">REVIEWING...</span>
+        </div>
+        <div class="head-right">
+          <div class="size-toggle"><span>M</span><span>L</span></div>
+          <span class="close-x" aria-hidden="true">×</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Workspace Body -->
+      <div class="lia-scroll" id="lia-scroll">
+        <div class="prep-banner">
+          <div class="prep-title">✦ CRE MODEL REVIEW</div>
+          <div class="prep-sub">ⓘ Review recommended updates and confirm any data discrepancies.</div>
+        </div>
+
+        <div class="lia-msg">
+          <div class="lia-typing-row">
+            <div class="sage-avatar"></div>
+            <div class="dots-thinking"><span></span><span></span><span></span></div>
+          </div>
+          <p>I have extracted the following updates from the provided tenancy documents for <strong>1 Covington Way</strong>.</p>
+        </div>
+
+        <!-- Card 1: AI Updates -->
+        <div class="doc-card" id="card-updates">
+          <div class="doc-head" id="head-updates">
+            <span class="doc-title">✦ AI UPDATES</span>
+            <span class="doc-badge" id="badge-updates">3 UPDATES</span>
+          </div>
+          <div class="doc-body" id="body-updates">
+            <div class="upd-row"><span class="upd-check">✓</span><span>Tenant: <strong>Kate Morgan</strong> (from Tenancy Doc)</span></div>
+            <div class="upd-row"><span class="upd-check">✓</span><span>Lease start date: <strong>03 May 2026</strong> (from Tenancy Doc)</span></div>
+            <div class="upd-row"><span class="upd-check">✓</span><span>Term: <strong>1 Year</strong> (from Tenancy Doc)</span></div>
+          </div>
+          <div class="doc-foot">
+            <button type="button" class="btn-outline" id="btn-review-1">Review match details</button>
+            <button type="button" class="btn-green" id="btn-approve">Approve all updates</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Lease End Date Confirmation -->
+        <div class="doc-card" id="card-lease">
+          <div class="doc-head is-warn" id="head-lease">
+            <span class="doc-title">✦ LEASE END DATE REQUIRES CONFIRMATION</span>
+            <span class="doc-badge is-warn" id="badge-lease">ACTION REQUIRED</span>
+          </div>
+          <div class="doc-body" id="body-lease">
+            <p style="font-size:12px;color:#374151;line-height:1.45">A different lease end date was found in the latest tenancy schedule. Which date would you like to keep?</p>
+            <div class="choice-list">
+              <div class="choice-item"><span class="choice-left"><span class="radio-dot"></span>Real Estate model : 22 May 2027</span></div>
+              <div class="choice-item is-selected"><span class="choice-left"><span class="radio-dot"></span>Latest tenancy schedule : 25 JUNE 2027</span><span class="rec-pill">RECOMMENDED</span></div>
+              <div class="choice-item"><span class="choice-left"><span class="radio-dot"></span>Request client confirmation</span></div>
+            </div>
+          </div>
+          <div class="doc-foot">
+            <button type="button" class="btn-outline" id="btn-review-2">Review match details</button>
+            <button type="button" class="btn-green" id="btn-update-rem">Update REM</button>
+          </div>
+        </div>
+
+        <!-- Card 3: Match Details Comparison (revealed on click) -->
+        <div class="match-card" id="match-card">
+          <div class="doc-head is-done">
+            <span class="doc-title">✦ REVIEW MATCH DETAILS · 1 COVINGTON WAY</span>
+            <span class="doc-badge is-done">VERIFIED</span>
+          </div>
+          <table class="match-table">
+            <thead><tr><th>Data field</th><th>REM</th><th>Tenancy schedule</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Tenant name</td><td>Ben William</td><td>Kate Morgan</td><td><span class="st-pill st-upd">Updated</span></td></tr>
+              <tr><td>Lease start</td><td>01 May 2025</td><td>03 May 2026</td><td><span class="st-pill st-upd">Updated</span></td></tr>
+              <tr><td>Lease end</td><td>22 May 2027</td><td>25 June 2027</td><td><span class="st-pill st-match">Matched</span></td></tr>
+              <tr><td>Annual rental</td><td>£30,000</td><td>£30,500</td><td><span class="st-pill st-match">Accepted</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Fixed Footer -->
+      <div class="lia-footer">
+        <div class="ask-box">
+          <div class="ask-text">Ask your question</div>
+          <button type="button" class="send-btn" aria-label="Send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <button type="button" class="primary-btn">Go back to the application</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M5 3L19 12L12.5 13.8L9.5 20L5 3Z" fill="#18181B" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('stage-wrap');
+  var scrollBox = document.getElementById('lia-scroll');
+  var cursor = document.getElementById('cursor');
+
+  var headUpdates = document.getElementById('head-updates');
+  var badgeUpdates = document.getElementById('badge-updates');
+  var bodyUpdates = document.getElementById('body-updates');
+  var btnApprove = document.getElementById('btn-approve');
+
+  var headLease = document.getElementById('head-lease');
+  var badgeLease = document.getElementById('badge-lease');
+  var bodyLease = document.getElementById('body-lease');
+  var btnReview2 = document.getElementById('btn-review-2');
+  var btnUpdateRem = document.getElementById('btn-update-rem');
+
+  var matchCard = document.getElementById('match-card');
+
+  var origUpdatesBody = bodyUpdates.innerHTML;
+  var origLeaseBody = bodyLease.innerHTML;
+  var timers = [];
+  var scrollRaf = null;
+
+  function clearTimers(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    if (scrollRaf) cancelAnimationFrame(scrollRaf);
+  }
+
+  function smoothScrollTo(targetTop, duration){
+    var start = scrollBox.scrollTop;
+    var change = targetTop - start;
+    var startTime = performance.now();
+    function ease(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+    function step(now){
+      var p = Math.min((now - startTime) / duration, 1);
+      scrollBox.scrollTop = start + change * ease(p);
+      if (p < 1) scrollRaf = requestAnimationFrame(step);
+    }
+    scrollRaf = requestAnimationFrame(step);
+  }
+
+  function setCursorPos(x, y){
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  function moveCursor(el, click){
+    var wr = wrap.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    setCursorPos(er.left - wr.left + er.width * 0.52, er.top - wr.top + er.height * 0.55);
+    if (click) {
+      timers.push(setTimeout(function(){
+        cursor.classList.add('is-clicking');
+        timers.push(setTimeout(function(){ cursor.classList.remove('is-clicking'); }, 240));
+      }, 620));
+    }
+  }
+
+  function resetAll(){
+    scrollBox.scrollTop = 0;
+    headUpdates.className = 'doc-head';
+    badgeUpdates.className = 'doc-badge';
+    badgeUpdates.textContent = '3 UPDATES';
+    bodyUpdates.innerHTML = origUpdatesBody;
+    btnApprove.textContent = 'Approve all updates';
+    btnApprove.classList.remove('is-pressed');
+
+    headLease.className = 'doc-head is-warn';
+    badgeLease.className = 'doc-badge is-warn';
+    badgeLease.textContent = 'ACTION REQUIRED';
+    bodyLease.innerHTML = origLeaseBody;
+    btnUpdateRem.textContent = 'Update REM';
+    btnUpdateRem.classList.remove('is-pressed');
+
+    matchCard.classList.remove('is-open');
+    setCursorPos(330, 200);
+  }
+
+  function runSequence(){
+    clearTimers();
+    resetAll();
+
+    // 1. Click "Approve all updates"
+    timers.push(setTimeout(function(){
+      moveCursor(btnApprove, true);
+      timers.push(setTimeout(function(){
+        btnApprove.classList.add('is-pressed');
+        headUpdates.className = 'doc-head is-done';
+        badgeUpdates.className = 'doc-badge is-done';
+        badgeUpdates.textContent = 'APPLIED';
+        bodyUpdates.innerHTML = '<div class="upd-row"><span class="upd-check">✓</span><span>The updates have been applied to the case.</span></div>';
+        btnApprove.textContent = '✓ Approved';
+      }, 680));
+    }, 1200));
+
+    // 2. Scroll down to Lease End Date card & click "Update REM"
+    timers.push(setTimeout(function(){
+      smoothScrollTo(150, 900);
+    }, 2600));
+
+    timers.push(setTimeout(function(){
+      moveCursor(btnUpdateRem, true);
+      timers.push(setTimeout(function(){
+        btnUpdateRem.classList.add('is-pressed');
+        headLease.className = 'doc-head is-done';
+        badgeLease.className = 'doc-badge is-done';
+        badgeLease.textContent = 'UPDATED';
+        bodyLease.innerHTML = '<div class="upd-row"><span class="upd-check">✓</span><span>Lease end date updated. REM now reflects <strong>25 JUNE 2027</strong>.</span></div>';
+        btnUpdateRem.textContent = '✓ REM Updated';
+      }, 680));
+    }, 3900));
+
+    // 3. Click "Review match details" & scroll to show comparison table
+    timers.push(setTimeout(function(){
+      moveCursor(btnReview2, true);
+      timers.push(setTimeout(function(){
+        matchCard.classList.add('is-open');
+        smoothScrollTo(scrollBox.scrollHeight - scrollBox.clientHeight, 950);
+      }, 680));
+    }, 5600));
+
+    timers.push(setTimeout(runSequence, 9600));
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false;
+  if (!reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !running) { running = true; runSequence(); }
+        else if (!entries[0].isIntersecting && running) { running = false; clearTimers(); }
+      }, { threshold: 0.15 }).observe(wrap);
+    } else {
+      runSequence();
+    }
+  }
+})();
+</script>
+</body>
+</html>

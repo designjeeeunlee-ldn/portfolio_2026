@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIA Multi-Agent Orchestration — Stageshow Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{
+  background:#F4F4F6;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:#111827;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.stage-wrap{
+  position:relative;
+  width:100%;
+  max-width:540px;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 24px 48px -20px rgba(0,0,0,.16);
+}
+
+/* Workspace Card — starts at 540px, zooms/expands leftwards cropping right side cleanly */
+.lia-panel{
+  position:relative;
+  display:flex;
+  width:540px;
+  height:680px;
+  background:#FFFFFF;
+  border:1.5px solid #B7E2C9;
+  border-radius:16px;
+  overflow:hidden;
+  transform-origin:0 0;
+  transform:scale(1);
+  transition:width .65s ease-out, transform .85s ease-out;
+}
+.lia-panel.is-expanded{
+  width:732px;
+  transform:scale(1.045);
+}
+
+/* Collapsible -> Expandable Left Navigation */
+.lia-rail{
+  width:46px;
+  flex-shrink:0;
+  background:#FFFFFF;
+  border-right:1px solid #ECEEF0;
+  display:flex;
+  flex-direction:column;
+  padding:14px 0;
+  transition:width .35s ease-out;
+  overflow:hidden;
+}
+.lia-panel.is-expanded .lia-rail{
+  width:238px;
+  padding:14px 14px;
+}
+
+/* Collapsed Icon View */
+.rail-collapsed{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  height:100%;
+}
+.lia-panel.is-expanded .rail-collapsed{
+  display:none;
+}
+.rail-a{
+  width:26px;height:26px;border-radius:6px;
+  background:#0F3D2E;color:#fff;
+  font-size:11.5px;font-weight:700;
+  display:grid;place-items:center;
+}
+.rail-btn{
+  width:30px;height:30px;border-radius:8px;
+  display:grid;place-items:center;
+  color:#6B7280;
+}
+.rail-btn.is-active{
+  background:#E6F7EE;
+  color:#006A4E;
+}
+.rail-toggle{
+  margin-top:auto;
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid #D1D5DB;
+  background:#FFFFFF;
+  display:grid;place-items:center;
+  color:#4B5563;font-size:13px;font-weight:600;
+  cursor:pointer;
+  transition:border-color .15s, background-color .15s, transform .15s;
+}
+.rail-toggle.is-pressed{transform:scale(.9);border-color:#006A4E;background:#EFFAF3}
+
+/* Expanded Multi-Agent Drawer View */
+.rail-expanded{
+  display:none;
+  flex-direction:column;
+  gap:14px;
+  height:100%;
+  width:210px;
+  animation:fadeIn .25s ease-out;
+}
+.lia-panel.is-expanded .rail-expanded{
+  display:flex;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.search-pill{
+  display:flex;align-items:center;gap:7px;
+  padding:7px 10px;border-radius:8px;
+  border:1px solid #E5E7EB;background:#F9FAFB;
+  font-size:11.5px;color:#6B7280;
+}
+.nav-sec-label{
+  font-size:9.5px;font-weight:700;letter-spacing:.06em;
+  color:#6B7280;text-transform:uppercase;margin-bottom:4px;
+}
+.nav-group{display:flex;flex-direction:column;gap:5px}
+.nav-item{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 8px;border-radius:8px;
+  transition:background-color .2s, border-color .2s;
+  border:1px solid transparent;
+}
+.nav-item.is-active{
+  background:#E6F7EE;border-color:#B7E2C9;
+}
+.nav-item.is-hovered{
+  background:#F3F4F6;border-color:#E5E7EB;
+}
+.nav-ico{
+  width:24px;height:24px;border-radius:6px;
+  background:#F3F4F6;color:#4B5563;
+  display:grid;place-items:center;flex-shrink:0;
+}
+.nav-item.is-active .nav-ico{
+  background:#FFFFFF;color:#006A4E;
+}
+.nav-text b{display:block;font-size:11.5px;font-weight:600;color:#111827;line-height:1.25}
+.nav-text span{display:block;font-size:10px;color:#6B7280;line-height:1.3;font-variant-numeric:tabular-nums}
+
+.collapse-row{
+  margin-top:auto;
+  display:flex;align-items:center;
+  padding-top:10px;border-top:1px solid #ECEEF0;
+}
+
+/* Right Main Column — fixed 494px width so chat body never shrinks */
+.lia-main{
+  flex:0 0 494px;
+  width:494px;
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.lia-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:16px 28px 12px;background:#FFFFFF;flex-shrink:0;
+}
+.lia-status{display:flex;align-items:center;gap:8px}
+.lia-orb{
+  width:26px;height:26px;border-radius:50%;
+  background:#EFFAF3;color:#10B981;
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+.lia-orb svg{animation:slowSpark 3.2s ease-in-out infinite}
+@keyframes slowSpark{
+  0%,100%{transform:scale(1) rotate(0deg);opacity:.9}
+  50%{transform:scale(1.12) rotate(8deg);opacity:1}
+}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#10B981}
+.status-text{font-size:11px;font-weight:600;letter-spacing:.05em;color:#4B5563;text-transform:uppercase}
+.head-right{display:flex;align-items:center;gap:10px}
+.size-toggle{
+  display:inline-flex;border:1px solid #E5E7EB;border-radius:6px;overflow:hidden;font-size:10.5px;font-weight:600;
+}
+.size-toggle span{padding:3px 8px;color:#9CA3AF;background:#fff}
+.size-toggle span:first-child{color:#111827;background:#F9FAFB;border-right:1px solid #E5E7EB}
+.close-x{color:#6B7280;font-size:16px;line-height:1}
+
+.lia-body{
+  flex:1;min-height:0;overflow-y:auto;
+  padding:10px 28px 26px;
+  display:flex;flex-direction:column;gap:20px;
+}
+.lia-body > *{flex-shrink:0}
+
+/* Client Request Email Card (from Video 1 0:45-0:52) */
+.email-card{
+  border:1px solid #D5F0E0;border-radius:12px;background:#FFFFFF;overflow:hidden;
+}
+.email-head{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;background:#EFFAF3;border-bottom:1px solid #D5F0E0;
+  font-size:11px;font-weight:700;letter-spacing:.04em;color:#00875A;text-transform:uppercase;
+}
+.email-body{padding:14px;font-size:12px;line-height:1.55;color:#1F2937}
+.email-meta{font-size:10px;font-weight:700;letter-spacing:.05em;color:#6B7280;text-transform:uppercase;margin-bottom:3px}
+.email-body ul{margin:6px 0 8px 18px}
+.email-foot{
+  display:flex;justify-content:space-between;gap:8px;
+  padding:10px 14px;background:#FAFAFB;border-top:1px solid #F1F3F5;
+}
+.btn-outline{
+  padding:6px 12px;border-radius:7px;border:1px solid #D1D5DB;
+  background:#FFFFFF;color:#111827;font-family:inherit;font-size:11px;font-weight:600;
+}
+.btn-green{
+  padding:7px 14px;border-radius:7px;border:none;
+  background:#006A4E;color:#FFFFFF;font-family:inherit;font-size:11px;font-weight:600;
+}
+
+.rm-bubble{
+  align-self:flex-end;
+  max-width:85%;
+  background:#F3F4F6;border:1px solid #E5E7EB;border-radius:12px;
+  padding:10px 13px;font-size:12px;line-height:1.45;color:#1F2937;
+}
+
+/* Footer */
+.lia-footer{
+  padding:12px 28px 18px;background:#FFFFFF;border-top:1px solid #F1F3F5;
+  display:flex;flex-direction:column;gap:10px;flex-shrink:0;
+}
+.ask-box{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:#F3F4F6;border:1px solid #E5E7EB;border-radius:12px;
+  padding:10px 10px 10px 14px;min-height:46px;
+}
+.ask-text{font-size:12.5px;color:#6B7280;flex:1}
+.send-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  background:#00A86B;color:#fff;display:grid;place-items:center;flex-shrink:0;
+}
+.primary-btn{
+  width:100%;border:none;background:#006A4E;color:#fff;
+  font-family:inherit;font-size:13px;font-weight:600;padding:11px 16px;border-radius:8px;
+}
+
+/* GPU Compositor Cursor */
+.cursor{
+  position:absolute;width:22px;height:22px;pointer-events:none;z-index:30;
+  left:0;top:0;
+  transform:translate3d(260px,420px,0);
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));
+}
+.cursor svg{transition:transform .15s ease-out}
+.cursor.is-clicking svg{transform:scale(.82)}
+.cursor-ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid #006A4E;opacity:0;transform:scale(.5);
+}
+.cursor.is-clicking .cursor-ring{animation:ripple .45s ease-out}
+@keyframes ripple{0%{opacity:.9;transform:scale(.5)}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion: reduce){
+  .cursor{display:none}
+  .lia-rail{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="stage-wrap" id="stage-wrap">
+  <div class="lia-panel" id="lia-panel">
+    <!-- Left Navigation: Collapses / Expands to reveal Multi-Agent Suite -->
+    <aside class="lia-rail" aria-label="Agent orchestration navigation">
+      <!-- Collapsed View -->
+      <div class="rail-collapsed">
+        <div class="lia-orb" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/>
+          </svg>
+        </div>
+        <div class="rail-a">A</div>
+        <div class="rail-btn is-active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></svg>
+        </div>
+        <div class="rail-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <button type="button" class="rail-toggle" id="rail-expand-btn" aria-label="Expand orchestration drawer">›</button>
+      </div>
+
+      <!-- Expanded Multi-Agent Drawer -->
+      <div class="rail-expanded">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="lia-orb" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3l1.6 4.6L18.2 9.2l-4.6 1.6L12 15.4l-1.6-4.6L5.8 9.2l4.6-1.6L12 3z"/>
+            </svg>
+          </div>
+          <div class="search-pill" style="flex:1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search capabilities...</span>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-sec-label">Current Application</div>
+          <div class="nav-item">
+            <div class="rail-a" style="width:24px;height:24px;font-size:10.5px;flex-shrink:0">A</div>
+            <div class="nav-text"><b>Acme Property Ltd</b><span>C-2593 [Case ID number]</span></div>
+          </div>
+          <div class="nav-item is-active">
+            <div class="nav-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="nav-text"><b>Credit Case Preparation</b><span>Active workflow</span></div>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-sec-label">AI Traceability</div>
+          <div class="nav-item">
+            <div class="nav-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/></svg>
+            </div>
+            <div class="nav-text"><b>Client data explorer</b><span>Browse company &amp; financial data</span></div>
+          </div>
+          <div class="nav-item" id="nav-summary">
+            <div class="nav-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="nav-text"><b>Summary explorer</b><span>View and trace narrative sources</span></div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/></svg>
+            </div>
+            <div class="nav-text"><b>Data quality &amp; flags</b><span>Audit alerts and discrepancies</span></div>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-sec-label">Lending Suite</div>
+          <div class="nav-item" id="nav-cassandra">
+            <div class="nav-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="nav-text"><b>Policy agent</b><span>Underwriting &amp; policy checks</span></div>
+          </div>
+          <div class="nav-item" id="nav-rm">
+            <div class="nav-ico" style="background:#EFFAF3;color:#059669">✦</div>
+            <div class="nav-text"><b>RM assistant</b><span>Relationship &amp; email drafting</span></div>
+          </div>
+        </div>
+
+        <div class="collapse-row">
+          <button type="button" class="rail-toggle" style="margin-top:0" aria-label="Collapse orchestration drawer">‹</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Main Workspace -->
+    <div class="lia-main">
+      <div class="lia-head">
+        <div class="lia-status">
+          <span class="status-dot"></span>
+          <span class="status-text">DRAFTING...</span>
+        </div>
+        <div class="head-right">
+          <div class="size-toggle"><span>M</span><span>L</span></div>
+          <span class="close-x" aria-hidden="true">×</span>
+        </div>
+      </div>
+
+      <div class="lia-body">
+        <div class="email-card">
+          <div class="email-head">✦ CLIENT REQUEST EMAIL</div>
+          <div class="email-body">
+            <div class="email-meta">SUBJECT</div>
+            <p style="margin-bottom:8px">Additional information for your application</p>
+            <div class="email-meta">BODY</div>
+            <p>Hi Pete,</p>
+            <p style="margin-top:4px">To support the next stage of your application, could you please share any updates on:</p>
+            <ul>
+              <li>Occupancy levels</li>
+              <li>Lease renewals</li>
+              <li>Rental income expectations</li>
+            </ul>
+            <p>Providing this information now may help avoid delays during Credit review.</p>
+          </div>
+          <div class="email-foot">
+            <button type="button" class="btn-outline">Edit Draft</button>
+            <button type="button" class="btn-green">Send to Client &gt;</button>
+          </div>
+        </div>
+
+        <div class="rm-bubble">
+          Add that I spoke with the client last week and two major tenants intend to renew their leases.
+        </div>
+      </div>
+
+      <div class="lia-footer">
+        <div class="ask-box">
+          <div class="ask-text">Ask your question</div>
+          <button type="button" class="send-btn" aria-label="Send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <button type="button" class="primary-btn">Go back to the application</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GPU Compositor Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M5 3L19 12L12.5 13.8L9.5 20L5 3Z" fill="#18181B" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('stage-wrap');
+  var panel = document.getElementById('lia-panel');
+  var cursor = document.getElementById('cursor');
+  var expandBtn = document.getElementById('rail-expand-btn');
+  var navSummary = document.getElementById('nav-summary');
+  var navCassandra = document.getElementById('nav-cassandra');
+  var navRm = document.getElementById('nav-rm');
+
+  var timers = [];
+
+  function clearTimers(){
+    timers.forEach(clearTimeout);
+    timers = [];
+  }
+
+  function setCursorPos(x, y){
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  function moveCursor(el, click){
+    var wr = wrap.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    setCursorPos(er.left - wr.left + er.width * 0.5, er.top - wr.top + er.height * 0.55);
+    if (click) {
+      timers.push(setTimeout(function(){
+        cursor.classList.add('is-clicking');
+        timers.push(setTimeout(function(){ cursor.classList.remove('is-clicking'); }, 240));
+      }, 620));
+    }
+  }
+
+  function resetAll(){
+    panel.classList.remove('is-expanded');
+    expandBtn.classList.remove('is-pressed');
+    navSummary.classList.remove('is-hovered');
+    navCassandra.classList.remove('is-hovered');
+    navRm.classList.remove('is-hovered');
+    setCursorPos(420, 460);
+  }
+
+  function runSequence(){
+    clearTimers();
+    resetAll();
+
+    // 1. Move cursor to collapsed rail toggle (>) and click to expand
+    timers.push(setTimeout(function(){
+      moveCursor(expandBtn, true);
+      timers.push(setTimeout(function(){
+        expandBtn.classList.add('is-pressed');
+        panel.classList.add('is-expanded');
+      }, 680));
+    }, 1100));
+
+    // 2. Hover over AI Traceability -> Summary explorer
+    timers.push(setTimeout(function(){
+      moveCursor(navSummary, false);
+      timers.push(setTimeout(function(){
+        navSummary.classList.add('is-hovered');
+      }, 680));
+    }, 2800));
+
+    // 3. Hover over Lending Suite specialist agents (Cassandra -> RM assistant)
+    timers.push(setTimeout(function(){
+      navSummary.classList.remove('is-hovered');
+      moveCursor(navCassandra, false);
+      timers.push(setTimeout(function(){
+        navCassandra.classList.add('is-hovered');
+      }, 680));
+    }, 4500));
+
+    timers.push(setTimeout(function(){
+      navCassandra.classList.remove('is-hovered');
+      moveCursor(navRm, false);
+      timers.push(setTimeout(function(){
+        navRm.classList.add('is-hovered');
+      }, 680));
+    }, 6100));
+
+    timers.push(setTimeout(runSequence, 8600));
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false;
+  if (reduceMotion) {
+    panel.classList.add('is-expanded');
+  } else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      if (entries[0].isIntersecting && !running) { running = true; runSequence(); }
+      else if (!entries[0].isIntersecting && running) { running = false; clearTimers(); }
+    }, { threshold: 0.15 }).observe(wrap);
+  } else {
+    runSequence();
+  }
+})();
+</script>
+</body>
+</html>
